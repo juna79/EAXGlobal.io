@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EAX Global | Environmental Asset Exchange</title>
+  <meta name="description" content="EAX Global is building transparent infrastructure for carbon, biodiversity and environmental asset markets." />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #050706;
+      color: #f4f1e8;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(20, 160, 90, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 20%, rgba(212, 168, 74, 0.16), transparent 30%),
+        linear-gradient(180deg, #050706 0%, #07100b 45%, #050706 100%);
+    }
+
+    header {
+      width: 100%;
+      padding: 24px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 5;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 28px;
+    }
+
+    .mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #d6b25e, #0f9f66);
+      display: grid;
+      place-items: center;
+      color: #06100b;
+      font-weight: 900;
+      box-shadow: 0 0 40px rgba(214, 178, 94, 0.25);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      font-size: 14px;
+      color: rgba(244, 241, 232, 0.7);
+    }
+
+    .nav-cta {
+      padding: 10px 18px;
+      border: 1px solid rgba(214,178,94,0.45);
+      border-radius: 999px;
+      color: #f4f1e8;
+    }
+
+    .hero {
+      min-height: 84vh;
+      padding: 80px 6% 90px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border: 1px solid rgba(214,178,94,0.35);
+      border-radius: 999px;
+      color: #d6b25e;
+      font-size: 13px;
+      margin-bottom: 24px;
+      background: rgba(214,178,94,0.06);
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -0.08em;
+      max-width: 850px;
+    }
+
+    .gold { color: #d6b25e; }
+    .green { color: #24c47e; }
+
+    .hero p {
+      margin-top: 28px;
+      font-size: 20px;
+      line-height: 1.55;
+      color: rgba(244, 241, 232, 0.72);
+      max-width: 660px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 34px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d6b25e, #29c982);
+      color: #07100b;
+    }
+
+    .btn-secondary {
+      border-color: rgba(244,241,232,0.18);
+      color: #f4f1e8;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .terminal {
+      border: 1px solid rgba(244,241,232,0.12);
+      background: rgba(8, 17, 12, 0.78);
+      border-radius: 28px;
+      padding: 22px;
+      box-shadow: 0 30px 120px rgba(0,0,0,0.45);
+      backdrop-filter: blur(18px);
+    }
+
+    .terminal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      color: rgba(244,241,232,0.5);
+      font-size: 13px;
+    }
+
+    .dots span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      background: rgba(244,241,232,0.25);
+      margin-right: 6px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .metric small {
+      color: rgba(244,241,232,0.55);
+      font-size: 12px;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .chart {
+      margin-top: 16px;
+      height: 190px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(36,196,126,0.18), transparent),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 52px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 44px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    section {
+      padding: 90px 6%;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      color: rgba(244,241,232,0.68);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      min-height: 260px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .card .num {
+      color: #d6b25e;
+      font-weight: 800;
+      margin-bottom: 38px;
+    }
+
+    .card h3 {
+      font-size: 25px;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: rgba(244,241,232,0.65);
+      line-height: 1.55;
+    }
+
+    .market {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .asset-list {
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      padding: 20px 22px;
+      border-bottom: 1px solid rgba(255,255,255,0.075);
+      gap: 18px;
+    }
+
+    .row:last-child { border-bottom: none; }
+
+    .row span {
+      color: rgba(244,241,232,0.55);
+      font-size: 13px;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .badge {
+      color: #24c47e;
+      border: 1px solid rgba(36,196,126,0.25);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      height: fit-content;
+    }
+
+    .visual {
+      border-radius: 32px;
+      padding: 32px;
+      min-height: 420px;
+      background:
+        radial-gradient(circle at 40% 35%, rgba(36,196,126,0.25), transparent 36%),
+        linear-gradient(135deg, rgba(214,178,94,0.12), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.09);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: 10%;
+      top: 15%;
+      background:
+        radial-gradient(circle, rgba(36,196,126,0.6), rgba(36,196,126,0.12) 45%, transparent 70%);
+      filter: blur(4px);
+    }
+
+    .visual-content {
+      position: relative;
+      z-index: 2;
+      max-width: 470px;
+    }
+
+    .visual-content h3 {
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 18px;
+    }
+
+    .visual-content p {
+      color: rgba(244,241,232,0.68);
+      line-height: 1.6;
+    }
+
+    .form-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      border-radius: 36px;
+      padding: 42px;
+      background:
+        linear-gradient(135deg, rgba(214,178,94,0.12), rgba(36,196,126,0.08)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-wrap h2 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .form-wrap p {
+      color: rgba(244,241,232,0.68);
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 17px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.24);
+      color: #f4f1e8;
+      font-size: 15px;
+      outline: none;
+    }
+
+    textarea {
+      grid-column: span 2;
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    form button {
+      grid-column: span 2;
+      padding: 16px 22px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #d6b25e, #24c47e);
+      color: #07100b;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 36px 6%;
+      display: flex;
+      justify-content: space-between;
+      color: rgba(244,241,232,0.45);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+
+      .hero,
+      .market {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      textarea,
+      form button {
+        grid-column: span 1;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="logo">
+        <div class="mark">E</div>
+        <div>EAX</div>
+      </div>
+
+      <nav>
+        <a href="#market">Market</a>
+        <a href="#infrastructure">Infrastructure</a>
+        <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Environmental Asset Exchange</div>
+
+          <h1>
+            The market layer for <span class="gold">verified</span> environmental assets.
+          </h1>
+
+          <p>
+            EAX Global is building transparent infrastructure for carbon credits,
+            biodiversity assets and real-world environmental impact — connecting
+            credible projects with global capital.
+          </p>
+
+          <div class="actions">
+            <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+            <a href="#market" class="btn btn-secondary">Explore the vision</a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-top">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div>LIVE MARKET PREVIEW</div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <small>Verified Assets</small>
+              <strong>Carbon</strong>
+            </div>
+            <div class="metric">
+              <small>Next Category</small>
+              <strong>Biodiversity</strong>
+            </div>
+            <div class="metric">
+              <small>Market Focus</small>
+              <strong>Africa → Global</strong>
+            </div>
+            <div class="metric">
+              <small>Settlement Layer</small>
+              <strong>Digital Rails</strong>
+            </div>
+          </div>
+
+          <div class="chart">
+            <svg viewBox="0 0 600 190" preserveAspectRatio="none">
+              <path d="M0 145 C80 130 90 80 170 100 C260 125 285 42 370 62 C455 82 475 35 600 48"
+                fill="none" stroke="#24c47e" stroke-width="4"/>
+              <path d="M0 145 C80 130 90 80 170 100 C260 125 285 42 370 62 C455 82 475 35 600 48 L600 190 L0 190 Z"
+                fill="rgba(36,196,126,0.14)"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="infrastructure">
+        <div class="section-head">
+          <h2>Environmental markets need better infrastructure.</h2>
+          <p>
+            The opportunity is not just more credits. It is better discovery,
+            clearer verification, cleaner market access and a more trusted way
+            for capital to reach real environmental outcomes.
+          </p>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="num">01</div>
+            <h3>Verified supply</h3>
+            <p>
+              Project data, certification records and impact claims need to be easier
+              to verify, compare and trust.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="num">02</div>
+            <h3>Market access</h3>
+            <p>
+              Buyers need a cleaner way to discover credible environmental assets
+              without navigating fragmented brokers, PDFs and private spreadsheets.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="num">03</div>
+            <h3>Transparent outcomes</h3>
+            <p>
+              Capital should be able to see what it funded, what was retired and what
+              impact was actually created.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="market">
+        <div class="market">
+          <div class="asset-list">
+            <div class="row">
+              <div>
+                <strong>Clean Cooking Credits</strong>
+                <span>Household energy transition / verified emissions reduction</span>
+              </div>
+              <div class="badge">Verified</div>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>Blue Carbon</strong>
+                <span>Mangrove restoration / coastal protection / biodiversity</span>
+              </div>
+              <div class="badge">Screened</div>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>Reforestation</strong>
+                <span>Land restoration / community livelihoods / carbon storage</span>
+              </div>
+              <div class="badge">Impact</div>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>Renewable Energy</strong>
+                <span>Distributed clean power / measurable emissions reduction</span>
+              </div>
+              <div class="badge">Market</div>
+            </div>
+
+            <div class="row">
+              <div>
+                <strong>Biodiversity Assets</strong>
+                <span>Emerging nature markets / conservation finance</span>
+              </div>
+              <div class="badge">Future</div>
+            </div>
+          </div>
+
+          <div class="visual">
+            <div class="orb"></div>
+            <div class="visual-content">
+              <h3>One connected system for measurable impact.</h3>
+              <p>
+                EAX is designed as a trusted market interface for environmental assets:
+                asset discovery, project profiles, verification signals, buyer access,
+                retirement records and impact transparency in one place.
+              </p>
+              <br />
+              <p>
+                Built for companies, brokers, project developers and institutions that
+                need environmental markets to feel less opaque and more investable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist">
+        <div class="form-wrap">
+          <h2>Join the EAX waitlist.</h2>
+          <p>
+            For project developers, brokers, buyers, investors and partners interested
+            in the future of environmental asset markets.
+          </p>
+
+          <form name="eax-waitlist" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="eax-waitlist" />
+
+            <input type="text" name="name" placeholder="Your name" required />
+            <input type="email" name="email" placeholder="Email address" required />
+            <input type="text" name="company" placeholder="Company / organisation" />
+            <input type="text" name="role" placeholder="Buyer, broker, project developer, investor..." />
+
+            <textarea name="message" placeholder="Tell us what you are interested in"></textarea>
+
+            <button type="submit">Request early access</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© 2026 EAX Global</div>
+      <div>Environmental Asset Exchange · eaxglobal.io</div>
+    </footer>
+  </div>
+</body>
+</html>
