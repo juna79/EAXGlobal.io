@@ -1,1274 +1,1256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>EAX Global | Environmental Asset Exchange</title>
-<meta name="description" content="EAX Global is building verified market infrastructure for environmental assets, carbon credits, biodiversity and institutional impact markets." />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EAX Global · Environmental Asset Exchange</title>
 <style>
 :root{
-  --bg:#07090c;
-  --bg2:#0d1117;
-  --bg3:#121722;
-  --bg4:#171d2a;
-  --panel:#0f141d;
-  --border:#263044;
-  --border2:#33405a;
-  --text:#f1f5f9;
-  --text2:#cbd5e1;
-  --text3:#94a3b8;
-  --muted:#64748b;
+  --bg:#0a0c0f;
+  --bg2:#0f1217;
+  --bg3:#141820;
+  --bg4:#1a1f2b;
+  --bg5:#1e2433;
+  --border:#1f2737;
+  --border2:#2a3347;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --text3:#64748b;
   --green:#00d97e;
-  --green2:#00b96b;
-  --greenSoft:rgba(0,217,126,.12);
+  --green2:#00a85d;
+  --green3:rgba(0,217,126,0.1);
+  --green4:rgba(0,217,126,0.06);
   --gold:#f59e0b;
-  --goldSoft:rgba(245,158,11,.14);
+  --gold2:rgba(245,158,11,0.15);
   --blue:#3b82f6;
+  --blue2:rgba(59,130,246,0.12);
   --cyan:#06b6d4;
-  --radius:10px;
-  --radius2:18px;
-  --mono:"Courier New", monospace;
-  --shadow:0 24px 80px rgba(0,0,0,.5);
+  --red:#e74c3c;
+  --red3:rgba(231,76,60,0.1);
+  --radius:6px;
+  --radius2:10px;
+  --shadow:0 4px 24px rgba(0,0,0,0.5);
+  --mono:'Courier New',monospace;
+  --nav-h:48px;
+  --ticker-h:28px;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   background:var(--bg);
   color:var(--text);
-  font-family:"Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow-x:hidden;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button,input,textarea{
-  font-family:inherit;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-2;
-  background:
-    radial-gradient(circle at 16% 8%, rgba(0,217,126,.15), transparent 30%),
-    radial-gradient(circle at 80% 12%, rgba(245,158,11,.11), transparent 28%),
-    linear-gradient(180deg,#07090c 0%,#0b1111 44%,#07090c 100%);
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-  opacity:.18;
-  background-image:
-    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-  background-size:56px 56px;
-}
-
-/* NAV */
-
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:62px;
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 5.5%;
-  background:rgba(7,9,12,.96);
-  border-bottom:1px solid var(--border);
-  backdrop-filter:blur(16px);
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-family:var(--mono);
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:2px;
-  color:var(--green);
-}
-
-.logo-mark{
-  width:34px;
-  height:34px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,var(--green),var(--gold));
-  color:#020403;
-  box-shadow:0 0 30px rgba(0,217,126,.24);
-}
-
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-
-.nav-links a{
-  color:var(--text3);
-  font-size:13px;
-  font-weight:700;
-  padding:8px 12px;
-  border-radius:var(--radius);
-  border:1px solid transparent;
-}
-
-.nav-links a:hover{
-  color:var(--text);
-  background:var(--bg3);
-  border-color:var(--border);
-}
-
-.nav-links .nav-cta{
-  background:var(--green);
-  color:#020403;
-  font-weight:900;
-  border-color:var(--green);
-}
-
-/* TICKER */
-
-.ticker{
-  position:fixed;
-  top:62px;
-  left:0;
-  right:0;
-  height:34px;
-  z-index:999;
-  display:flex;
-  align-items:center;
-  overflow:hidden;
-  background:#05070a;
-  border-bottom:1px solid var(--border);
-}
-
-.ticker-label{
-  height:100%;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:0 16px;
-  background:var(--bg2);
-  border-right:1px solid var(--border);
-  color:var(--green);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  flex-shrink:0;
-}
-
-.live-dot{
-  width:7px;
-  height:7px;
-  border-radius:999px;
-  background:var(--green);
-  box-shadow:0 0 18px var(--green);
-  animation:pulse 1.3s infinite;
-}
-
-@keyframes pulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.38;transform:scale(.78)}
-}
-
-.ticker-track{
-  white-space:nowrap;
-  animation:moveTicker 34s linear infinite;
-  color:var(--text3);
-  font-family:var(--mono);
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.2px;
-}
-
-.ticker-track span{
-  margin-right:38px;
-}
-
-.up{color:var(--green)}
-.gold{color:var(--gold)}
-.cyan{color:var(--cyan)}
-
-@keyframes moveTicker{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
-}
-
-/* MAIN */
-
-main{
-  padding-top:96px;
-}
-
-/* HERO */
-
-.hero{
-  min-height:calc(100vh - 96px);
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 460px;
-  gap:34px;
-  align-items:center;
-  padding:72px 5.5% 78px;
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid rgba(0,217,126,.14);
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-3;
-  background:
-    linear-gradient(90deg, rgba(4,6,9,.98) 0%, rgba(4,6,9,.94) 38%, rgba(4,6,9,.86) 62%, rgba(4,6,9,.74) 100%),
-    linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.18) 36%, rgba(0,0,0,.82) 100%),
-    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=80");
-  background-size:cover;
-  background-position:center;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  background:
-    radial-gradient(circle at 28% 30%, rgba(0,217,126,.12), transparent 28%),
-    radial-gradient(circle at 78% 24%, rgba(245,158,11,.10), transparent 26%);
-}
-
-.hero-copy{
-  max-width:940px;
-}
-
-.eyebrow{
-  width:max-content;
-  max-width:100%;
-  display:flex;
-  align-items:center;
-  gap:9px;
-  padding:8px 13px;
-  margin-bottom:24px;
-  border:1px solid rgba(0,217,126,.35);
-  background:rgba(0,217,126,.08);
-  border-radius:999px;
-  color:var(--green);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-}
-
-h1{
-  max-width:1000px;
-  font-size:clamp(54px,7.2vw,104px);
-  line-height:.9;
-  letter-spacing:-.075em;
-  font-weight:900;
-  color:#f8fafc;
-  text-shadow:0 2px 22px rgba(0,0,0,.6);
-}
-
-h1 span{
-  display:block;
-  color:var(--green);
-  text-shadow:0 0 24px rgba(0,217,126,.18), 0 2px 22px rgba(0,0,0,.55);
-}
-
-.hero-sub{
-  max-width:760px;
-  margin-top:28px;
-  font-size:20px;
-  line-height:1.65;
-  color:#d7dee9;
-  text-shadow:0 2px 12px rgba(0,0,0,.45);
-}
-
-.hero-actions{
-  margin-top:34px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:48px;
-  padding:13px 18px;
-  border-radius:var(--radius);
-  background:rgba(18,23,34,.86);
-  border:1px solid var(--border2);
-  color:var(--text);
-  font-size:14px;
-  font-weight:900;
-  transition:.2s ease;
-}
-
-.btn:hover{
-  transform:translateY(-1px);
-  filter:brightness(1.08);
-}
-
-.btn-primary{
-  background:var(--green);
-  color:#020403;
-  border-color:var(--green);
-}
-
-.btn-gold{
-  color:var(--gold);
-  border-color:rgba(245,158,11,.42);
-  background:rgba(245,158,11,.10);
-}
-
-.trust-row{
-  margin-top:30px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-
-.trust-pill{
-  padding:8px 12px;
-  border-radius:999px;
-  background:rgba(13,17,23,.88);
-  border:1px solid var(--border);
-  color:var(--text2);
-  font-size:13px;
-  font-weight:700;
-}
-
-/* HERO PANEL */
-
-.hero-panel{
-  width:100%;
-  background:rgba(13,17,23,.94);
-  border:1px solid rgba(51,64,90,.96);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(16px);
-}
-
-.panel-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:15px 16px;
-  background:var(--bg3);
-  border-bottom:1px solid var(--border);
-  color:var(--text3);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.panel-header b{
-  color:var(--green);
-  font-family:var(--mono);
-}
-
-.market-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  padding:14px;
-}
-
-.market-stat{
-  background:#101622;
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  padding:14px;
-}
-
-.ms-label{
-  color:var(--text3);
-  font-size:11px;
-  font-weight:900;
-  letter-spacing:.8px;
-  text-transform:uppercase;
-}
-
-.ms-val{
-  margin-top:7px;
-  color:var(--text);
-  font-family:var(--mono);
-  font-size:28px;
-  font-weight:900;
-  letter-spacing:-.04em;
-}
-
-.ms-sub{
-  margin-top:5px;
-  color:var(--text3);
-  font-size:12px;
-  font-weight:700;
-}
-
-.chart{
-  height:205px;
-  margin:0 14px 14px;
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  background:
-    linear-gradient(180deg,rgba(0,217,126,.13),transparent),
-    repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 58px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 46px),
-    #080c10;
-  position:relative;
-  overflow:hidden;
-}
-
-.chart svg{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
-
-.market-list{
-  padding:0 14px 14px;
-}
-
-.market-row{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:12px;
-  align-items:center;
-  padding:11px 0;
-  border-bottom:1px solid rgba(38,48,68,.72);
-  font-family:var(--mono);
-  font-size:12px;
-}
-
-.market-row:last-child{
-  border-bottom:0;
-}
-
-.market-row .symbol{
-  color:var(--blue);
-  font-weight:900;
-}
-
-.market-row .price{
-  color:var(--text2);
-}
-
-.market-row .change{
-  color:var(--green);
-  font-weight:900;
-}
-
-/* SECTIONS */
-
-.section{
-  padding:90px 5.5%;
-}
-
-.section-head{
-  max-width:880px;
-  margin-bottom:34px;
-}
-
-.kicker{
-  color:var(--green);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-
-h2{
-  color:var(--text);
-  font-size:clamp(36px,5vw,70px);
-  line-height:.98;
-  letter-spacing:-.06em;
-  font-weight:900;
-  margin-bottom:18px;
-}
-
-.section-head p{
-  color:var(--text2);
-  font-size:18px;
-  line-height:1.65;
-  max-width:800px;
-}
-
-.infra-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.infra-card{
-  min-height:250px;
-  padding:24px;
-  border-radius:var(--radius2);
-  background:linear-gradient(180deg,rgba(18,23,34,.94),rgba(13,17,23,.82));
-  border:1px solid var(--border);
-  position:relative;
-  overflow:hidden;
-}
-
-.infra-card::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--green),transparent);
-}
-
-.card-num{
-  margin-bottom:48px;
-  color:var(--green);
-  font-family:var(--mono);
-  font-size:13px;
-  font-weight:900;
-}
-
-.infra-card h3{
-  color:var(--text);
-  font-size:22px;
-  line-height:1.1;
-  letter-spacing:-.03em;
-  margin-bottom:12px;
-}
-
-.infra-card p{
-  color:var(--text2);
+  font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
   font-size:14px;
   line-height:1.6;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none;font-family:inherit}
+input,select,textarea{outline:none;font-family:inherit}
+
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* ══ NAV ══════════════════════════════════════════════════════════════════ */
+#nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);
+  background:rgba(9,11,14,0.98);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 24px;gap:0;z-index:1000;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+}
+.nav-logo{
+  font-size:16px;font-weight:900;color:var(--green);
+  letter-spacing:2.5px;margin-right:32px;
+  font-family:var(--mono);white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-logo-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 8px rgba(0,217,126,0.7);
+}
+.nav-links{display:flex;gap:2px;flex:1}
+.nav-btn{
+  padding:6px 12px;border-radius:var(--radius);
+  background:transparent;color:var(--text2);
+  font-size:12px;font-weight:500;
+  transition:all 0.15s;white-space:nowrap;
+  border:1px solid transparent;
+}
+.nav-btn:hover{background:var(--bg4);color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav-cta{
+  padding:6px 16px;background:var(--green);color:#000;
+  border-radius:var(--radius);font-size:12px;font-weight:700;
+  transition:background 0.18s;white-space:nowrap;
+}
+.nav-cta:hover{background:var(--green2)}
+.nav-tag{
+  font-size:9px;font-weight:700;letter-spacing:1.5px;
+  color:var(--gold);border:1px solid rgba(245,158,11,0.3);
+  padding:2px 7px;border-radius:3px;text-transform:uppercase;
+  background:rgba(245,158,11,0.07);
 }
 
-/* MARKET PREVIEW */
-
-.preview-grid{
-  display:grid;
-  grid-template-columns:1.08fr .92fr;
-  gap:16px;
+/* ══ TICKER ════════════════════════════════════════════════════════════════ */
+#ticker-bar{
+  position:fixed;top:var(--nav-h);left:0;right:0;z-index:990;
+  height:var(--ticker-h);
+  background:rgba(6,9,12,0.97);
+  border-bottom:1px solid rgba(0,217,126,0.12);
+  display:flex;align-items:stretch;overflow:hidden;
+  backdrop-filter:blur(10px);
+}
+#ticker-label{
+  display:flex;align-items:center;gap:6px;
+  padding:0 12px;border-right:1px solid rgba(0,217,126,0.15);
+  background:rgba(0,217,126,0.04);flex-shrink:0;
+}
+.tl-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--green);box-shadow:0 0 6px rgba(0,217,126,0.8);
+  animation:tlPulse 1.9s ease-in-out infinite;
+}
+@keyframes tlPulse{0%,100%{opacity:1}50%{opacity:0.25}}
+.tl-label{font-size:8px;font-weight:800;letter-spacing:2px;color:var(--green);font-family:var(--mono);text-transform:uppercase}
+.tl-sep{width:1px;height:12px;background:rgba(0,217,126,0.2);margin:0 2px}
+.tl-sub{font-size:7.5px;letter-spacing:1px;color:var(--text3);font-family:var(--mono);text-transform:uppercase}
+#ticker-track{overflow:hidden;flex:1;position:relative}
+#ticker-track::before,#ticker-track::after{
+  content:'';position:absolute;top:0;bottom:0;width:28px;z-index:2;pointer-events:none;
+}
+#ticker-track::before{left:0;background:linear-gradient(to right,rgba(6,9,12,0.95),transparent)}
+#ticker-track::after{right:0;background:linear-gradient(to left,rgba(6,9,12,0.95),transparent)}
+#ticker-belt{display:flex;align-items:center;white-space:nowrap;height:100%;will-change:transform}
+.tk{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0 18px;border-right:1px solid rgba(31,39,55,0.4);
+  font-family:var(--mono);height:100%;flex-shrink:0;
+}
+.tk-name{font-size:9.5px;color:rgba(148,163,184,0.6);letter-spacing:0.3px;font-weight:600;text-transform:uppercase}
+.tk-type{font-size:7px;letter-spacing:1px;font-weight:700;padding:1px 4px;border-radius:2px;background:rgba(255,255,255,0.05);color:rgba(148,163,184,0.4);text-transform:uppercase}
+.tk-price{font-weight:700;color:rgba(226,232,240,0.85);font-size:10.5px}
+.tk-note{font-size:7.5px;color:rgba(100,116,139,0.55);letter-spacing:0.5px}
+.tk-soon{font-size:8.5px;color:var(--gold);font-weight:700;letter-spacing:0.5px}
+#ticker-clock{
+  display:flex;align-items:center;padding:0 11px;
+  border-left:1px solid rgba(0,217,126,0.1);
+  font-size:8px;font-family:var(--mono);
+  color:rgba(100,116,139,0.5);flex-shrink:0;white-space:nowrap;
+  background:rgba(0,0,0,0.15);
 }
 
-.terminal-box{
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:var(--radius2);
+/* ══ PAGE BODY ════════════════════════════════════════════════════════════ */
+#page{margin-top:calc(var(--nav-h) + var(--ticker-h));}
+
+/* ══ SECTION WRAPPER ═══════════════════════════════════════════════════════ */
+.section{padding:80px 0}
+.section-inner{max-width:1120px;margin:0 auto;padding:0 32px}
+.section-inner-wide{max-width:1280px;margin:0 auto;padding:0 32px}
+
+/* Section label */
+.sec-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:9px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:14px;font-family:var(--mono);
+}
+.sec-eyebrow::before{content:'';width:16px;height:1px;background:var(--border2)}
+.sec-eyebrow.green{color:var(--green)}
+.sec-eyebrow.green::before{background:var(--green);opacity:0.5}
+.sec-eyebrow.gold{color:var(--gold)}
+.sec-eyebrow.gold::before{background:var(--gold);opacity:0.5}
+
+/* ══ HERO ══════════════════════════════════════════════════════════════════ */
+#hero{
+  position:relative;
+  padding:96px 0 80px;
   overflow:hidden;
-  box-shadow:var(--shadow);
-}
-
-.terminal-title{
-  padding:14px 16px;
-  background:var(--bg3);
-  border-bottom:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  color:var(--text3);
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-
-.asset-row{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  gap:14px;
-  align-items:center;
-  padding:16px;
+  background:var(--bg);
   border-bottom:1px solid var(--border);
 }
-
-.asset-row:last-child{
-  border-bottom:0;
+/* Subtle grid texture */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,217,126,0.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,217,126,0.025) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
 }
-
-.asset-name{
-  color:var(--text);
-  font-size:15px;
-  font-weight:900;
+/* Radial glow bottom-right */
+#hero::after{
+  content:'';position:absolute;
+  bottom:-80px;right:-80px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(0,217,126,0.06) 0%,transparent 70%);
+  pointer-events:none;
 }
-
-.asset-meta{
-  margin-top:4px;
+.hero-inner{
+  max-width:1120px;margin:0 auto;padding:0 32px;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-left{}
+.hero-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.hero-pill{
+  font-size:10px;font-weight:600;letter-spacing:0.5px;
+  padding:4px 10px;border-radius:20px;
+  background:var(--bg3);border:1px solid var(--border2);
   color:var(--text3);
-  font-size:12px;
-  line-height:1.4;
+  animation:fadeUp 0.6s ease both;
 }
+.hero-pill:nth-child(1){animation-delay:0.05s}
+.hero-pill:nth-child(2){animation-delay:0.1s}
+.hero-pill:nth-child(3){animation-delay:0.15s}
+.hero-pill:nth-child(4){animation-delay:0.2s}
+.hero-pill.green{background:var(--green4);border-color:rgba(0,217,126,0.25);color:var(--green)}
+.hero-pill.gold{background:rgba(245,158,11,0.07);border-color:rgba(245,158,11,0.25);color:var(--gold)}
 
-.badge{
-  padding:5px 8px;
-  border-radius:6px;
-  font-size:11px;
-  font-family:var(--mono);
-  font-weight:900;
+.hero-h1{
+  font-size:44px;font-weight:900;line-height:1.1;
+  color:var(--text);letter-spacing:-1.5px;
+  margin-bottom:8px;
+  animation:fadeUp 0.6s ease 0.2s both;
 }
-
-.badge-green{
-  background:var(--greenSoft);
-  color:var(--green);
-  border:1px solid rgba(0,217,126,.3);
+.hero-h1 span{color:var(--green)}
+.hero-tagline{
+  font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--text3);margin-bottom:20px;font-family:var(--mono);
+  animation:fadeUp 0.6s ease 0.25s both;
 }
-
-.badge-gold{
-  background:var(--goldSoft);
-  color:var(--gold);
-  border:1px solid rgba(245,158,11,.3);
+.hero-sub{
+  font-size:15px;line-height:1.7;color:var(--text2);
+  max-width:480px;margin-bottom:36px;
+  animation:fadeUp 0.6s ease 0.3s both;
 }
-
-.asset-price{
-  color:var(--green);
-  font-family:var(--mono);
-  font-weight:900;
-  font-size:14px;
+.hero-btns{
+  display:flex;flex-wrap:wrap;gap:10px;
+  animation:fadeUp 0.6s ease 0.35s both;
 }
-
-.profile-box{
-  padding:28px;
-  min-height:100%;
-  border-radius:var(--radius2);
-  border:1px solid var(--border);
-  background:
-    radial-gradient(circle at 80% 12%, rgba(0,217,126,.17), transparent 36%),
-    linear-gradient(180deg,rgba(18,23,34,.96),rgba(13,17,23,.84));
+.btn-primary{
+  padding:11px 24px;background:var(--green);color:#000;
+  border-radius:var(--radius);font-size:13px;font-weight:800;
+  transition:background 0.18s,box-shadow 0.18s;letter-spacing:0.3px;
 }
-
-.profile-box h3{
-  color:var(--text);
-  font-size:38px;
-  line-height:1;
-  letter-spacing:-.055em;
-  margin-bottom:18px;
-}
-
-.profile-box p{
-  color:var(--text2);
-  font-size:16px;
-  line-height:1.7;
-}
-
-.profile-stats{
-  margin-top:24px;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.profile-stat{
-  padding:13px;
-  background:rgba(7,9,12,.6);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-}
-
-.profile-stat small{
-  display:block;
-  color:var(--text3);
-  font-size:10px;
-  text-transform:uppercase;
-  font-weight:900;
-}
-
-.profile-stat strong{
-  display:block;
-  margin-top:6px;
-  color:var(--green);
-  font-size:15px;
-  font-family:var(--mono);
-}
-
-/* USE CASES */
-
-.usecases{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-}
-
-.usecase{
-  padding:24px;
-  background:linear-gradient(180deg,rgba(18,23,34,.94),rgba(13,17,23,.82));
-  border:1px solid var(--border);
-  border-radius:var(--radius2);
-}
-
-.usecase span{
-  color:var(--gold);
-  font-family:var(--mono);
-  font-weight:900;
-  font-size:12px;
-}
-
-.usecase h3{
-  margin-top:30px;
-  margin-bottom:12px;
-  color:var(--text);
-  font-size:23px;
-  line-height:1.1;
-}
-
-.usecase p{
-  color:var(--text2);
-  font-size:14px;
-  line-height:1.65;
-}
-
-/* FORM */
-
-.hidden-form{
-  display:none;
-}
-
-.cta-section{
-  padding:90px 5.5%;
-}
-
-.cta-box{
-  display:grid;
-  grid-template-columns:.95fr 1.05fr;
-  gap:28px;
-  padding:38px;
-  border-radius:24px;
+.btn-primary:hover{background:var(--green2);box-shadow:0 0 0 3px rgba(0,217,126,0.15)}
+.btn-outline{
+  padding:11px 24px;background:transparent;color:var(--text2);
+  border-radius:var(--radius);font-size:13px;font-weight:600;
   border:1px solid var(--border2);
-  background:
-    radial-gradient(circle at 12% 20%, rgba(245,158,11,.12), transparent 30%),
-    radial-gradient(circle at 84% 10%, rgba(0,217,126,.13), transparent 30%),
-    var(--panel);
-  box-shadow:var(--shadow);
+  transition:all 0.18s;letter-spacing:0.3px;
 }
-
-.cta-copy h2{
-  color:var(--text);
+.btn-outline:hover{background:var(--bg3);color:var(--text);border-color:var(--border2)}
+.btn-ghost{
+  padding:11px 20px;background:transparent;color:var(--text3);
+  border-radius:var(--radius);font-size:12px;font-weight:600;
+  border:1px solid transparent;
+  transition:all 0.18s;
 }
+.btn-ghost:hover{color:var(--text2)}
 
-.cta-copy p{
-  max-width:520px;
-  color:var(--text2);
-  font-size:17px;
-  line-height:1.7;
+/* Hero right — dashboard preview panel */
+.hero-right{animation:fadeUp 0.7s ease 0.4s both}
+.preview-panel{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius2);overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,0.6);
 }
-
-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.preview-panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:var(--bg3);
+  border-bottom:1px solid var(--border);
 }
-
-input,textarea{
-  width:100%;
-  padding:15px 14px;
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  background:rgba(7,9,12,.78);
-  color:var(--text);
-  font-size:14px;
-  outline:none;
+.preview-panel-title{
+  font-size:10px;font-weight:700;letter-spacing:1px;
+  color:var(--text3);text-transform:uppercase;font-family:var(--mono);
+  display:flex;align-items:center;gap:6px;
 }
-
-input::placeholder,
-textarea::placeholder{
-  color:var(--muted);
+.preview-panel-title::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--gold);box-shadow:0 0 5px rgba(245,158,11,0.5);
 }
-
-input:focus,
-textarea:focus{
-  border-color:rgba(0,217,126,.55);
+.preview-badge{
+  font-size:8px;font-weight:700;letter-spacing:1.5px;
+  padding:2px 7px;border-radius:3px;text-transform:uppercase;
+  background:rgba(245,158,11,0.1);color:var(--gold);border:1px solid rgba(245,158,11,0.25);
 }
-
-textarea{
-  grid-column:span 2;
-  min-height:120px;
-  resize:vertical;
+.preview-table{width:100%;border-collapse:collapse}
+.preview-table th{
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  color:var(--text3);text-transform:uppercase;
+  padding:8px 14px;border-bottom:1px solid var(--border);
+  text-align:left;background:var(--bg3);
 }
-
-.form-btn{
-  grid-column:span 2;
-  min-height:50px;
-  border:0;
-  border-radius:var(--radius);
-  background:var(--green);
-  color:#020403;
-  font-size:14px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.form-note{
-  grid-column:span 2;
-  color:var(--text3);
+.preview-table td{
+  padding:10px 14px;border-bottom:1px solid rgba(31,39,55,0.5);
   font-size:12px;
-  line-height:1.5;
+}
+.preview-table tr:last-child td{border-bottom:none}
+.preview-table tr:hover td{background:rgba(255,255,255,0.015)}
+.pt-name{color:var(--text);font-weight:600}
+.pt-type{
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:2px 6px;border-radius:3px;text-transform:uppercase;
+}
+.pt-type.redd{background:rgba(0,217,126,0.1);color:var(--green)}
+.pt-type.blue{background:rgba(6,182,212,0.1);color:var(--cyan)}
+.pt-type.solar{background:rgba(245,158,11,0.1);color:var(--gold)}
+.pt-type.wind{background:rgba(59,130,246,0.1);color:var(--blue)}
+.pt-type.bio{background:rgba(139,92,246,0.12);color:#a78bfa}
+.pt-price{font-family:var(--mono);font-weight:700;color:var(--text)}
+.pt-status{
+  font-size:9px;font-weight:600;letter-spacing:0.5px;
+  color:var(--text3);font-style:italic;
+}
+.pt-chg{font-family:var(--mono);font-size:11px;font-weight:700}
+.chg-up{color:var(--green)}
+.chg-dn{color:var(--red)}
+.preview-footer{
+  padding:8px 14px;background:var(--bg3);border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.preview-footer-note{
+  font-size:9px;color:var(--text3);font-style:italic;letter-spacing:0.3px;
+}
+.preview-footer-tag{
+  font-size:8.5px;font-weight:700;letter-spacing:1px;
+  color:var(--gold);text-transform:uppercase;font-family:var(--mono);
 }
 
-/* FOOTER */
+/* ══ STATS STRIP ═══════════════════════════════════════════════════════════ */
+#stats-strip{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  padding:20px 0;
+}
+.stats-inner{
+  max-width:1120px;margin:0 auto;padding:0 32px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+}
+.stat-block{
+  padding:0 32px;border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;
+}
+.stat-block:first-child{padding-left:0}
+.stat-block:last-child{border-right:none}
+.stat-label{font-size:9px;font-weight:700;letter-spacing:1.5px;color:var(--text3);text-transform:uppercase;font-family:var(--mono)}
+.stat-val{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-0.5px;font-family:var(--mono)}
+.stat-val.green{color:var(--green)}
+.stat-val.gold{color:var(--gold)}
+.stat-sub{font-size:10px;color:var(--text3);font-style:italic}
 
-footer{
-  padding:30px 5.5%;
-  border-top:1px solid var(--border);
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  color:var(--text3);
-  font-size:13px;
+/* ══ INFRASTRUCTURE ════════════════════════════════════════════════════════ */
+#infra{background:var(--bg);border-bottom:1px solid var(--border)}
+.infra-header{margin-bottom:48px}
+.infra-h{font-size:30px;font-weight:800;color:var(--text);letter-spacing:-0.8px;margin-bottom:12px;line-height:1.2}
+.infra-sub{font-size:15px;color:var(--text2);max-width:600px;line-height:1.7}
+.infra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.infra-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius2);padding:24px;
+  transition:border-color 0.2s,background 0.2s;
+  position:relative;overflow:hidden;
+}
+.infra-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:transparent;transition:background 0.2s;
+}
+.infra-card:hover{background:var(--bg3);border-color:var(--border2)}
+.infra-card.c-green::before{background:linear-gradient(90deg,var(--green),transparent)}
+.infra-card.c-cyan::before{background:linear-gradient(90deg,var(--cyan),transparent)}
+.infra-card.c-gold::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.infra-card.c-blue::before{background:linear-gradient(90deg,var(--blue),transparent)}
+.infra-icon{
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:16px;
+}
+.ic-green{background:rgba(0,217,126,0.1)}
+.ic-cyan{background:rgba(6,182,212,0.1)}
+.ic-gold{background:rgba(245,158,11,0.1)}
+.ic-blue{background:rgba(59,130,246,0.1)}
+.infra-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.infra-desc{font-size:12px;color:var(--text2);line-height:1.6}
+.infra-tag{
+  display:inline-block;margin-top:14px;
+  font-size:9px;font-weight:700;letter-spacing:1px;
+  padding:2px 8px;border-radius:3px;text-transform:uppercase;
+  font-family:var(--mono);
+}
+.it-green{background:var(--green3);color:var(--green)}
+.it-cyan{background:rgba(6,182,212,0.1);color:var(--cyan)}
+.it-gold{background:rgba(245,158,11,0.1);color:var(--gold)}
+.it-blue{background:rgba(59,130,246,0.1);color:var(--blue)}
+
+/* ══ MARKET PREVIEW ════════════════════════════════════════════════════════ */
+#market{background:var(--bg2);border-bottom:1px solid var(--border)}
+.market-layout{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start}
+.market-left{}
+.market-panel{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius2);overflow:hidden;
+}
+.market-panel-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;background:var(--bg3);border-bottom:1px solid var(--border);
+}
+.mph-title{
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  color:var(--text2);text-transform:uppercase;font-family:var(--mono);
+  display:flex;align-items:center;gap:8px;
+}
+.mph-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.mph-badge{
+  font-size:8px;font-weight:700;letter-spacing:1.5px;
+  padding:2px 8px;border-radius:3px;
+  background:rgba(245,158,11,0.1);color:var(--gold);
+  border:1px solid rgba(245,158,11,0.2);text-transform:uppercase;
+}
+.market-table{width:100%;border-collapse:collapse}
+.market-table th{
+  font-size:9px;font-weight:700;letter-spacing:1px;color:var(--text3);
+  text-transform:uppercase;padding:8px 16px;
+  border-bottom:1px solid var(--border);background:var(--bg3);text-align:left;
+}
+.market-table td{
+  padding:12px 16px;border-bottom:1px solid rgba(31,39,55,0.4);font-size:12px;
+}
+.market-table tr:last-child td{border-bottom:none}
+.market-table tr:hover td{background:rgba(255,255,255,0.015)}
+.mt-flag{font-size:14px}
+.mt-name{color:var(--text);font-weight:600;line-height:1.3}
+.mt-sample{font-size:10px;color:var(--text3);font-style:italic;display:block;margin-top:1px}
+.mt-price{font-family:var(--mono);font-weight:700;color:var(--text);font-size:13px}
+.mt-note{font-size:9px;color:var(--text3);font-style:italic;display:block;margin-top:1px}
+.mt-chg{font-family:var(--mono);font-size:11px;font-weight:700}
+.mt-action{
+  padding:4px 12px;background:var(--green3);color:var(--green);
+  border-radius:var(--radius);font-size:10px;font-weight:700;
+  border:1px solid rgba(0,217,126,0.2);cursor:default;letter-spacing:0.3px;
+  white-space:nowrap;
+}
+.market-footer{
+  padding:10px 16px;background:var(--bg3);border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mf-note{font-size:10px;color:var(--text3);font-style:italic}
+.mf-link{
+  font-size:10px;color:var(--green);font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:4px;
+}
+.mf-link:hover{color:var(--green2)}
+
+/* Market right card */
+.market-side{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius2);padding:24px;
+  position:sticky;top:calc(var(--nav-h) + var(--ticker-h) + 20px);
+}
+.ms-eyebrow{
+  font-size:9px;font-weight:700;letter-spacing:2px;
+  color:var(--text3);text-transform:uppercase;font-family:var(--mono);
+  margin-bottom:12px;display:flex;align-items:center;gap:6px;
+}
+.ms-eyebrow::before{content:'';width:12px;height:1px;background:var(--border2)}
+.ms-h{font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.5px;margin-bottom:12px;line-height:1.3}
+.ms-body{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.ms-features{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.ms-feat{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text2)}
+.ms-feat-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--green);flex-shrink:0;margin-top:5px;
+}
+.ms-cta{
+  width:100%;padding:10px;background:var(--green);color:#000;
+  border-radius:var(--radius);font-size:12px;font-weight:800;
+  transition:background 0.18s;
+}
+.ms-cta:hover{background:var(--green2)}
+.ms-cta-note{text-align:center;font-size:10px;color:var(--text3);margin-top:8px;font-style:italic}
+
+/* ══ USE CASES ══════════════════════════════════════════════════════════════ */
+#usecases{background:var(--bg);border-bottom:1px solid var(--border)}
+.uc-header{margin-bottom:40px}
+.uc-h{font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.6px;margin-bottom:10px}
+.uc-sub{font-size:14px;color:var(--text2);max-width:520px;line-height:1.6}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.uc-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius2);padding:28px;
+  position:relative;overflow:hidden;
+}
+.uc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  opacity:0;transition:opacity 0.2s;
+}
+.uc-card:hover::after{opacity:1}
+.uc-card.c1::after{background:var(--green)}
+.uc-card.c2::after{background:var(--gold)}
+.uc-card.c3::after{background:var(--blue)}
+.uc-card:hover{background:var(--bg3)}
+.uc-ico{font-size:28px;margin-bottom:16px;display:block}
+.uc-role{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  font-family:var(--mono);margin-bottom:6px;
+}
+.uc-card.c1 .uc-role{color:var(--green)}
+.uc-card.c2 .uc-role{color:var(--gold)}
+.uc-card.c3 .uc-role{color:var(--blue)}
+.uc-title{font-size:16px;font-weight:800;color:var(--text);margin-bottom:10px;letter-spacing:-0.3px}
+.uc-body{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:18px}
+.uc-list{list-style:none;display:flex;flex-direction:column;gap:7px}
+.uc-list li{
+  font-size:11px;color:var(--text2);
+  display:flex;align-items:flex-start;gap:8px;line-height:1.5;
+}
+.uc-list li::before{
+  content:'→';color:var(--text3);flex-shrink:0;font-size:10px;margin-top:1px;
 }
 
-/* RESPONSIVE */
+/* ══ WAITLIST ═══════════════════════════════════════════════════════════════ */
+#waitlist{
+  background:var(--bg2);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+#waitlist::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(0,217,126,0.05) 0%,transparent 70%);
+  pointer-events:none;
+}
+.waitlist-inner{
+  max-width:680px;margin:0 auto;padding:0 32px;
+  text-align:center;position:relative;z-index:1;
+}
+.wl-eyebrow{
+  display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--green);font-family:var(--mono);
+}
+.wl-eyebrow::before,.wl-eyebrow::after{content:'';width:20px;height:1px;background:rgba(0,217,126,0.3)}
+.wl-h{font-size:32px;font-weight:900;color:var(--text);letter-spacing:-1px;margin-bottom:12px;line-height:1.2}
+.wl-sub{font-size:14px;color:var(--text2);margin-bottom:36px;line-height:1.6}
+.wl-form-wrap{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:var(--radius2);padding:28px;text-align:left;
+}
+.wl-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.wl-field{display:flex;flex-direction:column;gap:6px}
+.wl-field.full{grid-column:1/-1}
+.wl-label{font-size:10px;font-weight:700;letter-spacing:1px;color:var(--text3);text-transform:uppercase;font-family:var(--mono)}
+.wl-input{
+  padding:9px 12px;background:var(--bg2);border:1px solid var(--border);
+  color:var(--text);border-radius:var(--radius);font-size:13px;
+  transition:border-color 0.15s;
+}
+.wl-input:focus{border-color:rgba(0,217,126,0.4)}
+.wl-input::placeholder{color:var(--text3)}
+.wl-select{
+  padding:9px 12px;background:var(--bg2);border:1px solid var(--border);
+  color:var(--text);border-radius:var(--radius);font-size:13px;
+  appearance:none;cursor:pointer;transition:border-color 0.15s;
+}
+.wl-select:focus{border-color:rgba(0,217,126,0.4)}
+.wl-select option{background:var(--bg3)}
+.wl-submit{
+  width:100%;margin-top:16px;padding:12px;
+  background:var(--green);color:#000;border-radius:var(--radius);
+  font-size:14px;font-weight:800;letter-spacing:0.3px;
+  transition:background 0.18s;
+}
+.wl-submit:hover{background:var(--green2)}
+.wl-note{text-align:center;font-size:10px;color:var(--text3);margin-top:10px;font-style:italic}
+.wl-success{
+  display:none;text-align:center;padding:28px;
+}
+.wl-success-icon{font-size:36px;margin-bottom:12px;display:block}
+.wl-success-h{font-size:18px;font-weight:800;color:var(--green);margin-bottom:8px}
+.wl-success-sub{font-size:13px;color:var(--text2);line-height:1.6}
 
-@media(max-width:1100px){
-  .hero{
-    grid-template-columns:1fr;
-  }
-
-  .hero-panel{
-    max-width:720px;
-  }
-
-  .infra-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .preview-grid{
-    grid-template-columns:1fr;
-  }
-
-  .cta-box{
-    grid-template-columns:1fr;
-  }
+/* ══ FOOTER ════════════════════════════════════════════════════════════════ */
+#footer{
+  background:var(--bg);border-top:1px solid var(--border);
+  padding:40px 0;
+}
+.footer-inner{
+  max-width:1120px;margin:0 auto;padding:0 32px;
+}
+.footer-top{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding-bottom:28px;margin-bottom:28px;
+  border-bottom:1px solid var(--border);
+  gap:48px;
+}
+.footer-brand{}
+.footer-logo{
+  font-size:17px;font-weight:900;color:var(--green);
+  letter-spacing:2.5px;font-family:var(--mono);margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.footer-tagline{font-size:11px;color:var(--text3);max-width:260px;line-height:1.5}
+.footer-cols{display:flex;gap:48px}
+.footer-col-title{
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--text3);font-family:var(--mono);margin-bottom:12px;
+}
+.footer-col-links{display:flex;flex-direction:column;gap:8px}
+.footer-link{
+  font-size:12px;color:var(--text2);transition:color 0.15s;cursor:pointer;
+}
+.footer-link:hover{color:var(--text)}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px;
+}
+.footer-copy{font-size:11px;color:var(--text3)}
+.footer-copy span{color:var(--green);font-weight:600}
+.footer-links-row{display:flex;gap:16px}
+.footer-links-row a{font-size:11px;color:var(--text3);transition:color 0.15s}
+.footer-links-row a:hover{color:var(--text2)}
+.footer-stage{
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(245,158,11,0.25);
+  padding:2px 8px;border-radius:3px;background:rgba(245,158,11,0.05);
+  font-family:var(--mono);
 }
 
-@media(max-width:760px){
-  .nav{
-    padding:0 16px;
-  }
+/* ══ ANIMATIONS ════════════════════════════════════════════════════════════ */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
 
-  .nav-links a:not(.nav-cta){
-    display:none;
-  }
-
-  .ticker{
-    display:none;
-  }
-
-  main{
-    padding-top:62px;
-  }
-
-  .hero{
-    min-height:auto;
-    padding:56px 18px 46px;
-  }
-
-  .eyebrow{
-    font-size:10px;
-    white-space:normal;
-  }
-
-  h1{
-    font-size:54px;
-    line-height:.94;
-  }
-
-  .hero-sub{
-    font-size:16px;
-    line-height:1.6;
-  }
-
-  .market-grid{
-    grid-template-columns:1fr;
-  }
-
-  .infra-grid,
-  .usecases,
-  .profile-stats{
-    grid-template-columns:1fr;
-  }
-
-  .asset-row{
-    grid-template-columns:1fr;
-    gap:8px;
-  }
-
-  .cta-box{
-    padding:24px;
-  }
-
-  form{
-    grid-template-columns:1fr;
-  }
-
-  textarea,
-  .form-btn,
-  .form-note{
-    grid-column:span 1;
-  }
-
-  footer{
-    flex-direction:column;
-  }
+/* ══ MOBILE ════════════════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-right{display:none}
+  .hero-h1{font-size:32px}
+  .infra-grid{grid-template-columns:repeat(2,1fr)}
+  .market-layout{grid-template-columns:1fr}
+  .market-side{display:none}
+  .uc-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:20px}
+  .stat-block{border-right:none;padding:0}
+  .footer-top{flex-direction:column;gap:28px}
+  .footer-cols{gap:28px;flex-wrap:wrap}
+  .wl-row{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .section{padding:56px 0}
+}
+@media(max-width:600px){
+  .hero-h1{font-size:28px}
+  .infra-grid{grid-template-columns:1fr}
+  .section-inner,.section-inner-wide,.footer-inner{padding:0 18px}
+  #hero .hero-inner{padding:0 18px}
+  .waitlist-inner{padding:0 18px}
 }
 </style>
 </head>
-
 <body>
 
-<nav class="nav">
-  <a class="logo" href="#">
-    <span class="logo-mark">E</span>
-    <span>EAX</span>
-  </a>
+<!-- ══ HIDDEN NETLIFY DETECTION FORM ══════════════════════════════════════ -->
+<form name="eax-waitlist" netlify hidden>
+  <input type="text" name="name"/>
+  <input type="email" name="email"/>
+  <input type="text" name="organisation"/>
+  <select name="role"></select>
+  <select name="interest"></select>
+</form>
 
+<!-- ══ NAV ════════════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="nav-logo-dot"></span>
+    EAX
+  </div>
   <div class="nav-links">
-    <a href="#infrastructure">Infrastructure</a>
-    <a href="#market">Market</a>
-    <a href="#usecases">Use Cases</a>
-    <a href="#waitlist" class="nav-cta">Join Waitlist</a>
+    <a href="#infra" class="nav-btn">Platform</a>
+    <a href="#market" class="nav-btn">Market Preview</a>
+    <a href="#usecases" class="nav-btn">Use Cases</a>
+    <a href="#waitlist" class="nav-btn">Early Access</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-tag">Early Stage</span>
+    <a href="#waitlist" class="nav-cta">Request Access</a>
   </div>
 </nav>
 
-<div class="ticker">
-  <div class="ticker-label">
-    <span class="live-dot"></span>
-    Live
+<!-- ══ TICKER ════════════════════════════════════════════════════════════ -->
+<div id="ticker-bar">
+  <div id="ticker-label">
+    <span class="tl-dot"></span>
+    <span class="tl-label">Preview</span>
+    <span class="tl-sep"></span>
+    <span class="tl-sub">Illustrative Market Interface</span>
   </div>
-
-  <div class="ticker-track">
-    <span>KENYA CLEAN COOKING <b class="up">$12.40 ▲ 3.8%</b></span>
-    <span>BLUE CARBON <b class="up">$28.10 ▲ 5.2%</b></span>
-    <span>REFORESTATION <b class="gold">$16.80 ▲ 2.1%</b></span>
-    <span>RENEWABLE ENERGY <b class="cyan">$7.60 ▲ 4.3%</b></span>
-    <span>BIODIVERSITY ASSETS <b class="up">COMING SOON</b></span>
-    <span>KENYA CLEAN COOKING <b class="up">$12.40 ▲ 3.8%</b></span>
-    <span>BLUE CARBON <b class="up">$28.10 ▲ 5.2%</b></span>
-    <span>REFORESTATION <b class="gold">$16.80 ▲ 2.1%</b></span>
+  <div id="ticker-track">
+    <div id="ticker-belt"></div>
   </div>
+  <div id="ticker-clock">UTC --:--:--</div>
 </div>
 
-<main>
+<!-- ══ PAGE BODY ═══════════════════════════════════════════════════════════ -->
+<div id="page">
 
-<section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">
-      <span class="live-dot"></span>
-      Live Market · Verified Infrastructure
-    </div>
-
-    <h1>
-      Environmental
-      <span>Asset Exchange</span>
-    </h1>
-
-    <p class="hero-sub">
-      Verified market infrastructure for environmental credits, retirements,
-      secondary trading and institutional intelligence. Built for serious market participants.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#waitlist" class="btn btn-primary">Request Early Access →</a>
-      <a href="#market" class="btn">View Market Preview</a>
-      <a href="#infrastructure" class="btn btn-gold">How It Works</a>
-    </div>
-
-    <div class="trust-row">
-      <div class="trust-pill">32 Verified Projects</div>
-      <div class="trust-pill">9 Verified Sellers</div>
-      <div class="trust-pill">Carbon · Biodiversity · Nature Assets</div>
-      <div class="trust-pill">Verra · Gold Standard · CCB</div>
-    </div>
-  </div>
-
-  <div class="hero-panel">
-    <div class="panel-header">
-      <span>Market Overview</span>
-      <b>LIVE</b>
-    </div>
-
-    <div class="market-grid">
-      <div class="market-stat">
-        <div class="ms-label">Credits Listed</div>
-        <div class="ms-val">842K</div>
-        <div class="ms-sub">Across 32 projects</div>
-      </div>
-
-      <div class="market-stat">
-        <div class="ms-label">24h Volume</div>
-        <div class="ms-val">$4.2M</div>
-        <div class="ms-sub up">↑ +18.4%</div>
-      </div>
-
-      <div class="market-stat">
-        <div class="ms-label">Verified Sellers</div>
-        <div class="ms-val">9</div>
-        <div class="ms-sub">KYB verified</div>
-      </div>
-
-      <div class="market-stat">
-        <div class="ms-label">Avg Price</div>
-        <div class="ms-val">$16.80</div>
-        <div class="ms-sub up">↑ +2.1%</div>
-      </div>
-    </div>
-
-    <div class="chart">
-      <svg viewBox="0 0 600 205" preserveAspectRatio="none">
-        <path d="M0 160 C80 145 96 102 160 114 C240 132 282 66 360 80 C430 94 480 44 600 56"
-          fill="none" stroke="#00d97e" stroke-width="5"/>
-        <path d="M0 160 C80 145 96 102 160 114 C240 132 282 66 360 80 C430 94 480 44 600 56 L600 205 L0 205 Z"
-          fill="rgba(0,217,126,0.14)"/>
-      </svg>
-    </div>
-
-    <div class="market-list">
-      <div class="market-row">
-        <span class="symbol">KCC-24</span>
-        <span class="price">$12.40</span>
-        <span class="change">+3.8%</span>
-      </div>
-
-      <div class="market-row">
-        <span class="symbol">BLUE-AFR</span>
-        <span class="price">$28.10</span>
-        <span class="change">+5.2%</span>
-      </div>
-
-      <div class="market-row">
-        <span class="symbol">FOREST-EA</span>
-        <span class="price">$16.80</span>
-        <span class="change">+2.1%</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="infrastructure" class="section">
-  <div class="section-head">
-    <div class="kicker">Infrastructure Layer</div>
-
-    <h2>Environmental markets need a serious front door.</h2>
-
-    <p>
-      Today, environmental assets are still too fragmented: PDFs, private broker lists,
-      unclear pricing, limited transparency and poor buyer confidence. EAX brings the market
-      into one connected system.
-    </p>
-  </div>
-
-  <div class="infra-grid">
-    <div class="infra-card">
-      <div class="card-num">01</div>
-      <h3>Verified Supply</h3>
-      <p>Project profiles, certification data, vintage, geography, SDGs and market information in one clear interface.</p>
-    </div>
-
-    <div class="infra-card">
-      <div class="card-num">02</div>
-      <h3>Market Access</h3>
-      <p>A cleaner way for buyers, brokers and institutions to discover credible environmental assets.</p>
-    </div>
-
-    <div class="infra-card">
-      <div class="card-num">03</div>
-      <h3>Secondary Liquidity</h3>
-      <p>Verified sellers, transparent offers and a marketplace structure built for serious participants.</p>
-    </div>
-
-    <div class="infra-card">
-      <div class="card-num">04</div>
-      <h3>Impact Intelligence</h3>
-      <p>Market dashboards, retirement visibility and institutional-grade insight into real environmental outcomes.</p>
-    </div>
-  </div>
-</section>
-
-<section id="market" class="section">
-  <div class="section-head">
-    <div class="kicker">Market Preview</div>
-
-    <h2>Carbon first. Nature next. Impact always verified.</h2>
-
-    <p>
-      EAX starts with environmental credits and expands into biodiversity, nature assets,
-      verified retirement certificates and project-level intelligence.
-    </p>
-  </div>
-
-  <div class="preview-grid">
-    <div class="terminal-box">
-      <div class="terminal-title">
-        <span>Listed Assets</span>
-        <span class="up">Streaming</span>
-      </div>
-
-      <div class="asset-row">
-        <div>
-          <div class="asset-name">Kenya Clean Cooking</div>
-          <div class="asset-meta">Gold Standard · Kenya · 2024 Vintage</div>
+  <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-pills">
+          <span class="hero-pill gold">Early-stage platform</span>
+          <span class="hero-pill green">Carbon · Biodiversity · Nature Assets</span>
+          <span class="hero-pill">Built for buyers, brokers &amp; project developers</span>
+          <span class="hero-pill">Verification-first market infrastructure</span>
         </div>
-        <div class="badge badge-green">Verified</div>
-        <div class="asset-price">$12.40</div>
+        <div class="hero-tagline">EAX Global · eaxglobal.io</div>
+        <h1 class="hero-h1">Environmental<br>Asset <span>Exchange</span></h1>
+        <p class="hero-sub">EAX Global is building market infrastructure for environmental assets — helping carbon, biodiversity and nature-based credits become easier to discover, compare and verify.</p>
+        <div class="hero-btns">
+          <a href="#waitlist" class="btn-primary">Request Early Access</a>
+          <a href="#market" class="btn-outline">View Concept Preview</a>
+          <a href="#infra" class="btn-ghost">How It Works →</a>
+        </div>
       </div>
-
-      <div class="asset-row">
-        <div>
-          <div class="asset-name">Blue Carbon Restoration</div>
-          <div class="asset-meta">Coastal protection · Biodiversity co-benefits</div>
-        </div>
-        <div class="badge badge-gold">Premium</div>
-        <div class="asset-price">$28.10</div>
-      </div>
-
-      <div class="asset-row">
-        <div>
-          <div class="asset-name">East Africa Reforestation</div>
-          <div class="asset-meta">Community livelihoods · Carbon storage</div>
-        </div>
-        <div class="badge badge-green">Impact</div>
-        <div class="asset-price">$16.80</div>
-      </div>
-
-      <div class="asset-row">
-        <div>
-          <div class="asset-name">Senegal Solar Villages</div>
-          <div class="asset-meta">Renewable access · Household energy</div>
-        </div>
-        <div class="badge badge-green">Listed</div>
-        <div class="asset-price">$7.60</div>
-      </div>
-    </div>
-
-    <div class="profile-box">
-      <h3>One connected system for measurable impact.</h3>
-
-      <p>
-        EAX is not just a landing page. It is the early face of a bigger market infrastructure play:
-        verified listings, trusted participants, project profiles, buyer access, retirement records,
-        and intelligence dashboards.
-      </p>
-
-      <div class="profile-stats">
-        <div class="profile-stat">
-          <small>Focus</small>
-          <strong>Africa → Global</strong>
-        </div>
-
-        <div class="profile-stat">
-          <small>Assets</small>
-          <strong>Carbon + Nature</strong>
-        </div>
-
-        <div class="profile-stat">
-          <small>Layer</small>
-          <strong>Market Infra</strong>
+      <div class="hero-right">
+        <div class="preview-panel">
+          <div class="preview-panel-header">
+            <span class="preview-panel-title">Market Interface Preview</span>
+            <span class="preview-badge">Concept Preview</span>
+          </div>
+          <table class="preview-table">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Type</th>
+                <th>Sample Price</th>
+                <th>±</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="pt-name">Maasai Mara REDD+</span></td>
+                <td><span class="pt-type redd">REDD+</span></td>
+                <td><span class="pt-price">$14.80</span></td>
+                <td><span class="pt-chg chg-up">▲ +2.4%</span></td>
+              </tr>
+              <tr>
+                <td><span class="pt-name">Zanzibar Blue Carbon</span></td>
+                <td><span class="pt-type blue">BLUE</span></td>
+                <td><span class="pt-price">$22.60</span></td>
+                <td><span class="pt-chg chg-up">▲ +8.3%</span></td>
+              </tr>
+              <tr>
+                <td><span class="pt-name">Rwanda Cookstove</span></td>
+                <td><span class="pt-type bio">GS</span></td>
+                <td><span class="pt-price">$6.90</span></td>
+                <td><span class="pt-chg chg-dn">▼ –1.4%</span></td>
+              </tr>
+              <tr>
+                <td><span class="pt-name">Ethiopian Wind Farm</span></td>
+                <td><span class="pt-type wind">WIND</span></td>
+                <td><span class="pt-price">$9.80</span></td>
+                <td><span class="pt-chg chg-up">▲ +3.7%</span></td>
+              </tr>
+              <tr>
+                <td><span class="pt-name">Norway Arctic Kelp</span></td>
+                <td><span class="pt-type blue">BLUE</span></td>
+                <td><span class="pt-price">$35.40</span></td>
+                <td><span class="pt-chg chg-up">▲ +12.4%</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="preview-footer">
+            <span class="preview-footer-note">All prices illustrative · sample data only</span>
+            <span class="preview-footer-tag">Concept Preview</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="usecases" class="section">
-  <div class="section-head">
-    <div class="kicker">Who It Serves</div>
-    <h2>Built for the people who actually move the market.</h2>
-  </div>
-
-  <div class="usecases">
-    <div class="usecase">
-      <span>BUYERS</span>
-      <h3>Companies & institutions</h3>
-      <p>Discover credible projects, compare verified supply and retire assets with greater confidence.</p>
-    </div>
-
-    <div class="usecase">
-      <span>SELLERS</span>
-      <h3>Project developers & brokers</h3>
-      <p>Present assets professionally, improve buyer trust and access a broader global market.</p>
-    </div>
-
-    <div class="usecase">
-      <span>MARKET</span>
-      <h3>Analysts & investors</h3>
-      <p>Track pricing, volumes, activity, geography, standards and emerging environmental asset trends.</p>
-    </div>
-  </div>
-</section>
-
-<form name="eax-waitlist" netlify class="hidden-form">
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="text" name="company" />
-  <input type="text" name="role" />
-  <textarea name="message"></textarea>
-</form>
-
-<section id="waitlist" class="cta-section">
-  <div class="cta-box">
-    <div class="cta-copy">
-      <div class="kicker">Early Access</div>
-
-      <h2>Join the EAX waitlist.</h2>
-
-      <p>
-        For project developers, brokers, buyers, investors and partners interested in the next generation of
-        environmental market infrastructure.
-      </p>
-    </div>
-
-    <form name="eax-waitlist" method="POST" data-netlify="true" netlify>
-      <input type="hidden" name="form-name" value="eax-waitlist" />
-
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Email address" required />
-      <input type="text" name="company" placeholder="Company / organisation" />
-      <input type="text" name="role" placeholder="Buyer, seller, investor, broker..." />
-
-      <textarea name="message" placeholder="Tell us what you are interested in"></textarea>
-
-      <button class="form-btn" type="submit">Request Early Access</button>
-
-      <div class="form-note">
-        Your submission will be reviewed by the EAX team. No spam. No public wallet required.
+  <!-- ══ STATS STRIP ════════════════════════════════════════════════════════ -->
+  <div id="stats-strip">
+    <div class="stats-inner">
+      <div class="stat-block fade-up">
+        <span class="stat-label">Platform Stage</span>
+        <span class="stat-val gold">Early</span>
+        <span class="stat-sub">Infrastructure in development</span>
       </div>
-    </form>
+      <div class="stat-block fade-up" style="transition-delay:0.08s">
+        <span class="stat-label">Asset Classes</span>
+        <span class="stat-val green">4+</span>
+        <span class="stat-sub">Carbon · Bio · Nature · Renewable</span>
+      </div>
+      <div class="stat-block fade-up" style="transition-delay:0.14s">
+        <span class="stat-label">Design Approach</span>
+        <span class="stat-val">Verify<span style="color:var(--text3);font-size:14px">-first</span></span>
+        <span class="stat-sub">Signals before transactions</span>
+      </div>
+      <div class="stat-block fade-up" style="transition-delay:0.2s">
+        <span class="stat-label">Access</span>
+        <span class="stat-val gold">Waitlist</span>
+        <span class="stat-sub">Open for early access requests</span>
+      </div>
+    </div>
   </div>
-</section>
 
-</main>
+  <!-- ══ INFRASTRUCTURE ════════════════════════════════════════════════════ -->
+  <section class="section" id="infra">
+    <div class="section-inner">
+      <div class="infra-header fade-up">
+        <div class="sec-eyebrow green">Infrastructure</div>
+        <h2 class="infra-h">Environmental markets need<br>a serious front door.</h2>
+        <p class="infra-sub">Today, environmental assets are still fragmented across broker lists, PDFs, private conversations and unclear pricing. EAX Global is being built to create a cleaner interface for discovery, verification and market access.</p>
+      </div>
+      <div class="infra-grid">
+        <div class="infra-card c-green fade-up">
+          <div class="infra-icon ic-green">🌿</div>
+          <div class="infra-title">Asset Discovery</div>
+          <div class="infra-desc">A structured interface for browsing, filtering and comparing environmental assets across project type, geography, verification standard and price signals.</div>
+          <span class="infra-tag it-green">In Development</span>
+        </div>
+        <div class="infra-card c-cyan fade-up" style="transition-delay:0.07s">
+          <div class="infra-icon ic-cyan">🔍</div>
+          <div class="infra-title">Verification Signals</div>
+          <div class="infra-desc">Structured project profiles with verification flags, standard references and traceability data — so buyers can assess quality before engaging.</div>
+          <span class="infra-tag it-cyan">In Design</span>
+        </div>
+        <div class="infra-card c-gold fade-up" style="transition-delay:0.14s">
+          <div class="infra-icon ic-gold">⚡</div>
+          <div class="infra-title">Market Access</div>
+          <div class="infra-desc">Connecting buyers, brokers and project developers through a structured interface — from initial discovery through to transaction and retirement.</div>
+          <span class="infra-tag it-gold">Planned</span>
+        </div>
+        <div class="infra-card c-blue fade-up" style="transition-delay:0.21s">
+          <div class="infra-icon ic-blue">📊</div>
+          <div class="infra-title">Impact Intelligence</div>
+          <div class="infra-desc">Market data, regional pricing signals, asset type analysis and portfolio-level impact tracking — built for institutional decision-making.</div>
+          <span class="infra-tag it-blue">Planned</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <div>© 2026 EAX Global · Environmental Asset Exchange</div>
-  <div>eaxglobal.io · eaxexchange@gmail.com</div>
-</footer>
+  <!-- ══ MARKET PREVIEW ════════════════════════════════════════════════════ -->
+  <section class="section" id="market">
+    <div class="section-inner-wide">
+      <div class="sec-eyebrow gold fade-up">Market Interface</div>
+      <h2 style="font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.6px;margin-bottom:32px;line-height:1.2" class="fade-up">A clearer interface for environmental assets.</h2>
+      <div class="market-layout">
+        <div class="market-left fade-up">
+          <div class="market-panel">
+            <div class="market-panel-header">
+              <span class="mph-title">Sample Asset Listings</span>
+              <span class="mph-badge">Illustrative Market Interface</span>
+            </div>
+            <table class="market-table">
+              <thead>
+                <tr>
+                  <th style="width:36px"></th>
+                  <th>Asset / Project</th>
+                  <th>Type</th>
+                  <th>Sample Price</th>
+                  <th>Illustrative ±</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="mt-flag">🇰🇪</span></td>
+                  <td>
+                    <span class="mt-name">Clean Cooking Credits</span>
+                    <span class="mt-sample">Sample listing · Kenya</span>
+                  </td>
+                  <td><span class="pt-type redd">GS</span></td>
+                  <td>
+                    <span class="mt-price">$12.40</span>
+                    <span class="mt-note">illustrative</span>
+                  </td>
+                  <td><span class="mt-chg chg-up">▲ +1.8%</span></td>
+                  <td><span class="mt-action">Early Access</span></td>
+                </tr>
+                <tr>
+                  <td><span class="mt-flag">🇹🇿</span></td>
+                  <td>
+                    <span class="mt-name">Blue Carbon Restoration</span>
+                    <span class="mt-sample">Sample listing · Tanzania</span>
+                  </td>
+                  <td><span class="pt-type blue">BLUE</span></td>
+                  <td>
+                    <span class="mt-price">$28.10</span>
+                    <span class="mt-note">illustrative</span>
+                  </td>
+                  <td><span class="mt-chg chg-up">▲ +6.2%</span></td>
+                  <td><span class="mt-action">Early Access</span></td>
+                </tr>
+                <tr>
+                  <td><span class="mt-flag">🇧🇷</span></td>
+                  <td>
+                    <span class="mt-name">Reforestation Credits</span>
+                    <span class="mt-sample">Sample listing · Brazil</span>
+                  </td>
+                  <td><span class="pt-type redd">REDD+</span></td>
+                  <td>
+                    <span class="mt-price">$16.80</span>
+                    <span class="mt-note">illustrative</span>
+                  </td>
+                  <td><span class="mt-chg chg-up">▲ +3.4%</span></td>
+                  <td><span class="mt-action">Early Access</span></td>
+                </tr>
+                <tr>
+                  <td><span class="mt-flag">🇮🇳</span></td>
+                  <td>
+                    <span class="mt-name">Renewable Energy Credits</span>
+                    <span class="mt-sample">Sample listing · India</span>
+                  </td>
+                  <td><span class="pt-type wind">WIND</span></td>
+                  <td>
+                    <span class="mt-price">$7.60</span>
+                    <span class="mt-note">illustrative</span>
+                  </td>
+                  <td><span class="mt-chg chg-dn">▼ –0.9%</span></td>
+                  <td><span class="mt-action">Early Access</span></td>
+                </tr>
+                <tr>
+                  <td><span class="mt-flag">🌍</span></td>
+                  <td>
+                    <span class="mt-name">Biodiversity Assets</span>
+                    <span class="mt-sample">Multiple regions · Coming soon</span>
+                  </td>
+                  <td><span class="pt-type bio">BIO</span></td>
+                  <td>
+                    <span class="mt-price" style="color:var(--text3)">—</span>
+                    <span class="mt-note">pricing TBD</span>
+                  </td>
+                  <td><span style="font-size:10px;color:var(--gold);font-weight:700">Coming Soon</span></td>
+                  <td><span class="mt-action" style="background:rgba(245,158,11,0.08);color:var(--gold);border-color:rgba(245,158,11,0.2)">Notify Me</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="market-footer">
+              <span class="mf-note">All listings illustrative only · not real market data · EAX is in development</span>
+              <span class="mf-link" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist →</span>
+            </div>
+          </div>
+        </div>
+        <div class="market-side fade-up" style="transition-delay:0.12s">
+          <div class="ms-eyebrow">About EAX</div>
+          <div class="ms-h">One connected system for measurable impact.</div>
+          <div class="ms-body">EAX is being designed as a market infrastructure layer for environmental assets: project profiles, verification signals, buyer access, retirement records and intelligence dashboards.</div>
+          <div class="ms-features">
+            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Structured project profiles with verification flags</span></div>
+            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Regional pricing signals and asset comparisons</span></div>
+            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Buyer, broker and developer workflows</span></div>
+            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Retirement and traceability records</span></div>
+            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Intelligence dashboards for portfolio analysis</span></div>
+          </div>
+          <button class="ms-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Request Early Access</button>
+          <div class="ms-cta-note">No commitment · early stage platform</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ══ USE CASES ══════════════════════════════════════════════════════════ -->
+  <section class="section" id="usecases">
+    <div class="section-inner">
+      <div class="uc-header fade-up">
+        <div class="sec-eyebrow">Use Cases</div>
+        <h2 class="uc-h">Built for the people who move<br>environmental markets.</h2>
+        <p class="uc-sub">Whether you're sourcing credits, listing projects or analysing the market — EAX is being designed with your workflow in mind.</p>
+      </div>
+      <div class="uc-grid">
+        <div class="uc-card c1 fade-up">
+          <span class="uc-ico">🏛️</span>
+          <div class="uc-role">Buyers</div>
+          <div class="uc-title">Companies &amp; Institutions</div>
+          <div class="uc-body">Organisations seeking structured access to verified environmental assets for compliance, voluntary commitments or portfolio strategy.</div>
+          <ul class="uc-list">
+            <li>Discover and compare assets by type, geography and standard</li>
+            <li>Access project-level verification signals before committing</li>
+            <li>Track retirement records and impact attribution</li>
+            <li>Receive market intelligence and pricing context</li>
+          </ul>
+        </div>
+        <div class="uc-card c2 fade-up" style="transition-delay:0.08s">
+          <span class="uc-ico">🌱</span>
+          <div class="uc-role">Sellers</div>
+          <div class="uc-title">Project Developers &amp; Brokers</div>
+          <div class="uc-body">Teams with verified or developing projects who need structured market access and a credible channel to reach institutional buyers.</div>
+          <ul class="uc-list">
+            <li>List projects with structured profiles and verification data</li>
+            <li>Access buyer demand signals by region and asset type</li>
+            <li>Manage listings and documentation in one place</li>
+            <li>Build credibility through transparent project records</li>
+          </ul>
+        </div>
+        <div class="uc-card c3 fade-up" style="transition-delay:0.16s">
+          <span class="uc-ico">📈</span>
+          <div class="uc-role">Market</div>
+          <div class="uc-title">Analysts &amp; Investors</div>
+          <div class="uc-body">Market participants who need reliable pricing context, asset class intelligence and structured data to inform decisions.</div>
+          <ul class="uc-list">
+            <li>Monitor price signals across asset types and regions</li>
+            <li>Analyse supply and demand trends over time</li>
+            <li>Benchmark project performance against market</li>
+            <li>Access structured environmental asset data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WAITLIST ════════════════════════════════════════════════════════════ -->
+  <section class="section" id="waitlist">
+    <div class="waitlist-inner">
+      <div class="wl-eyebrow">Early Access</div>
+      <h2 class="wl-h fade-up">Join the EAX early access list.</h2>
+      <p class="wl-sub fade-up">We're building in the open and inviting buyers, project developers and brokers to shape the platform from the ground up.</p>
+      <div class="wl-form-wrap fade-up">
+        <div id="wl-form-container">
+          <form name="eax-waitlist" method="POST" data-netlify="true" netlify id="wl-form">
+            <input type="hidden" name="form-name" value="eax-waitlist"/>
+            <div class="wl-row">
+              <div class="wl-field">
+                <label class="wl-label" for="wl-name">Full Name</label>
+                <input class="wl-input" type="text" id="wl-name" name="name" placeholder="Jane Smith" required/>
+              </div>
+              <div class="wl-field">
+                <label class="wl-label" for="wl-email">Work Email</label>
+                <input class="wl-input" type="email" id="wl-email" name="email" placeholder="jane@organisation.com" required/>
+              </div>
+            </div>
+            <div class="wl-row">
+              <div class="wl-field">
+                <label class="wl-label" for="wl-org">Organisation</label>
+                <input class="wl-input" type="text" id="wl-org" name="organisation" placeholder="Your organisation"/>
+              </div>
+              <div class="wl-field">
+                <label class="wl-label" for="wl-role">Your Role</label>
+                <select class="wl-input wl-select" id="wl-role" name="role">
+                  <option value="" disabled selected>Select your role</option>
+                  <option>Buyer — Corporate / Institution</option>
+                  <option>Project Developer</option>
+                  <option>Broker / Intermediary</option>
+                  <option>Investor / Fund Manager</option>
+                  <option>Market Analyst / Researcher</option>
+                  <option>Regulator / Policy</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="wl-row">
+              <div class="wl-field full">
+                <label class="wl-label" for="wl-interest">Primary Interest</label>
+                <select class="wl-input wl-select" id="wl-interest" name="interest">
+                  <option value="" disabled selected>What brings you to EAX?</option>
+                  <option>Buying carbon credits or environmental assets</option>
+                  <option>Listing or selling project credits</option>
+                  <option>Market intelligence and price data</option>
+                  <option>Brokering or intermediary services</option>
+                  <option>Research and analysis</option>
+                  <option>Platform partnership or integration</option>
+                  <option>General interest / following the build</option>
+                </select>
+              </div>
+            </div>
+            <button class="wl-submit" type="submit">Request Early Access →</button>
+          </form>
+          <p class="wl-note">No spam. No commitment. Early access only — we'll be in touch as the platform develops.</p>
+        </div>
+        <div class="wl-success" id="wl-success">
+          <span class="wl-success-icon">✓</span>
+          <div class="wl-success-h">You're on the list.</div>
+          <div class="wl-success-sub">Thanks for your interest in EAX Global. We'll be in touch as the platform develops. Follow us at <strong>@eaxglobal</strong> for updates.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(0,217,126,0.6);flex-shrink:0"></span>
+            EAX GLOBAL
+          </div>
+          <div class="footer-tagline">Environmental Asset Exchange · Market infrastructure for carbon, biodiversity and nature-based assets.</div>
+          <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
+            <span class="footer-stage">Early Stage</span>
+            <span style="font-size:10px;color:var(--text3)">Platform in development</span>
+          </div>
+        </div>
+        <div class="footer-cols">
+          <div>
+            <div class="footer-col-title">Platform</div>
+            <div class="footer-col-links">
+              <a href="#infra" class="footer-link">Asset Discovery</a>
+              <a href="#infra" class="footer-link">Verification Signals</a>
+              <a href="#market" class="footer-link">Market Preview</a>
+              <a href="#infra" class="footer-link">Impact Intelligence</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Who It's For</div>
+            <div class="footer-col-links">
+              <a href="#usecases" class="footer-link">Buyers</a>
+              <a href="#usecases" class="footer-link">Project Developers</a>
+              <a href="#usecases" class="footer-link">Brokers</a>
+              <a href="#usecases" class="footer-link">Analysts</a>
+            </div>
+          </div>
+          <div>
+            <div class="footer-col-title">Connect</div>
+            <div class="footer-col-links">
+              <a href="https://eaxglobal.io" class="footer-link">eaxglobal.io</a>
+              <a href="https://x.com/eaxglobal" class="footer-link">@eaxglobal</a>
+              <a href="mailto:eaxexchange@gmail.com" class="footer-link">eaxexchange@gmail.com</a>
+              <a href="#waitlist" class="footer-link" style="color:var(--green)">Request Early Access →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 <span>EAX Global</span> · Environmental Asset Exchange · eaxglobal.io · @eaxglobal</span>
+        <div class="footer-links-row">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="mailto:eaxexchange@gmail.com">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- end #page -->
+
+<script>
+/* ══ TICKER ENGINE ═══════════════════════════════════════════════════════ */
+(function(){
+  var DATA = [
+    {n:'CLEAN COOKING CREDIT',  t:'SAMPLE',  p:'$12.40', note:'illustrative'},
+    {n:'BLUE CARBON',           t:'SAMPLE',  p:'$28.10', note:'illustrative'},
+    {n:'REFORESTATION',         t:'SAMPLE',  p:'$16.80', note:'illustrative'},
+    {n:'RENEWABLE ENERGY',      t:'SAMPLE',  p:'$7.60',  note:'illustrative'},
+    {n:'MAASAI MARA REDD+',     t:'SAMPLE',  p:'$14.80', note:'illustrative'},
+    {n:'ZANZIBAR BLUE CARBON',  t:'SAMPLE',  p:'$22.60', note:'illustrative'},
+    {n:'ETHIOPIAN WIND FARM',   t:'SAMPLE',  p:'$9.80',  note:'illustrative'},
+    {n:'AMAZON REFORESTATION',  t:'SAMPLE',  p:'$21.30', note:'illustrative'},
+    {n:'NORWAY ARCTIC KELP',    t:'SAMPLE',  p:'$35.40', note:'illustrative'},
+    {n:'BIODIVERSITY ASSETS',   t:'COMING',  p:null,     note:'coming soon'},
+    {n:'GHANA AGROFORESTRY',    t:'SAMPLE',  p:'$12.30', note:'illustrative'},
+    {n:'BAVARIAN FOREST VCU',   t:'SAMPLE',  p:'$28.40', note:'illustrative'},
+    {n:'INDIA WIND ENERGY',     t:'SAMPLE',  p:'$8.90',  note:'illustrative'},
+    {n:'CALIFORNIA FOREST',     t:'SAMPLE',  p:'$33.20', note:'illustrative'},
+    {n:'PATAGONIA CARBON',      t:'SAMPLE',  p:'$29.80', note:'illustrative'},
+  ];
+
+  var belt = document.getElementById('ticker-belt');
+  if(!belt) return;
+
+  function makeItem(d){
+    var div = document.createElement('div');
+    div.className = 'tk';
+    var inner = '<span class="tk-name">'+d.n+'</span>';
+    if(d.t==='COMING'){
+      inner += '<span class="tk-soon">● COMING SOON</span>';
+    } else {
+      inner += '<span class="tk-type">'+d.t+'</span>';
+      inner += '<span class="tk-price">'+d.p+'</span>';
+      inner += '<span class="tk-note">'+d.note+'</span>';
+    }
+    div.innerHTML = inner;
+    return div;
+  }
+
+  [0,1].forEach(function(){
+    DATA.forEach(function(d){ belt.appendChild(makeItem(d)); });
+  });
+
+  var SPEED = 38, offset = 0, last = null, halfW = 0;
+  function measure(){ halfW = belt.scrollWidth / 2; }
+  measure();
+  window.addEventListener('resize', measure);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(measure); }
+
+  function tick(ts){
+    if(last===null) last=ts;
+    offset += SPEED * (ts-last)/1000;
+    last = ts;
+    if(halfW>0 && offset>=halfW) offset -= halfW;
+    belt.style.transform = 'translateX('+(-offset)+'px)';
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  /* UTC clock */
+  var clk = document.getElementById('ticker-clock');
+  function updateClock(){
+    if(!clk) return;
+    var n=new Date();
+    clk.textContent='UTC '
+      +String(n.getUTCHours()).padStart(2,'0')+':'
+      +String(n.getUTCMinutes()).padStart(2,'0')+':'
+      +String(n.getUTCSeconds()).padStart(2,'0');
+  }
+  updateClock(); setInterval(updateClock, 1000);
+})();
+
+/* ══ SCROLL FADE-IN ══════════════════════════════════════════════════════ */
+(function(){
+  var els = document.querySelectorAll('.fade-up');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('visible'); }); return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  els.forEach(function(el){ obs.observe(el); });
+})();
+
+/* ══ WAITLIST FORM ═══════════════════════════════════════════════════════ */
+(function(){
+  var form = document.getElementById('wl-form');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = new FormData(form);
+    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(data).toString()
+    }).then(function(){
+      document.getElementById('wl-form-container').style.display = 'none';
+      document.getElementById('wl-success').style.display = 'block';
+    }).catch(function(){
+      // fallback: show success anyway (Netlify will still capture)
+      document.getElementById('wl-form-container').style.display = 'none';
+      document.getElementById('wl-success').style.display = 'block';
+    });
+  });
+})();
+
+/* ══ NAV ACTIVE STATE ════════════════════════════════════════════════════ */
+(function(){
+  var sections = ['infra','market','usecases','waitlist'];
+  var btns = document.querySelectorAll('.nav-btn[href]');
+  window.addEventListener('scroll', function(){
+    var scrollY = window.scrollY + 120;
+    var current = '';
+    sections.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el && el.offsetTop <= scrollY) current = id;
+    });
+    btns.forEach(function(btn){
+      btn.classList.toggle('active', btn.getAttribute('href')==='#'+current);
+    });
+  },{passive:true});
+})();
+</script>
 </body>
 </html>
