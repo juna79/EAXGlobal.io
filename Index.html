@@ -624,6 +624,25 @@ input,select,textarea{outline:none;font-family:inherit}
 .fade-up{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
+
+
+/* ══ FINAL POLISH PASS — READABILITY + INSTITUTIONAL DETAIL ═════════════ */
+body{font-size:16px;line-height:1.68}
+.nav-btn{font-size:13px;font-weight:650}
+.nav-cta{font-size:13px;padding:7px 17px}
+.nav-tag{font-size:10px}
+.tl-label{font-size:9.5px}.tl-sub{font-size:9px}.tk-name{font-size:10.8px;color:rgba(203,213,225,0.72)}.tk-type{font-size:8.5px}.tk-price{font-size:11.8px}.tk-note{font-size:9px;color:rgba(148,163,184,.66)}.tk-soon{font-size:10px}#ticker-clock{font-size:9.5px;color:rgba(148,163,184,.68)}
+.hero-h1{font-size:56px;line-height:1.03;letter-spacing:-1.9px;margin-bottom:18px}.hero-word-muted{color:#dbe3ee}.hero-word-green{color:var(--green)}.hero-sub{font-size:18px;line-height:1.78;color:#cbd5e1;max-width:560px}.hero-tagline{font-size:13px;color:#7f8da3}.hero-pill{font-size:11.5px;padding:5px 12px}.btn-primary,.btn-outline{font-size:14.5px;padding:12px 25px}.btn-ghost{font-size:14px}
+.network-layer{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.55}.network-layer svg{position:absolute;right:0;top:0;width:70%;height:100%}.net-line{fill:none;stroke:rgba(0,217,126,.16);stroke-width:1.1;stroke-dasharray:8 12;animation:netDrift 18s linear infinite}.net-line-b{stroke:rgba(245,158,11,.10);animation-duration:24s}.net-node{fill:rgba(0,217,126,.55);filter:drop-shadow(0 0 6px rgba(0,217,126,.35))}.gold-node{fill:rgba(245,158,11,.55);filter:drop-shadow(0 0 6px rgba(245,158,11,.25))}@keyframes netDrift{to{stroke-dashoffset:-220}}
+.preview-panel-title{font-size:11.5px}.preview-badge{font-size:9.5px}.preview-table th{font-size:10.3px}.preview-table td{font-size:13.5px;padding:12px 14px}.pt-name{font-weight:700}.pt-type{font-size:10px}.pt-price{font-size:13.5px}.pt-signal,.mt-signal{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--gold);letter-spacing:.2px}.preview-footer-note{font-size:10.5px}.preview-footer-tag{font-size:10px}
+.stat-label{font-size:10.8px}.stat-val{font-size:24px}.stat-sub{font-size:12px;color:#7f8da3}.stat-block{gap:6px}
+.sec-eyebrow{font-size:10.5px}.infra-h,.uc-h{font-size:36px;line-height:1.17}.infra-sub,.uc-sub{font-size:17px;max-width:720px;color:#c3cedd}.infra-title{font-size:17px}.infra-desc{font-size:14.5px;line-height:1.72}.infra-tag{font-size:10px}.infra-icon svg,.uc-ico svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}.infra-icon{color:var(--text2)}
+#market h2{font-size:36px!important;line-height:1.16!important}.mph-title{font-size:12px}.mph-badge{font-size:9.5px}.market-table th{font-size:10.3px}.market-table td{font-size:13.5px;padding:14px 16px}.mt-flag{font-family:var(--mono);font-size:11px;font-weight:900;color:var(--green);border:1px solid rgba(0,217,126,.25);background:rgba(0,217,126,.07);border-radius:4px;padding:3px 5px}.mt-name{font-size:14.5px;font-weight:750}.mt-sample{font-size:12px}.mt-price{font-size:14px}.mt-note{font-size:11px}.mt-action{font-size:11.5px;padding:5px 12px}.mf-note,.mf-link{font-size:12px}.ms-eyebrow{font-size:10.5px}.ms-h{font-size:22px}.ms-body{font-size:15px;line-height:1.75}.ms-feat{font-size:14px;line-height:1.55}.ms-cta{font-size:14px;padding:12px}.ms-cta-note{font-size:12px}
+.uc-ico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:rgba(255,255,255,.035);border:1px solid var(--border2);color:var(--text2)}.uc-title{font-size:20px}.uc-body{font-size:15px}.uc-list li{font-size:14px;color:#c3cedd;line-height:1.62}
+.wl-eyebrow{font-size:10.5px}.wl-h{font-size:38px}.wl-sub{font-size:17px;color:#c3cedd}.wl-label{font-size:11px}.wl-input,.wl-select{font-size:15px;padding:12px 13px}.wl-submit{font-size:15px;padding:14px}.wl-note{font-size:12px}.wl-success-h{font-size:20px}.wl-success-sub{font-size:15px}
+.footer-logo{font-size:18px}.footer-tagline{font-size:14px;max-width:330px;color:#a8b4c6}.footer-col-title{font-size:10.5px}.footer-link{font-size:14px}.footer-copy,.footer-links-row a{font-size:12.5px}.footer-stage{font-size:10px}
+.infra-card,.uc-card,.market-panel,.preview-panel,.market-side,.wl-form-wrap{border-color:rgba(51,64,90,.9)}.infra-card:hover,.uc-card:hover{transform:translateY(-1px);box-shadow:0 14px 40px rgba(0,0,0,.26)}
+
 /* ══ MOBILE ════════════════════════════════════════════════════════════════ */
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr;gap:40px}
@@ -648,6 +667,10 @@ input,select,textarea{outline:none;font-family:inherit}
   #hero .hero-inner{padding:0 18px}
   .waitlist-inner{padding:0 18px}
 }
+
+@media(max-width:900px){.hero-h1{font-size:44px}.hero-sub{font-size:17px}.infra-h,.uc-h,#market h2{font-size:32px!important}.infra-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.hero-h1{font-size:38px!important}.hero-sub{font-size:16.5px}.hero-pill{font-size:11px}.infra-h,.uc-h,#market h2{font-size:28px!important}.infra-desc,.uc-body,.uc-list li,.ms-body{font-size:14.5px}.wl-h{font-size:30px}.wl-sub{font-size:15.5px}.footer-cols{gap:22px}}
+
 </style>
 </head>
 <body>
@@ -698,6 +721,17 @@ input,select,textarea{outline:none;font-family:inherit}
 
   <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
   <section id="hero">
+    <div class="network-layer" aria-hidden="true">
+      <svg viewBox="0 0 900 520" preserveAspectRatio="none">
+        <path class="net-line net-line-a" d="M60 420 C190 330 260 350 360 240 S560 120 830 90" />
+        <path class="net-line net-line-b" d="M90 120 C240 180 260 260 420 280 S640 310 820 430" />
+        <circle class="net-node" cx="120" cy="375" r="3"/>
+        <circle class="net-node" cx="360" cy="240" r="3"/>
+        <circle class="net-node" cx="610" cy="165" r="3"/>
+        <circle class="net-node" cx="790" cy="95" r="3"/>
+        <circle class="net-node gold-node" cx="705" cy="405" r="3"/>
+      </svg>
+    </div>
     <div class="hero-inner">
       <div class="hero-left">
         <div class="hero-pills">
@@ -707,7 +741,7 @@ input,select,textarea{outline:none;font-family:inherit}
           <span class="hero-pill">Verification-first market infrastructure</span>
         </div>
         <div class="hero-tagline">EAX Global · eaxglobal.io</div>
-        <h1 class="hero-h1">Environmental<br>Asset <span>Exchange</span></h1>
+        <h1 class="hero-h1"><span class="hero-word-muted">Environmental</span><br><span class="hero-word-green">Asset Exchange</span></h1>
         <p class="hero-sub">EAX Global is building market infrastructure for environmental assets — helping carbon, biodiversity and nature-based credits become easier to discover, compare and verify.</p>
         <div class="hero-btns">
           <a href="#waitlist" class="btn-primary">Request Early Access</a>
@@ -727,7 +761,7 @@ input,select,textarea{outline:none;font-family:inherit}
                 <th>Asset</th>
                 <th>Type</th>
                 <th>Sample Price</th>
-                <th>±</th>
+                <th>Signal</th>
               </tr>
             </thead>
             <tbody>
@@ -735,31 +769,31 @@ input,select,textarea{outline:none;font-family:inherit}
                 <td><span class="pt-name">Maasai Mara REDD+</span></td>
                 <td><span class="pt-type redd">REDD+</span></td>
                 <td><span class="pt-price">$14.80</span></td>
-                <td><span class="pt-chg chg-up">▲ +2.4%</span></td>
+                <td><span class="pt-signal">Indicative</span></td>
               </tr>
               <tr>
                 <td><span class="pt-name">Zanzibar Blue Carbon</span></td>
                 <td><span class="pt-type blue">BLUE</span></td>
                 <td><span class="pt-price">$22.60</span></td>
-                <td><span class="pt-chg chg-up">▲ +8.3%</span></td>
+                <td><span class="pt-signal">Reference</span></td>
               </tr>
               <tr>
                 <td><span class="pt-name">Rwanda Cookstove</span></td>
                 <td><span class="pt-type bio">GS</span></td>
                 <td><span class="pt-price">$6.90</span></td>
-                <td><span class="pt-chg chg-dn">▼ –1.4%</span></td>
+                <td><span class="pt-signal">Sample</span></td>
               </tr>
               <tr>
                 <td><span class="pt-name">Ethiopian Wind Farm</span></td>
                 <td><span class="pt-type wind">WIND</span></td>
                 <td><span class="pt-price">$9.80</span></td>
-                <td><span class="pt-chg chg-up">▲ +3.7%</span></td>
+                <td><span class="pt-signal">Preview</span></td>
               </tr>
               <tr>
                 <td><span class="pt-name">Norway Arctic Kelp</span></td>
                 <td><span class="pt-type blue">BLUE</span></td>
                 <td><span class="pt-price">$35.40</span></td>
-                <td><span class="pt-chg chg-up">▲ +12.4%</span></td>
+                <td><span class="pt-signal">Illustrative</span></td>
               </tr>
             </tbody>
           </table>
@@ -776,9 +810,9 @@ input,select,textarea{outline:none;font-family:inherit}
   <div id="stats-strip">
     <div class="stats-inner">
       <div class="stat-block fade-up">
-        <span class="stat-label">Platform Stage</span>
-        <span class="stat-val gold">Early</span>
-        <span class="stat-sub">Infrastructure in development</span>
+        <span class="stat-label">Infrastructure</span>
+        <span class="stat-val gold">Verification-first</span>
+        <span class="stat-sub">Environmental asset markets</span>
       </div>
       <div class="stat-block fade-up" style="transition-delay:0.08s">
         <span class="stat-label">Asset Classes</span>
@@ -808,25 +842,25 @@ input,select,textarea{outline:none;font-family:inherit}
       </div>
       <div class="infra-grid">
         <div class="infra-card c-green fade-up">
-          <div class="infra-icon ic-green">🌿</div>
+          <div class="infra-icon ic-green"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C6.5 12 10.5 7.5 19 5c-1.8 7.4-5.9 11.6-12 13.2M7 18c3.2-2.3 6.1-5.2 8.5-8.7"/></svg></div>
           <div class="infra-title">Asset Discovery</div>
           <div class="infra-desc">A structured interface for browsing, filtering and comparing environmental assets across project type, geography, verification standard and price signals.</div>
           <span class="infra-tag it-green">In Development</span>
         </div>
         <div class="infra-card c-cyan fade-up" style="transition-delay:0.07s">
-          <div class="infra-icon ic-cyan">🔍</div>
+          <div class="infra-icon ic-cyan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.5"/><path d="M15 15l4.5 4.5"/></svg></div>
           <div class="infra-title">Verification Signals</div>
           <div class="infra-desc">Structured project profiles with verification flags, standard references and traceability data — so buyers can assess quality before engaging.</div>
           <span class="infra-tag it-cyan">In Design</span>
         </div>
         <div class="infra-card c-gold fade-up" style="transition-delay:0.14s">
-          <div class="infra-icon ic-gold">⚡</div>
+          <div class="infra-icon ic-gold"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 13h6l-1 9 9-13h-6l0-7z"/></svg></div>
           <div class="infra-title">Market Access</div>
           <div class="infra-desc">Connecting buyers, brokers and project developers through a structured interface — from initial discovery through to transaction and retirement.</div>
           <span class="infra-tag it-gold">Planned</span>
         </div>
         <div class="infra-card c-blue fade-up" style="transition-delay:0.21s">
-          <div class="infra-icon ic-blue">📊</div>
+          <div class="infra-icon ic-blue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M8 16V11M12 16V7M16 16v-4"/></svg></div>
           <div class="infra-title">Impact Intelligence</div>
           <div class="infra-desc">Market data, regional pricing signals, asset type analysis and portfolio-level impact tracking — built for institutional decision-making.</div>
           <span class="infra-tag it-blue">Planned</span>
@@ -854,13 +888,13 @@ input,select,textarea{outline:none;font-family:inherit}
                   <th>Asset / Project</th>
                   <th>Type</th>
                   <th>Sample Price</th>
-                  <th>Illustrative ±</th>
+                  <th>Signal</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><span class="mt-flag">🇰🇪</span></td>
+                  <td><span class="mt-flag">KE</span></td>
                   <td>
                     <span class="mt-name">Clean Cooking Credits</span>
                     <span class="mt-sample">Sample listing · Kenya</span>
@@ -870,11 +904,11 @@ input,select,textarea{outline:none;font-family:inherit}
                     <span class="mt-price">$12.40</span>
                     <span class="mt-note">illustrative</span>
                   </td>
-                  <td><span class="mt-chg chg-up">▲ +1.8%</span></td>
+                  <td><span class="mt-signal">Reference</span></td>
                   <td><span class="mt-action">Early Access</span></td>
                 </tr>
                 <tr>
-                  <td><span class="mt-flag">🇹🇿</span></td>
+                  <td><span class="mt-flag">TZ</span></td>
                   <td>
                     <span class="mt-name">Blue Carbon Restoration</span>
                     <span class="mt-sample">Sample listing · Tanzania</span>
@@ -884,11 +918,11 @@ input,select,textarea{outline:none;font-family:inherit}
                     <span class="mt-price">$28.10</span>
                     <span class="mt-note">illustrative</span>
                   </td>
-                  <td><span class="mt-chg chg-up">▲ +6.2%</span></td>
+                  <td><span class="mt-signal">Illustrative</span></td>
                   <td><span class="mt-action">Early Access</span></td>
                 </tr>
                 <tr>
-                  <td><span class="mt-flag">🇧🇷</span></td>
+                  <td><span class="mt-flag">BR</span></td>
                   <td>
                     <span class="mt-name">Reforestation Credits</span>
                     <span class="mt-sample">Sample listing · Brazil</span>
@@ -898,11 +932,11 @@ input,select,textarea{outline:none;font-family:inherit}
                     <span class="mt-price">$16.80</span>
                     <span class="mt-note">illustrative</span>
                   </td>
-                  <td><span class="mt-chg chg-up">▲ +3.4%</span></td>
+                  <td><span class="mt-signal">Sample</span></td>
                   <td><span class="mt-action">Early Access</span></td>
                 </tr>
                 <tr>
-                  <td><span class="mt-flag">🇮🇳</span></td>
+                  <td><span class="mt-flag">IN</span></td>
                   <td>
                     <span class="mt-name">Renewable Energy Credits</span>
                     <span class="mt-sample">Sample listing · India</span>
@@ -912,11 +946,11 @@ input,select,textarea{outline:none;font-family:inherit}
                     <span class="mt-price">$7.60</span>
                     <span class="mt-note">illustrative</span>
                   </td>
-                  <td><span class="mt-chg chg-dn">▼ –0.9%</span></td>
+                  <td><span class="mt-signal">Indicative</span></td>
                   <td><span class="mt-action">Early Access</span></td>
                 </tr>
                 <tr>
-                  <td><span class="mt-flag">🌍</span></td>
+                  <td><span class="mt-flag">GL</span></td>
                   <td>
                     <span class="mt-name">Biodiversity Assets</span>
                     <span class="mt-sample">Multiple regions · Coming soon</span>
@@ -965,7 +999,7 @@ input,select,textarea{outline:none;font-family:inherit}
       </div>
       <div class="uc-grid">
         <div class="uc-card c1 fade-up">
-          <span class="uc-ico">🏛️</span>
+          <span class="uc-ico uc-ico-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16M6 10V20M10 10V20M14 10V20M18 10V20M3 20h18M12 4l8 4H4l8-4z"/></svg></span>
           <div class="uc-role">Buyers</div>
           <div class="uc-title">Companies &amp; Institutions</div>
           <div class="uc-body">Organisations seeking structured access to verified environmental assets for compliance, voluntary commitments or portfolio strategy.</div>
@@ -977,7 +1011,7 @@ input,select,textarea{outline:none;font-family:inherit}
           </ul>
         </div>
         <div class="uc-card c2 fade-up" style="transition-delay:0.08s">
-          <span class="uc-ico">🌱</span>
+          <span class="uc-ico uc-ico-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V9M12 13c-4 0-6.5-2.4-7-7 4.7.3 7 2.7 7 7zM12 15c4 0 6.5-2.4 7-7-4.7.3-7 2.7-7 7z"/></svg></span>
           <div class="uc-role">Sellers</div>
           <div class="uc-title">Project Developers &amp; Brokers</div>
           <div class="uc-body">Teams with verified or developing projects who need structured market access and a credible channel to reach institutional buyers.</div>
@@ -989,7 +1023,7 @@ input,select,textarea{outline:none;font-family:inherit}
           </ul>
         </div>
         <div class="uc-card c3 fade-up" style="transition-delay:0.16s">
-          <span class="uc-ico">📈</span>
+          <span class="uc-ico uc-ico-line"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h16M7 15l4-4 3 3 5-7"/></svg></span>
           <div class="uc-role">Market</div>
           <div class="uc-title">Analysts &amp; Investors</div>
           <div class="uc-body">Market participants who need reliable pricing context, asset class intelligence and structured data to inform decisions.</div>
@@ -1080,7 +1114,7 @@ input,select,textarea{outline:none;font-family:inherit}
             <span style="width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px rgba(0,217,126,0.6);flex-shrink:0"></span>
             EAX GLOBAL
           </div>
-          <div class="footer-tagline">Environmental Asset Exchange · Market infrastructure for carbon, biodiversity and nature-based assets.</div>
+          <div class="footer-tagline">Verification-first infrastructure for environmental asset markets.</div>
           <div style="margin-top:14px;display:flex;gap:8px;align-items:center">
             <span class="footer-stage">Early Stage</span>
             <span style="font-size:10px;color:var(--text3)">Platform in development</span>
