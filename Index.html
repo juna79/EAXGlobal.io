@@ -643,6 +643,86 @@ body{font-size:16px;line-height:1.68}
 .footer-logo{font-size:18px}.footer-tagline{font-size:14px;max-width:330px;color:#a8b4c6}.footer-col-title{font-size:10.5px}.footer-link{font-size:14px}.footer-copy,.footer-links-row a{font-size:12.5px}.footer-stage{font-size:10px}
 .infra-card,.uc-card,.market-panel,.preview-panel,.market-side,.wl-form-wrap{border-color:rgba(51,64,90,.9)}.infra-card:hover,.uc-card:hover{transform:translateY(-1px);box-shadow:0 14px 40px rgba(0,0,0,.26)}
 
+
+/* ══ PREMIUM TERMINAL TEASER — INSIDE EAX ═══════════════════════════════ */
+#market{
+  background:
+    radial-gradient(circle at 18% 0%,rgba(0,217,126,.075),transparent 34%),
+    radial-gradient(circle at 82% 18%,rgba(245,158,11,.055),transparent 30%),
+    linear-gradient(180deg,#0f1217 0%,#090b0f 100%);
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+#market::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:
+    linear-gradient(rgba(0,217,126,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,217,126,.025) 1px,transparent 1px);
+  background-size:54px 54px;
+}
+.market-terminal-layout{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:minmax(0,1.48fr) 390px;gap:28px;align-items:center;
+}
+.market-terminal-copy{padding:6px 0 6px 4px}
+.market-terminal-kicker{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:10px;font-weight:900;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-family:var(--mono);margin-bottom:14px;
+}
+.market-terminal-kicker::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px rgba(245,158,11,.65)}
+.market-terminal-h{
+  font-size:42px;font-weight:950;line-height:1.05;letter-spacing:-1.35px;
+  color:var(--text);margin-bottom:16px;
+}
+.market-terminal-h span{color:var(--green)}
+.market-terminal-body{font-size:16px;line-height:1.78;color:#cbd5e1;margin-bottom:22px;max-width:520px}
+.market-terminal-points{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:22px 0 24px;max-width:520px}
+.mt-point{
+  background:rgba(255,255,255,.027);border:1px solid rgba(51,64,90,.72);
+  border-radius:10px;padding:10px 11px;display:flex;gap:9px;align-items:flex-start;
+  font-size:13px;color:#cbd5e1;line-height:1.45;
+}
+.mt-point i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,217,126,.5);margin-top:7px;flex-shrink:0}
+.terminal-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.terminal-note{font-size:11px;color:var(--text3);margin-top:10px;font-style:italic}
+.terminal-stage-strip{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}
+.terminal-stage-pill{font-size:9px;font-weight:900;letter-spacing:1.25px;text-transform:uppercase;font-family:var(--mono);padding:4px 8px;border-radius:999px;border:1px solid rgba(51,64,90,.85);color:var(--text3);background:rgba(10,12,15,.55)}
+.terminal-stage-pill.hot{color:var(--green);border-color:rgba(0,217,126,.28);background:rgba(0,217,126,.07)}
+
+.terminal-window{
+  position:relative;
+  background:linear-gradient(180deg,rgba(20,24,32,.98),rgba(8,10,14,.98));
+  border:1px solid rgba(51,64,90,.95);
+  border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,.62),0 0 0 1px rgba(0,217,126,.035) inset;
+  min-height:560px;
+}
+.terminal-window::after{
+  content:'';position:absolute;inset:auto -20% -42% -20%;height:280px;
+  background:radial-gradient(ellipse,rgba(0,217,126,.13),transparent 62%);pointer-events:none;
+}
+.terminal-topbar{height:42px;background:rgba(15,18,23,.98);border-bottom:1px solid rgba(51,64,90,.78);display:flex;align-items:center;justify-content:space-between;padding:0 14px;gap:12px}
+.tw-left{display:flex;align-items:center;gap:9px;min-width:0}.tw-dots{display:flex;gap:5px}.tw-dot{width:7px;height:7px;border-radius:50%;background:rgba(148,163,184,.35)}.tw-dot.g{background:var(--green);box-shadow:0 0 8px rgba(0,217,126,.55)}
+.tw-title{font-size:10px;font-family:var(--mono);font-weight:900;color:var(--text2);letter-spacing:1.2px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tw-title span{color:var(--green)}
+.tw-access{font-size:8.5px;font-weight:900;font-family:var(--mono);letter-spacing:1.15px;color:var(--gold);text-transform:uppercase;border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.075);padding:3px 7px;border-radius:4px;white-space:nowrap}
+.terminal-tabs{display:flex;gap:4px;padding:9px 12px;border-bottom:1px solid rgba(31,39,55,.85);background:rgba(10,12,15,.4);overflow:hidden}
+.terminal-tab{font-size:10px;font-weight:800;color:var(--text3);border:1px solid rgba(51,64,90,.7);background:rgba(255,255,255,.025);border-radius:6px;padding:5px 9px;white-space:nowrap}.terminal-tab.active{color:var(--green);border-color:rgba(0,217,126,.32);background:rgba(0,217,126,.08)}.terminal-tab.locked{filter:blur(.2px);opacity:.52}
+.terminal-body-grid{display:grid;grid-template-columns:164px 1fr 172px;gap:10px;padding:12px;position:relative;z-index:1}
+.term-panel{background:rgba(10,12,15,.75);border:1px solid rgba(51,64,90,.75);border-radius:11px;overflow:hidden}.term-panel.pad{padding:10px}
+.term-panel-h{height:31px;display:flex;align-items:center;justify-content:space-between;padding:0 10px;background:rgba(20,24,32,.82);border-bottom:1px solid rgba(51,64,90,.65);font-size:9px;font-family:var(--mono);font-weight:900;letter-spacing:.85px;text-transform:uppercase;color:var(--text3)}.term-panel-h span{color:var(--green)}
+.term-filter{display:flex;flex-direction:column;gap:8px;padding:10px}.tf-mini-label{font-size:8px;font-weight:900;letter-spacing:.9px;text-transform:uppercase;color:var(--text3);font-family:var(--mono)}.tf-mini-box{height:27px;border-radius:6px;background:rgba(20,24,32,.9);border:1px solid rgba(51,64,90,.75);display:flex;align-items:center;padding:0 8px;color:var(--text2);font-size:10px}.tf-mini-box.green{color:var(--green);border-color:rgba(0,217,126,.25);background:rgba(0,217,126,.06)}
+.term-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:9px}.term-stat{background:rgba(10,12,15,.72);border:1px solid rgba(51,64,90,.72);border-radius:9px;padding:8px 9px;position:relative;overflow:hidden}.term-stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);opacity:.75}.term-stat.gold::before{background:var(--gold)}.term-stat.blue::before{background:var(--blue)}.term-stat.red::before{background:var(--red)}.term-stat-k{font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.65px;font-family:var(--mono);font-weight:900}.term-stat-v{font-size:16px;font-weight:950;font-family:var(--mono);color:var(--text);line-height:1.15;margin-top:3px}.term-stat-s{font-size:9px;color:var(--text3)}
+.term-chart{height:210px;background:#07090c;border:1px solid rgba(51,64,90,.72);border-radius:10px;position:relative;overflow:hidden;margin-bottom:9px}.term-chart::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:38px 32px}.chart-line{position:absolute;inset:0}.chart-glow{filter:drop-shadow(0 0 8px rgba(0,217,126,.42))}.chart-price-tag{position:absolute;right:8px;top:10px;background:var(--green);color:#000;border-radius:5px;padding:3px 8px;font-size:11px;font-family:var(--mono);font-weight:950}.chart-watermark{position:absolute;left:14px;bottom:12px;font-size:11px;color:rgba(148,163,184,.22);font-family:var(--mono);font-weight:900;letter-spacing:2px}.chart-live{position:absolute;left:10px;top:10px;display:flex;align-items:center;gap:5px;font-size:9px;font-family:var(--mono);font-weight:900;color:var(--green);text-transform:uppercase}.chart-live i{width:5px;height:5px;background:var(--green);border-radius:50%;animation:tlPulse 1.4s ease-in-out infinite}
+.term-assets{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.term-asset{background:rgba(20,24,32,.78);border:1px solid rgba(51,64,90,.72);border-radius:9px;padding:9px;min-height:96px;position:relative;overflow:hidden}.term-asset::after{content:'';position:absolute;right:-24px;bottom:-28px;width:75px;height:75px;border-radius:50%;background:rgba(0,217,126,.06)}.ta-badge{display:inline-flex;font-size:8px;font-weight:900;letter-spacing:.75px;text-transform:uppercase;font-family:var(--mono);color:var(--green);background:rgba(0,217,126,.08);border:1px solid rgba(0,217,126,.24);padding:2px 5px;border-radius:3px;margin-bottom:8px}.ta-badge.gold{color:var(--gold);background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25)}.ta-name{font-size:11px;line-height:1.25;font-weight:850;color:var(--text);margin-bottom:5px}.ta-meta{font-size:9px;color:var(--text3)}.ta-price{font-size:14px;color:var(--green);font-family:var(--mono);font-weight:950;margin-top:6px}
+.term-feed{display:flex;flex-direction:column}.feed-mini{display:grid;grid-template-columns:34px 1fr 47px;gap:5px;align-items:center;padding:7px 8px;border-bottom:1px solid rgba(31,39,55,.58);font-size:9.5px}.feed-mini:last-child{border-bottom:none}.side-buy{color:var(--green);background:rgba(0,217,126,.09);border-radius:3px;text-align:center;font-weight:950;font-family:var(--mono);padding:2px 0}.side-sell{color:var(--red);background:rgba(231,76,60,.09);border-radius:3px;text-align:center;font-weight:950;font-family:var(--mono);padding:2px 0}.feed-asset{color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.feed-val{color:var(--text);font-family:var(--mono);text-align:right}
+.cert-snip{padding:10px;border-top:1px solid rgba(31,39,55,.68);background:rgba(245,158,11,.035)}.cert-snip-id{font-size:8px;color:var(--text3);font-family:var(--mono);letter-spacing:.55px}.cert-snip-v{font-size:18px;color:var(--gold);font-family:var(--mono);font-weight:950;margin:3px 0}.cert-snip-k{font-size:9px;color:var(--text2)}
+.terminal-lock-overlay{position:absolute;left:8%;right:8%;bottom:24px;z-index:4;background:rgba(8,10,14,.72);border:1px solid rgba(0,217,126,.22);border-radius:14px;padding:14px 16px;backdrop-filter:blur(10px);box-shadow:0 18px 50px rgba(0,0,0,.42);display:flex;align-items:center;justify-content:space-between;gap:18px}.lock-title{font-size:12px;font-weight:950;color:var(--text);margin-bottom:2px}.lock-copy{font-size:10.5px;color:var(--text3);line-height:1.4}.lock-chip{font-size:9px;font-weight:950;font-family:var(--mono);letter-spacing:1px;text-transform:uppercase;color:#000;background:var(--green);border-radius:6px;padding:7px 10px;white-space:nowrap}
+.depth-blur{position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(90deg,rgba(8,10,14,.08),transparent 20%,transparent 70%,rgba(8,10,14,.23)),linear-gradient(180deg,transparent 66%,rgba(8,10,14,.56));}
+@media(max-width:1100px){.market-terminal-layout{grid-template-columns:1fr}.market-terminal-copy{max-width:760px}.terminal-window{min-height:auto}.terminal-body-grid{grid-template-columns:140px 1fr 150px}.market-terminal-points{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.market-terminal-h{font-size:32px}.market-terminal-body{font-size:15px}.market-terminal-points{grid-template-columns:1fr}.terminal-body-grid{grid-template-columns:1fr}.term-left,.term-right{display:none}.term-stats{grid-template-columns:repeat(2,1fr)}.term-assets{grid-template-columns:1fr}.terminal-window{border-radius:14px}.terminal-lock-overlay{position:relative;left:auto;right:auto;bottom:auto;margin:0 12px 12px;align-items:flex-start;flex-direction:column}.depth-blur{display:none}.terminal-tabs{overflow-x:auto}.term-chart{height:190px}}
+
 /* ══ MOBILE ════════════════════════════════════════════════════════════════ */
 @media(max-width:900px){
   .hero-inner{grid-template-columns:1fr;gap:40px}
@@ -692,7 +772,7 @@ body{font-size:16px;line-height:1.68}
   </div>
   <div class="nav-links">
     <a href="#infra" class="nav-btn">Platform</a>
-    <a href="#market" class="nav-btn">Market Preview</a>
+    <a href="#market" class="nav-btn">Terminal Preview</a>
     <a href="#usecases" class="nav-btn">Use Cases</a>
     <a href="#waitlist" class="nav-btn">Early Access</a>
   </div>
@@ -745,7 +825,7 @@ body{font-size:16px;line-height:1.68}
         <p class="hero-sub">EAX Global is building market infrastructure for environmental assets — helping carbon, biodiversity and nature-based credits become easier to discover, compare and verify.</p>
         <div class="hero-btns">
           <a href="#waitlist" class="btn-primary">Request Early Access</a>
-          <a href="#market" class="btn-outline">View Concept Preview</a>
+          <a href="#market" class="btn-outline">Preview Terminal</a>
           <a href="#infra" class="btn-ghost">How It Works →</a>
         </div>
       </div>
@@ -869,121 +949,119 @@ body{font-size:16px;line-height:1.68}
     </div>
   </section>
 
-  <!-- ══ MARKET PREVIEW ════════════════════════════════════════════════════ -->
+  <!-- ══ PREMIUM TERMINAL TEASER ════════════════════════════════════════════ -->
   <section class="section" id="market">
     <div class="section-inner-wide">
-      <div class="sec-eyebrow gold fade-up">Market Interface</div>
-      <h2 style="font-size:28px;font-weight:800;color:var(--text);letter-spacing:-0.6px;margin-bottom:32px;line-height:1.2" class="fade-up">A clearer interface for environmental assets.</h2>
-      <div class="market-layout">
-        <div class="market-left fade-up">
-          <div class="market-panel">
-            <div class="market-panel-header">
-              <span class="mph-title">Sample Asset Listings</span>
-              <span class="mph-badge">Illustrative Market Interface</span>
+      <div class="market-terminal-layout">
+        <div class="terminal-window fade-up" aria-label="EAX terminal teaser preview">
+          <div class="terminal-topbar">
+            <div class="tw-left">
+              <div class="tw-dots"><span class="tw-dot g"></span><span class="tw-dot"></span><span class="tw-dot"></span></div>
+              <div class="tw-title"><span>EAX</span> Terminal · Environmental Asset Infrastructure</div>
             </div>
-            <table class="market-table">
-              <thead>
-                <tr>
-                  <th style="width:36px"></th>
-                  <th>Asset / Project</th>
-                  <th>Type</th>
-                  <th>Sample Price</th>
-                  <th>Signal</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="mt-flag">KE</span></td>
-                  <td>
-                    <span class="mt-name">Clean Cooking Credits</span>
-                    <span class="mt-sample">Sample listing · Kenya</span>
-                  </td>
-                  <td><span class="pt-type redd">GS</span></td>
-                  <td>
-                    <span class="mt-price">$12.40</span>
-                    <span class="mt-note">illustrative</span>
-                  </td>
-                  <td><span class="mt-signal">Reference</span></td>
-                  <td><span class="mt-action">Early Access</span></td>
-                </tr>
-                <tr>
-                  <td><span class="mt-flag">TZ</span></td>
-                  <td>
-                    <span class="mt-name">Blue Carbon Restoration</span>
-                    <span class="mt-sample">Sample listing · Tanzania</span>
-                  </td>
-                  <td><span class="pt-type blue">BLUE</span></td>
-                  <td>
-                    <span class="mt-price">$28.10</span>
-                    <span class="mt-note">illustrative</span>
-                  </td>
-                  <td><span class="mt-signal">Illustrative</span></td>
-                  <td><span class="mt-action">Early Access</span></td>
-                </tr>
-                <tr>
-                  <td><span class="mt-flag">BR</span></td>
-                  <td>
-                    <span class="mt-name">Reforestation Credits</span>
-                    <span class="mt-sample">Sample listing · Brazil</span>
-                  </td>
-                  <td><span class="pt-type redd">REDD+</span></td>
-                  <td>
-                    <span class="mt-price">$16.80</span>
-                    <span class="mt-note">illustrative</span>
-                  </td>
-                  <td><span class="mt-signal">Sample</span></td>
-                  <td><span class="mt-action">Early Access</span></td>
-                </tr>
-                <tr>
-                  <td><span class="mt-flag">IN</span></td>
-                  <td>
-                    <span class="mt-name">Renewable Energy Credits</span>
-                    <span class="mt-sample">Sample listing · India</span>
-                  </td>
-                  <td><span class="pt-type wind">WIND</span></td>
-                  <td>
-                    <span class="mt-price">$7.60</span>
-                    <span class="mt-note">illustrative</span>
-                  </td>
-                  <td><span class="mt-signal">Indicative</span></td>
-                  <td><span class="mt-action">Early Access</span></td>
-                </tr>
-                <tr>
-                  <td><span class="mt-flag">GL</span></td>
-                  <td>
-                    <span class="mt-name">Biodiversity Assets</span>
-                    <span class="mt-sample">Multiple regions · Coming soon</span>
-                  </td>
-                  <td><span class="pt-type bio">BIO</span></td>
-                  <td>
-                    <span class="mt-price" style="color:var(--text3)">—</span>
-                    <span class="mt-note">pricing TBD</span>
-                  </td>
-                  <td><span style="font-size:10px;color:var(--gold);font-weight:700">Coming Soon</span></td>
-                  <td><span class="mt-action" style="background:rgba(245,158,11,0.08);color:var(--gold);border-color:rgba(245,158,11,0.2)">Notify Me</span></td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="market-footer">
-              <span class="mf-note">All listings illustrative only · not real market data · EAX is in development</span>
-              <span class="mf-link" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist →</span>
+            <div class="tw-access">Private Preview</div>
+          </div>
+
+          <div class="terminal-tabs">
+            <div class="terminal-tab active">Trade</div>
+            <div class="terminal-tab">Projects</div>
+            <div class="terminal-tab">P2P</div>
+            <div class="terminal-tab locked">Certificates</div>
+            <div class="terminal-tab locked">Intelligence</div>
+          </div>
+
+          <div class="terminal-body-grid">
+            <div class="term-left term-panel">
+              <div class="term-panel-h">Filters <span>Live</span></div>
+              <div class="term-filter">
+                <div><div class="tf-mini-label">Mode</div><div class="tf-mini-box green">Buyer View</div></div>
+                <div><div class="tf-mini-label">Asset Class</div><div class="tf-mini-box">Carbon · Nature</div></div>
+                <div><div class="tf-mini-label">Region</div><div class="tf-mini-box">Africa + Global</div></div>
+                <div><div class="tf-mini-label">Status</div><div class="tf-mini-box green">Verified Only</div></div>
+                <div><div class="tf-mini-label">Standard</div><div class="tf-mini-box">Verra · GS · Puro</div></div>
+              </div>
             </div>
+
+            <div class="term-main">
+              <div class="term-stats">
+                <div class="term-stat"><div class="term-stat-k">Index</div><div class="term-stat-v">$18.42</div><div class="term-stat-s">+3.2%</div></div>
+                <div class="term-stat gold"><div class="term-stat-k">Verified</div><div class="term-stat-v">128</div><div class="term-stat-s">assets</div></div>
+                <div class="term-stat blue"><div class="term-stat-k">Volume</div><div class="term-stat-v">42.8k</div><div class="term-stat-s">tCO₂e</div></div>
+                <div class="term-stat red"><div class="term-stat-k">Signals</div><div class="term-stat-v">Live</div><div class="term-stat-s">preview</div></div>
+              </div>
+
+              <div class="term-chart">
+                <div class="chart-live"><i></i> EAX composite preview</div>
+                <div class="chart-price-tag">$18.42</div>
+                <svg class="chart-line" viewBox="0 0 640 260" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="rgba(0,217,126,.28)"/>
+                      <stop offset="100%" stop-color="rgba(0,217,126,0)"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 204 C55 188 70 207 112 180 S185 118 238 144 305 199 366 131 440 80 502 108 577 96 640 52 L640 260 L0 260 Z" fill="url(#areaGrad)" opacity=".9"/>
+                  <path class="chart-glow" d="M0 204 C55 188 70 207 112 180 S185 118 238 144 305 199 366 131 440 80 502 108 577 96 640 52" fill="none" stroke="#00d97e" stroke-width="3"/>
+                  <path d="M0 220 C80 230 150 190 220 205 S360 225 440 172 552 160 640 132" fill="none" stroke="rgba(245,158,11,.55)" stroke-width="1.6" stroke-dasharray="7 8"/>
+                </svg>
+                <div class="chart-watermark">EAX GLOBAL</div>
+              </div>
+
+              <div class="term-assets">
+                <div class="term-asset"><span class="ta-badge">Verified</span><div class="ta-name">Laikipia Regenerative Soil Carbon</div><div class="ta-meta">Kenya · Soil carbon</div><div class="ta-price">$19.80</div></div>
+                <div class="term-asset"><span class="ta-badge gold">Under Review</span><div class="ta-name">Mombasa Coastal Plastic Recovery</div><div class="ta-meta">Kenya · Plastic credits</div><div class="ta-price">Signal</div></div>
+                <div class="term-asset"><span class="ta-badge">Verified</span><div class="ta-name">Kenya Distributed Solar P-REC</div><div class="ta-meta">Renewable energy</div><div class="ta-price">$8.40</div></div>
+              </div>
+            </div>
+
+            <div class="term-right term-panel term-feed">
+              <div class="term-panel-h">Order Flow <span>Preview</span></div>
+              <div class="feed-mini"><span class="side-buy">BUY</span><span class="feed-asset">Blue carbon</span><span class="feed-val">$22.6</span></div>
+              <div class="feed-mini"><span class="side-sell">SELL</span><span class="feed-asset">Cookstove GS</span><span class="feed-val">$6.9</span></div>
+              <div class="feed-mini"><span class="side-buy">BUY</span><span class="feed-asset">Soil carbon</span><span class="feed-val">$19.8</span></div>
+              <div class="feed-mini"><span class="side-buy">BUY</span><span class="feed-asset">Solar P-REC</span><span class="feed-val">$8.4</span></div>
+              <div class="feed-mini"><span class="side-sell">SELL</span><span class="feed-asset">Biochar CDR</span><span class="feed-val">$31.2</span></div>
+              <div class="cert-snip">
+                <div class="cert-snip-id">CERTIFICATE / RETIREMENT</div>
+                <div class="cert-snip-v">24,000</div>
+                <div class="cert-snip-k">tCO₂e verified record preview</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="depth-blur"></div>
+          <div class="terminal-lock-overlay">
+            <div>
+              <div class="lock-title">Full terminal reserved for verified participants.</div>
+              <div class="lock-copy">This is a limited preview of the trading, project, P2P, certificate and intelligence layers inside EAX.</div>
+            </div>
+            <div class="lock-chip">Request Access</div>
           </div>
         </div>
-        <div class="market-side fade-up" style="transition-delay:0.12s">
-          <div class="ms-eyebrow">About EAX</div>
-          <div class="ms-h">One connected system for measurable impact.</div>
-          <div class="ms-body">EAX is being designed as a market infrastructure layer for environmental assets: project profiles, verification signals, buyer access, retirement records and intelligence dashboards.</div>
-          <div class="ms-features">
-            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Structured project profiles with verification flags</span></div>
-            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Regional pricing signals and asset comparisons</span></div>
-            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Buyer, broker and developer workflows</span></div>
-            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Retirement and traceability records</span></div>
-            <div class="ms-feat"><span class="ms-feat-dot"></span><span>Intelligence dashboards for portfolio analysis</span></div>
+
+        <div class="market-terminal-copy fade-up" style="transition-delay:0.12s">
+          <div class="market-terminal-kicker">Inside The EAX Terminal</div>
+          <h2 class="market-terminal-h">A private market system, <span>not just a listing page.</span></h2>
+          <p class="market-terminal-body">EAX is being built as the front door to environmental asset markets — combining discovery, verification signals, project profiles, P2P access, retirement records and market intelligence in one institutional interface.</p>
+          <div class="market-terminal-points">
+            <div class="mt-point"><i></i><span>Compare assets by type, geography, standard, price and verification status.</span></div>
+            <div class="mt-point"><i></i><span>Give buyers and brokers a cleaner route from discovery to transaction.</span></div>
+            <div class="mt-point"><i></i><span>Surface project evidence before capital moves.</span></div>
+            <div class="mt-point"><i></i><span>Track certificates, retirements and portfolio-level impact.</span></div>
           </div>
-          <button class="ms-cta" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Request Early Access</button>
-          <div class="ms-cta-note">No commitment · early stage platform</div>
+          <div class="terminal-actions">
+            <a href="#waitlist" class="btn-primary">Request Institutional Access</a>
+            <a href="#usecases" class="btn-outline">Who It’s For</a>
+          </div>
+          <div class="terminal-note">Preview uses illustrative data only. Full platform access will open to selected early participants.</div>
+          <div class="terminal-stage-strip">
+            <span class="terminal-stage-pill hot">Verification-first</span>
+            <span class="terminal-stage-pill">Trade</span>
+            <span class="terminal-stage-pill">Projects</span>
+            <span class="terminal-stage-pill">P2P</span>
+            <span class="terminal-stage-pill">Certificates</span>
+            <span class="terminal-stage-pill">Intelligence</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1126,7 +1204,7 @@ body{font-size:16px;line-height:1.68}
             <div class="footer-col-links">
               <a href="#infra" class="footer-link">Asset Discovery</a>
               <a href="#infra" class="footer-link">Verification Signals</a>
-              <a href="#market" class="footer-link">Market Preview</a>
+              <a href="#market" class="footer-link">Terminal Preview</a>
               <a href="#infra" class="footer-link">Impact Intelligence</a>
             </div>
           </div>
