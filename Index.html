@@ -81,6 +81,8 @@ input,select,textarea{outline:none;font-family:inherit}
   border:1px solid transparent;
 }
 .nav-btn:hover{background:var(--bg4);color:var(--text)}
+.nav-btn.nav-kweli{color:var(--gold);font-weight:800;border-color:rgba(245,158,11,0.26);background:rgba(245,158,11,0.06)}
+.nav-btn.nav-kweli:hover{background:rgba(245,158,11,0.13);border-color:rgba(245,158,11,0.46);color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
 .nav-cta{
   padding:6px 16px;background:var(--green);color:#000;
@@ -340,6 +342,81 @@ input,select,textarea{outline:none;font-family:inherit}
 .stat-val.green{color:var(--green)}
 .stat-val.gold{color:var(--gold)}
 .stat-sub{font-size:10px;color:var(--text3);font-style:italic}
+
+
+/* ══ KWELI TEASER ════════════════════════════════════════════════════════ */
+#kweli{
+  background:linear-gradient(180deg,var(--bg2),var(--bg));
+  border-bottom:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+}
+#kweli::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(245,158,11,0.08),transparent 34%),
+    radial-gradient(circle at 84% 48%,rgba(0,217,126,0.055),transparent 36%);
+  pointer-events:none;
+}
+.kweli-shell{
+  position:relative;z-index:1;
+  background:linear-gradient(135deg,rgba(20,24,32,0.92),rgba(10,12,15,0.96));
+  border:1px solid var(--border2);
+  border-radius:var(--radius2);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  min-height:430px;
+}
+.kweli-copy{padding:46px 44px 42px;border-right:1px solid var(--border)}
+.kweli-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:9px;font-weight:800;letter-spacing:2.3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.kweli-kicker::before{content:'';width:18px;height:1px;background:var(--gold);opacity:.65}
+.kweli-h{font-size:32px;line-height:1.12;letter-spacing:-.8px;font-weight:900;color:var(--text);max-width:590px;margin-bottom:16px}
+.kweli-h span{color:var(--gold)}
+.kweli-body{font-size:14px;line-height:1.75;color:var(--text2);max-width:610px;margin-bottom:10px}
+.kweli-body strong{color:var(--text);font-weight:800}
+.kweli-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:22px 0 24px;max-width:590px}
+.kweli-point{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 10px;border:1px solid rgba(245,158,11,0.16);border-radius:var(--radius);
+  background:rgba(245,158,11,0.045);color:var(--text2);font-size:12px;font-weight:600;
+}
+.kweli-point::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(245,158,11,.45);flex-shrink:0}
+.kweli-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.btn-gold{
+  padding:11px 22px;background:var(--gold);color:#060708;border-radius:var(--radius);
+  font-size:13px;font-weight:900;letter-spacing:.2px;transition:all .18s;
+}
+.btn-gold:hover{filter:brightness(1.06);box-shadow:0 0 0 3px rgba(245,158,11,.16)}
+.kweli-note{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.2px}
+.kweli-card-wrap{padding:34px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0))}
+.kweli-card{
+  width:100%;max-width:440px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius2);
+  overflow:hidden;box-shadow:0 22px 55px rgba(0,0,0,.42);
+}
+.kweli-card-top{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.kweli-card-title{font-family:var(--mono);font-size:10px;font-weight:800;letter-spacing:1.3px;color:var(--text3);text-transform:uppercase}
+.kweli-live{font-size:8px;font-weight:900;letter-spacing:1.3px;text-transform:uppercase;color:var(--green);border:1px solid rgba(0,217,126,.25);background:rgba(0,217,126,.06);padding:3px 7px;border-radius:3px}
+.kweli-screen{margin:14px;background:#f6f8fa;color:#0f172a;border-radius:8px;padding:22px 20px;position:relative;overflow:hidden}
+.kweli-screen::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--green),var(--gold),var(--green))}
+.kweli-verified{display:flex;align-items:center;gap:14px;margin-bottom:16px;text-align:left}
+.kweli-check{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(0,217,126,.12);border:2px solid rgba(0,168,93,.25);font-size:28px;font-weight:900;color:var(--green2);flex-shrink:0}
+.kweli-v-title{font-size:22px;font-weight:900;letter-spacing:-.5px;color:#0f172a}
+.kweli-v-sub{font-size:12px;color:#64748b;margin-top:2px}
+.kweli-proof{display:grid;gap:1px;background:#dbe3ed;border-radius:8px;overflow:hidden}
+.kweli-row{display:flex;justify-content:space-between;gap:16px;background:#eef2f7;padding:9px 11px;font-size:11px}
+.kweli-row span:first-child{color:#64748b;font-weight:700}
+.kweli-row span:last-child{font-family:var(--mono);font-weight:800;color:#0f172a;white-space:nowrap}
+.kweli-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border)}
+.kweli-flow-step{background:var(--bg3);padding:13px 8px;text-align:center;min-height:78px}
+.kweli-flow-num{font-family:var(--mono);font-size:10px;font-weight:900;color:var(--gold);margin-bottom:6px}
+.kweli-flow-label{font-size:10.5px;line-height:1.3;color:var(--text2);font-weight:700}
+@media(max-width:900px){.kweli-shell{grid-template-columns:1fr}.kweli-copy{border-right:none;border-bottom:1px solid var(--border);padding:34px 24px}.kweli-h{font-size:28px}.kweli-card-wrap{padding:24px}.kweli-points{grid-template-columns:1fr}.kweli-flow{grid-template-columns:repeat(2,1fr)}}
 
 /* ══ INFRASTRUCTURE ════════════════════════════════════════════════════════ */
 #infra{background:var(--bg);border-bottom:1px solid var(--border)}
@@ -775,6 +852,7 @@ body{font-size:16px;line-height:1.68}
     <a href="#market" class="nav-btn">Terminal Preview</a>
     <a href="#usecases" class="nav-btn">Use Cases</a>
     <a href="#waitlist" class="nav-btn">Early Access</a>
+    <a href="#kweli" class="nav-btn nav-kweli">Meet Kweli</a>
   </div>
   <div class="nav-right">
     <span class="nav-tag">Early Stage</span>
@@ -911,6 +989,61 @@ body{font-size:16px;line-height:1.68}
       </div>
     </div>
   </div>
+
+
+  <!-- ══ KWELI ══════════════════════════════════════════════════════════════ -->
+  <section class="section" id="kweli">
+    <div class="section-inner-wide">
+      <div class="kweli-shell">
+        <div class="kweli-copy fade-up">
+          <div class="kweli-kicker">Meet Kweli</div>
+          <h2 class="kweli-h">The verification layer beneath the EAX market.</h2>
+          <p class="kweli-body">Kweli is EAX Global’s infrastructure layer for proof: hashes, timestamps, audit trails and QR-based verification without putting private data on-chain.</p>
+          <p class="kweli-body">The marketplace is the front door. Kweli is the trust layer underneath it — built so institutions, buyers and partners can check whether a claim, certificate or record is real.</p>
+          <div class="kweli-points">
+            <div class="kweli-point">QR public verification pages</div>
+            <div class="kweli-point">Hash-only privacy model</div>
+            <div class="kweli-point">Timestamps and audit trails</div>
+            <div class="kweli-point">Built beyond carbon pilots</div>
+          </div>
+          <div class="kweli-actions">
+            <a class="btn-gold" href="https://kweliafrica.netlify.app/" target="_blank" rel="noopener noreferrer">Open Kweli Demo →</a>
+            <a class="btn-outline" href="#waitlist">Talk to EAX</a>
+            <span class="kweli-note">kweliafrica.netlify.app</span>
+          </div>
+        </div>
+        <div class="kweli-card-wrap fade-up" style="transition-delay:0.12s">
+          <div class="kweli-card" aria-label="Kweli verification preview">
+            <div class="kweli-card-top">
+              <span class="kweli-card-title">Verification Preview</span>
+              <span class="kweli-live">Live demo</span>
+            </div>
+            <div class="kweli-screen">
+              <div class="kweli-verified">
+                <div class="kweli-check">✓</div>
+                <div>
+                  <div class="kweli-v-title">Verified</div>
+                  <div class="kweli-v-sub">Record anchored. Claim can be checked.</div>
+                </div>
+              </div>
+              <div class="kweli-proof">
+                <div class="kweli-row"><span>Document Hash</span><span>0x7f3a...91c4</span></div>
+                <div class="kweli-row"><span>Issuer</span><span>EAX Global</span></div>
+                <div class="kweli-row"><span>Status</span><span>VALID</span></div>
+                <div class="kweli-row"><span>Timestamp</span><span>2026-05-26</span></div>
+              </div>
+            </div>
+            <div class="kweli-flow">
+              <div class="kweli-flow-step"><div class="kweli-flow-num">01</div><div class="kweli-flow-label">Create record</div></div>
+              <div class="kweli-flow-step"><div class="kweli-flow-num">02</div><div class="kweli-flow-label">Hash privately</div></div>
+              <div class="kweli-flow-step"><div class="kweli-flow-num">03</div><div class="kweli-flow-label">Anchor proof</div></div>
+              <div class="kweli-flow-step"><div class="kweli-flow-num">04</div><div class="kweli-flow-label">Verify by QR</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ══ INFRASTRUCTURE ════════════════════════════════════════════════════ -->
   <section class="section" id="infra">
@@ -1349,7 +1482,7 @@ body{font-size:16px;line-height:1.68}
 
 /* ══ NAV ACTIVE STATE ════════════════════════════════════════════════════ */
 (function(){
-  var sections = ['infra','market','usecases','waitlist'];
+  var sections = ['kweli','infra','market','usecases','waitlist'];
   var btns = document.querySelectorAll('.nav-btn[href]');
   window.addEventListener('scroll', function(){
     var scrollY = window.scrollY + 120;
