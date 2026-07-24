@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EAX Global — Trust infrastructure for the digital economy</title>
+<meta name="description" content="EAX Global builds technology that helps organisations establish trust across critical documents, claims, supply chains and digital transactions. Kweli is its trust infrastructure platform.">
+<link rel="canonical" href="https://eaxglobal.io/">
+<meta name="theme-color" content="#0a0c0f">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EAX Global">
+<meta property="og:title" content="EAX Global — Trust infrastructure for the digital economy">
+<meta property="og:description" content="Technology that helps organisations establish trust across critical documents, claims, supply chains and digital transactions.">
+<meta property="og:url" content="https://eaxglobal.io/">
+<meta property="og:image" content="https://eaxglobal.io/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@eaxglobal">
+<meta name="twitter:title" content="EAX Global — Trust infrastructure for the digital economy">
+<meta name="twitter:description" content="Technology that helps organisations establish trust across critical documents, claims, supply chains and digital transactions.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/styles.css" as="style">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<!-- Netlify form detection (build-time) -->
+<form name="eax-partner" data-netlify="true" hidden>
+  <input type="text" name="name"><input type="email" name="email"><input type="text" name="organisation">
+  <select name="enquiry"></select><textarea name="message"></textarea>
+</form>
+
+<!-- ══ NAV ══ -->
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="index.html" aria-label="EAX Global home"><img class="brand__mark" src="assets/logo.png" alt="EAX Global" width="1061" height="536"></a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    <nav class="nav__links" aria-label="Primary">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a>
+      <a class="nav__link" href="vision.html">Vision</a>
+      <a class="nav__link" href="products.html">Products</a>
+      <a class="nav__link" href="company.html">Company</a>
+      <a class="nav__link" href="insights.html">Insights</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="nav__kweli" href="https://kweli.solutions" target="_blank" rel="noopener">
+        Explore Kweli
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero__grid-bg" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <div class="eyebrow reveal">EAX Global</div>
+      <h1 class="display reveal" style="max-width:16ch">Building trust infrastructure for the digital economy.</h1>
+      <p class="lede reveal" style="margin-top:26px;max-width:58ch">
+        EAX Global develops technology that helps organisations establish trust across critical
+        documents, claims, supply chains and digital transactions — so decisions can be made on
+        evidence that is genuine, original and unchanged.
+      </p>
+      <div class="reveal" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:34px">
+        <a class="btn btn--primary" href="products.html">See what we're building
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--outline" href="contact.html">Partner with EAX Global</a>
+        <a class="btn btn--kweli" href="https://kweli.solutions" target="_blank" rel="noopener">Explore Kweli
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THE PROBLEM ══ -->
+  <section class="section">
+    <div class="wrap two-col">
+      <div class="reveal">
+        <div class="eyebrow">The problem</div>
+        <h2 class="statement">Organisations decide on digital evidence they cannot fully trust.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>
+          Almost every important decision now depends on a digital file. A bank approves a facility
+          against uploaded statements. An insurer settles a claim against a repair invoice and an
+          assessor's report. A buyer pays a supplier against a delivery note and a certificate.
+        </p>
+        <p>
+          But files can be altered, duplicated, replaced or generated convincingly. As editing and
+          generation tools become more capable, the gap between a document that looks genuine and one
+          that is genuine keeps widening — and the cost of relying on the wrong version falls on the
+          organisation that trusted it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ THE MISSING LAYER ══ -->
+  <section class="section section--tight" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap two-col">
+      <div class="reveal">
+        <div class="eyebrow">The missing layer</div>
+        <h2 class="title" style="max-width:14ch">Most systems manage information. Few can prove it.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>
+          Organisations already run capable systems for storing, moving and processing documents.
+          What almost none of them have is an independent way to establish whether the specific file
+          in front of them is the original, unaltered version issued by a known source.
+        </p>
+        <p>
+          <strong>Trust infrastructure</strong> is the layer that answers that question. It records a
+          cryptographic fingerprint of a document at the moment it is issued, then lets anyone check a
+          later copy against that record — without the original file ever needing to be exposed. It
+          does not replace existing systems. It sits alongside them and gives them something to verify
+          against.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHAT EAX IS BUILDING — trust layer diagram ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:52ch;margin-bottom:44px">
+        <div class="eyebrow">What we're building</div>
+        <h2 class="title">One trust layer. Several products built on top of it.</h2>
+        <p class="lede" style="margin-top:18px">
+          EAX Global builds products for specific workflows — documents, claims, supply chains,
+          credentials — on a shared foundation called Kweli. Each product speaks the language of its
+          industry; underneath, they rely on the same way of proving a record is real.
+        </p>
+      </div>
+
+      <div class="trust-diagram reveal">
+        <div class="trust-diagram__products">
+          <div class="trust-node trust-node--live">
+            <div class="trust-node__name">Kweli Verify</div>
+            <div class="trust-node__stage">Available now</div>
+          </div>
+          <div class="trust-node">
+            <div class="trust-node__name">Kweli Claims</div>
+            <div class="trust-node__stage">Pilot focus</div>
+          </div>
+          <div class="trust-node">
+            <div class="trust-node__name">Kweli Supply</div>
+            <div class="trust-node__stage">In development</div>
+          </div>
+          <div class="trust-node">
+            <div class="trust-node__name">Kweli Credentials</div>
+            <div class="trust-node__stage">Future product</div>
+          </div>
+          <div class="trust-node">
+            <div class="trust-node__name">EAX Marketplace</div>
+            <div class="trust-node__stage">Long-term</div>
+          </div>
+        </div>
+
+        <div class="trust-connectors" aria-hidden="true">
+          <svg viewBox="0 0 1000 34" preserveAspectRatio="none">
+            <g stroke="#5db665" stroke-opacity="0.4" stroke-width="1" fill="none">
+              <path d="M100 0 V14 Q100 26 200 26 H500"/>
+              <path d="M300 0 V14 Q300 24 380 26 H500"/>
+              <path d="M500 0 V26"/>
+              <path d="M700 0 V14 Q700 24 620 26 H500"/>
+              <path d="M900 0 V14 Q900 26 800 26 H500"/>
+            </g>
+            <circle cx="500" cy="27" r="3" fill="#5db665"/>
+          </svg>
+        </div>
+
+        <div class="trust-layer">
+          <div class="trust-layer__label">
+            <svg class="dotmark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#11151b"/><path d="M8 16.5l5 5L24 9" fill="none" stroke="#5db665" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div>
+              <b>Kweli — the shared trust layer</b>
+              <span>Cryptographic records, provenance and verification for every product above</span>
+            </div>
+          </div>
+          <div class="trust-layer__props">
+            <span>Integrity</span><span>Provenance</span><span>Issuer authenticity</span><span>Audit trail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PRODUCT ECOSYSTEM ══ -->
+  <section class="section" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="reveal" style="max-width:50ch;margin-bottom:26px">
+        <div class="eyebrow">The products</div>
+        <h2 class="title">A product line that expands over time.</h2>
+      </div>
+
+      <div class="reveal">
+        <div class="product-row">
+          <div class="product-row__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9.5 14.5l1.8 1.8 3.7-3.7"/></svg></div>
+          <div class="product-row__body">
+            <h3>Kweli Verify</h3>
+            <p>Document integrity and authenticity infrastructure. It lets organisations confirm that a document is the genuine, unaltered file issued by a known organisation. It proves integrity, provenance and issuer authenticity — not that the information inside is true.</p>
+          </div>
+          <div class="product-row__meta"><span class="stage stage--live">Available now</span></div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-row__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="product-row__body">
+            <h3>Kweli Claims</h3>
+            <p>An independent integrity layer for insurance claims — repair invoices, assessors' reports, quotations, medical documents and supporting evidence. It adds verification to existing claims workflows; it does not replace claims-management systems.</p>
+          </div>
+          <div class="product-row__meta"><span class="stage stage--pilot">Pilot focus</span></div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-row__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div>
+          <div class="product-row__body">
+            <h3>Kweli Supply</h3>
+            <p>Trust for supply-chain and trade documentation — invoices, delivery notes, certificates, inspection reports, warehouse and export documents, and quality-assurance records — so counterparties can verify what they receive.</p>
+          </div>
+          <div class="product-row__meta"><span class="stage stage--dev">In development</span></div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-row__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="4"/><path d="M8 13l-1.5 8L12 18l5.5 3L16 13"/></svg></div>
+          <div class="product-row__body">
+            <h3>Kweli Credentials</h3>
+            <p>Verification for certificates, licences, professional credentials and institutional documents — a natural extension of the same trust layer, shown here as part of the direction rather than an immediate commercial focus.</p>
+          </div>
+          <div class="product-row__meta"><span class="stage stage--future">Future product</span></div>
+        </div>
+
+        <div class="product-row">
+          <div class="product-row__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
+          <div class="product-row__body">
+            <h3>EAX Marketplace</h3>
+            <p>A long-term direction: a trusted digital marketplace built on verified organisations, documents and transactions. It is being explored and built toward — it is not a live product today.</p>
+          </div>
+          <div class="product-row__meta"><span class="stage stage--future">Long-term direction</span></div>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:28px">
+        <a class="btn btn--outline" href="products.html">View the full product ecosystem
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHAT EXISTS TODAY ══ -->
+  <section class="section">
+    <div class="wrap two-col">
+      <div class="reveal">
+        <div class="eyebrow">Built today</div>
+        <h2 class="title" style="max-width:15ch">What EAX Global has built so far.</h2>
+        <p class="prose" style="margin-top:18px"><span class="muted" style="display:block">Kweli currently lets organisations register and verify document integrity using cryptographic records. A document is fingerprinted when it is issued; anyone can later check a copy against that record. The original file does not need to be publicly exposed to be verified.</span></p>
+        <div class="placeholder reveal" style="margin-top:22px">
+          <span><b>Author note:</b> add real pilot organisations, sectors or verification counts here once they can be shared publicly. Until then the copy stays deliberately neutral.</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="verify-card" role="img" aria-label="Illustrative Kweli Verify verification result">
+          <div class="verify-card__top">
+            <span class="t">Kweli Verify · verification</span>
+            <span class="stage stage--live">Live capability</span>
+          </div>
+          <div class="verify-card__body">
+            <div class="verify-status">
+              <div class="verify-status__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div><b>Integrity confirmed</b><span>This file matches the record issued by the source organisation.</span></div>
+            </div>
+            <div class="verify-rows">
+              <div class="r"><span>Document fingerprint</span><span>0x7f3a…91c4</span></div>
+              <div class="r"><span>Issuing organisation</span><span>Verified issuer</span></div>
+              <div class="r"><span>Status</span><span>Unaltered</span></div>
+              <div class="r"><span>Recorded</span><span>Timestamped</span></div>
+            </div>
+            <p class="dim" style="font-size:12.5px;margin-top:14px">Illustrative interface. Verification proves integrity, provenance and issuer authenticity — not the truth of the document's contents.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHAT COMES NEXT — roadmap ══ -->
+  <section class="section" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="reveal" style="max-width:48ch;margin-bottom:36px">
+        <div class="eyebrow">Coming next</div>
+        <h2 class="title">A believable path from documents to markets.</h2>
+      </div>
+      <div class="roadmap reveal">
+        <div class="roadmap__step"><div class="roadmap__num">01</div><div><h3>Document integrity</h3><p>Prove that individual documents are genuine, original and unchanged. This is live today through Kweli Verify.</p></div></div>
+        <div class="roadmap__step"><div class="roadmap__num">02</div><div><h3>Claims and supply-chain workflows</h3><p>Extend verification into the evidence that moves through insurance and trade — the focus of Kweli Claims and Kweli Supply.</p></div></div>
+        <div class="roadmap__step"><div class="roadmap__num">03</div><div><h3>Enterprise integrations</h3><p>Connect verification into the systems organisations already use, so proof becomes part of existing workflows rather than a separate step.</p></div></div>
+        <div class="roadmap__step"><div class="roadmap__num">04</div><div><h3>Trusted organisational networks</h3><p>Let verified organisations recognise each other's records, so trust can travel between institutions.</p></div></div>
+        <div class="roadmap__step"><div class="roadmap__num">05</div><div><h3>Trusted digital marketplaces</h3><p>Build toward markets where organisations, documents and transactions are verifiable by design — the long-term direction of EAX Marketplace.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INDUSTRIES ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:50ch;margin-bottom:34px">
+        <div class="eyebrow">Where it applies</div>
+        <h2 class="title">Workflows that turn on a document being real.</h2>
+      </div>
+      <div class="grid grid-4 reveal">
+        <div class="card"><div class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div><h3>Banking &amp; finance</h3><p>Verify statements, KYC documents and supporting evidence before extending credit or onboarding a counterparty.</p></div>
+        <div class="card"><div class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/></svg></div><h3>Insurance</h3><p>Add an independent integrity check to invoices, assessors' reports and claims evidence, without changing how claims are managed.</p></div>
+        <div class="card"><div class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg></div><h3>Supply chain &amp; trade</h3><p>Confirm invoices, delivery notes, certificates and inspection reports as they move between parties.</p></div>
+        <div class="card"><div class="card__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></div><h3>Institutions &amp; public bodies</h3><p>Issue certificates, licences and credentials that recipients and third parties can verify for themselves.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TECHNOLOGY PRINCIPLES ══ -->
+  <section class="section section--tight" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <div class="reveal" style="max-width:50ch;margin-bottom:30px">
+        <div class="eyebrow">How we build</div>
+        <h2 class="title">Principles behind the technology.</h2>
+      </div>
+      <div class="grid grid-3 reveal">
+        <div class="card"><h3>Privacy by default</h3><p>Verification works from a cryptographic fingerprint of a document, so the original file does not need to be exposed to be checked.</p></div>
+        <div class="card"><h3>Independent of any one system</h3><p>The trust layer sits alongside existing software. It adds a way to verify records without asking organisations to replace what already works.</p></div>
+        <div class="card"><h3>Verify before you decide</h3><p>The point of the infrastructure is to establish whether evidence is genuine before capital, claims or approvals move against it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VISION TEASER ══ -->
+  <section class="section">
+    <div class="wrap two-col">
+      <div class="reveal">
+        <div class="eyebrow">The company</div>
+        <h2 class="title" style="max-width:16ch">Why this could become a large technology company.</h2>
+      </div>
+      <div class="prose reveal">
+        <p>
+          The need to establish whether a digital record is genuine is not specific to one industry or
+          one country. The same problem appears in banking, insurance, trade, government and beyond —
+          wherever a decision depends on a file.
+        </p>
+        <p>
+          EAX Global is being built from Nairobi for global markets, starting with a working product
+          and a clear next set of workflows. The ambition is to build the layer organisations rely on
+          before they act on documents, evidence and transactions.
+        </p>
+        <p><a class="btn btn--ghost" href="vision.html" style="padding-left:0">Read the full vision
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ══ -->
+  <section class="section cta-band">
+    <div class="cta-band__glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="cta-band__inner reveal">
+        <div class="eyebrow" style="justify-content:center">Work with us</div>
+        <h2 class="title">Building something that depends on trust?</h2>
+        <p>Whether you're an enterprise, an insurer, a financial institution, a partner or an investor — we'd like to hear how you think about verification.</p>
+        <div class="cta-actions">
+          <a class="btn btn--primary" href="contact.html">Partner with EAX Global</a>
+          <a class="btn btn--kweli" href="https://kweli.solutions" target="_blank" rel="noopener">Explore Kweli
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="index.html" aria-label="EAX Global home"><img class="brand__mark" src="assets/logo.png" alt="EAX Global" width="1061" height="536"></a>
+        <p>Trust infrastructure for the digital economy. Built from Nairobi for global markets.</p>
+        <span class="stage stage--dev">Early stage · building in the open</span>
+      </div>
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="vision.html">Vision</a>
+        <a href="products.html">Products</a>
+        <a href="company.html">Company</a>
+        <a href="insights.html">Insights</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Products</h4>
+        <a href="products.html#verify">Kweli Verify</a>
+        <a href="products.html#claims">Kweli Claims</a>
+        <a href="products.html#supply">Kweli Supply</a>
+        <a href="products.html#credentials">Kweli Credentials</a>
+        <a href="products.html#marketplace">EAX Marketplace</a>
+      </div>
+      <div class="footer__col">
+        <h4>Connect</h4>
+        <a class="kweli" href="https://kweli.solutions" target="_blank" rel="noopener">Explore Kweli ↗</a>
+        <a href="https://x.com/eaxglobal" target="_blank" rel="noopener">@eaxglobal ↗</a>
+        <a href="mailto:eaxexchange@gmail.com">eaxexchange@gmail.com</a>
+        <a href="contact.html">Partner enquiries</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> EAX Global · eaxglobal.io</p>
+      <nav aria-label="Legal">
+        <a href="contact.html">Contact</a>
+        <a href="https://kweli.solutions" target="_blank" rel="noopener">Kweli</a>
+        <a href="https://x.com/eaxglobal" target="_blank" rel="noopener">X / Twitter</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>
