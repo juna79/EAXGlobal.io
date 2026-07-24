@@ -18,6 +18,25 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<noscript><style>
+.reveal,[data-reveal] > *{opacity:1!important;transform:none!important}
+.trust-field,.scroll-progress{display:none!important}
+.eco__node{opacity:1!important;transform:translate(-50%,-50%)!important}
+.eco__edge{opacity:.28!important;stroke-dashoffset:0!important}
+.ladder__body{opacity:1!important;transform:none!important}
+.ladder__node{border-color:var(--accent)!important;background:var(--accent)!important}
+.vscene{height:auto!important}
+.vscene__pin{position:static!important;height:auto!important;padding:48px 0!important}
+.vs-caption{position:relative!important;opacity:1!important}
+.vs-caption:first-child{display:none!important}
+.vs-chip{display:none!important}
+.vs-sweep{opacity:1!important;transform:none!important}
+.vs-stack-item{opacity:1!important;transform:none!important}
+.tl__progress{transform:scaleY(1)!important}
+.tl__dot{border-color:var(--accent)!important}
+.fl-check{stroke-dashoffset:0!important}
+.type__cursor{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -37,10 +56,12 @@
     </nav>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <main class="page">
 
   <section class="hero">
+    <div class="trust-field" data-anim="trust-field" aria-hidden="true"></div>
     <div class="hero__grid-bg" aria-hidden="true"></div>
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="wrap hero__inner">
@@ -54,12 +75,12 @@
   </section>
 
   <section class="section">
-    <div class="wrap two-col" style="grid-template-columns:1fr 1.1fr">
+    <div class="wrap contact-split">
       <!-- Channels -->
       <div class="reveal">
         <div class="eyebrow">Ways to reach us</div>
         <h2 class="title" style="max-width:14ch;margin-bottom:26px">Choose the right channel.</h2>
-        <div class="grid" style="gap:14px">
+        <div class="grid" style="gap:14px" data-reveal="stagger">
           <div class="channel"><span class="channel__k">Enterprise partnerships</span><h3>Work with EAX Global</h3><p>For enterprises, insurers, banks, supply-chain and development-finance organisations exploring how verification fits your workflows. Use the form, or email <a href="mailto:eaxexchange@gmail.com">eaxexchange@gmail.com</a>.</p></div>
           <div class="channel"><span class="channel__k">Pilots &amp; integrations</span><h3>Run a pilot</h3><p>To discuss a pilot in claims, supply or credentials, or a technology integration, choose the matching option in the form and tell us about your use case.</p></div>
           <div class="channel"><span class="channel__k">Investors &amp; media</span><h3>Investment &amp; press</h3><p>For investor conversations or media enquiries, reach us at <a href="mailto:eaxexchange@gmail.com">eaxexchange@gmail.com</a> or via <a href="https://x.com/eaxglobal" target="_blank" rel="noopener">@eaxglobal</a>.</p></div>
@@ -130,5 +151,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

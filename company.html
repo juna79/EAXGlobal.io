@@ -18,6 +18,25 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<noscript><style>
+.reveal,[data-reveal] > *{opacity:1!important;transform:none!important}
+.trust-field,.scroll-progress{display:none!important}
+.eco__node{opacity:1!important;transform:translate(-50%,-50%)!important}
+.eco__edge{opacity:.28!important;stroke-dashoffset:0!important}
+.ladder__body{opacity:1!important;transform:none!important}
+.ladder__node{border-color:var(--accent)!important;background:var(--accent)!important}
+.vscene{height:auto!important}
+.vscene__pin{position:static!important;height:auto!important;padding:48px 0!important}
+.vs-caption{position:relative!important;opacity:1!important}
+.vs-caption:first-child{display:none!important}
+.vs-chip{display:none!important}
+.vs-sweep{opacity:1!important;transform:none!important}
+.vs-stack-item{opacity:1!important;transform:none!important}
+.tl__progress{transform:scaleY(1)!important}
+.tl__dot{border-color:var(--accent)!important}
+.fl-check{stroke-dashoffset:0!important}
+.type__cursor{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -37,6 +56,7 @@
     </nav>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <main class="page">
 
@@ -83,8 +103,52 @@
     </div>
   </section>
 
-  <!-- PRINCIPLES -->
+  <!-- MOMENTUM TIMELINE -->
   <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:52ch;margin-bottom:44px">
+        <div class="eyebrow">The path ahead</div>
+        <h2 class="title">One product live. A clear line to a much larger platform.</h2>
+        <p class="lede" style="margin-top:16px">We are deliberately sequenced — each stage earns the next. This is the direction, not a set of dated promises.</p>
+      </div>
+      <div class="tl" data-anim="timeline">
+        <div class="tl__rail" aria-hidden="true"><div class="tl__progress"></div></div>
+        <div class="tl__step">
+          <span class="tl__dot" aria-hidden="true"></span>
+          <div class="tl__phase">Today</div>
+          <div class="tl__h">Document integrity, in production</div>
+          <div class="tl__p">Kweli Verify lets organisations register and verify that a document is genuine, original and unchanged.</div>
+        </div>
+        <div class="tl__step">
+          <span class="tl__dot" aria-hidden="true"></span>
+          <div class="tl__phase">Next</div>
+          <div class="tl__h">Claims &amp; supply-chain pilots</div>
+          <div class="tl__p">Extending verification into insurance claims and trade documentation with early partners.</div>
+        </div>
+        <div class="tl__step">
+          <span class="tl__dot" aria-hidden="true"></span>
+          <div class="tl__phase">Then</div>
+          <div class="tl__h">Enterprise integrations</div>
+          <div class="tl__p">Connecting verification into the systems organisations already run, so proof becomes part of existing workflows.</div>
+        </div>
+        <div class="tl__step">
+          <span class="tl__dot" aria-hidden="true"></span>
+          <div class="tl__phase">Horizon</div>
+          <div class="tl__h">Trusted organisational networks</div>
+          <div class="tl__p">Verified organisations recognising each other's records, so trust can travel between institutions.</div>
+        </div>
+        <div class="tl__step">
+          <span class="tl__dot" aria-hidden="true"></span>
+          <div class="tl__phase">Long-term</div>
+          <div class="tl__h">Trusted digital marketplaces</div>
+          <div class="tl__p">Markets where organisations, documents and transactions are verifiable by design.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="section" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
       <div class="reveal" style="max-width:48ch;margin-bottom:32px">
         <div class="eyebrow">Principles</div>
@@ -102,7 +166,7 @@
   </section>
 
   <!-- LEADERSHIP -->
-  <section class="section" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <section class="section">
     <div class="wrap">
       <div class="reveal" style="max-width:48ch;margin-bottom:32px">
         <div class="eyebrow">Leadership</div>
@@ -119,7 +183,7 @@
   </section>
 
   <!-- CONTACT SUMMARY -->
-  <section class="section">
+  <section class="section" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap">
       <div class="reveal" style="max-width:48ch;margin-bottom:28px">
         <div class="eyebrow">Contact</div>
@@ -169,5 +233,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

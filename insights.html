@@ -18,6 +18,25 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<noscript><style>
+.reveal,[data-reveal] > *{opacity:1!important;transform:none!important}
+.trust-field,.scroll-progress{display:none!important}
+.eco__node{opacity:1!important;transform:translate(-50%,-50%)!important}
+.eco__edge{opacity:.28!important;stroke-dashoffset:0!important}
+.ladder__body{opacity:1!important;transform:none!important}
+.ladder__node{border-color:var(--accent)!important;background:var(--accent)!important}
+.vscene{height:auto!important}
+.vscene__pin{position:static!important;height:auto!important;padding:48px 0!important}
+.vs-caption{position:relative!important;opacity:1!important}
+.vs-caption:first-child{display:none!important}
+.vs-chip{display:none!important}
+.vs-sweep{opacity:1!important;transform:none!important}
+.vs-stack-item{opacity:1!important;transform:none!important}
+.tl__progress{transform:scaleY(1)!important}
+.tl__dot{border-color:var(--accent)!important}
+.fl-check{stroke-dashoffset:0!important}
+.type__cursor{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -37,6 +56,7 @@
     </nav>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <main class="page">
 
@@ -55,19 +75,26 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="empty-state reveal">
-        <div class="empty-state__mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="10" y="7" width="28" height="34" rx="3"/>
-            <path d="M16 16h16M16 22h16M16 28h10"/>
-            <circle cx="33.5" cy="33.5" r="7" fill="var(--bg-2)"/>
-            <path d="M30.4 33.6l2.2 2.2 4-4.4"/>
-          </svg>
+      <div class="coming reveal">
+        <div class="coming__grid" aria-hidden="true"></div>
+        <div class="coming__inner">
+          <div class="coming__mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="10" y="7" width="28" height="34" rx="3"/>
+              <path d="M16 16h16M16 22h16M16 28h10"/>
+              <circle cx="33.5" cy="33.5" r="7" fill="var(--bg-2)"/>
+              <path d="M30.4 33.6l2.2 2.2 4-4.4"/>
+            </svg>
+          </div>
+          <div class="type" data-anim="typing" aria-hidden="true"
+            data-phrases="Documenting how trust scales.|Notes from building the trust layer.|What we're learning, in the open.|The infrastructure beneath the decision.">
+            <span class="type__text"></span><span class="type__cursor"></span>
+          </div>
+          <h2 class="title">Industry insights, company updates and founder articles will be published here.</h2>
+          <p>We're currently focused on building the next generation of trust infrastructure. Check back soon.</p>
+          <a class="btn btn--kweli" href="https://x.com/eaxglobal" target="_blank" rel="noopener" style="margin-top:8px">Follow @eaxglobal for updates
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
         </div>
-        <h2 class="title">Industry insights, company updates and founder articles will be published here.</h2>
-        <p>We're currently focused on building the next generation of trust infrastructure. Check back soon.</p>
-        <a class="btn btn--kweli" href="https://x.com/eaxglobal" target="_blank" rel="noopener" style="margin-top:8px">Follow @eaxglobal for updates
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
     </div>
   </section>
@@ -107,5 +134,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

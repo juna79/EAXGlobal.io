@@ -18,6 +18,25 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<noscript><style>
+.reveal,[data-reveal] > *{opacity:1!important;transform:none!important}
+.trust-field,.scroll-progress{display:none!important}
+.eco__node{opacity:1!important;transform:translate(-50%,-50%)!important}
+.eco__edge{opacity:.28!important;stroke-dashoffset:0!important}
+.ladder__body{opacity:1!important;transform:none!important}
+.ladder__node{border-color:var(--accent)!important;background:var(--accent)!important}
+.vscene{height:auto!important}
+.vscene__pin{position:static!important;height:auto!important;padding:48px 0!important}
+.vs-caption{position:relative!important;opacity:1!important}
+.vs-caption:first-child{display:none!important}
+.vs-chip{display:none!important}
+.vs-sweep{opacity:1!important;transform:none!important}
+.vs-stack-item{opacity:1!important;transform:none!important}
+.tl__progress{transform:scaleY(1)!important}
+.tl__dot{border-color:var(--accent)!important}
+.fl-check{stroke-dashoffset:0!important}
+.type__cursor{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -37,6 +56,7 @@
     </nav>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <main class="page">
 
@@ -82,21 +102,28 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
       <div class="reveal">
-        <div class="verify-card" role="img" aria-label="Illustrative verification result">
-          <div class="verify-card__top"><span class="t">Kweli Verify</span><span class="stage stage--live">Live</span></div>
-          <div class="verify-card__body">
-            <div class="verify-status">
-              <div class="verify-status__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
-              <div><b>Integrity confirmed</b><span>Matches the record issued by the source organisation.</span></div>
-            </div>
-            <div class="verify-rows">
-              <div class="r"><span>Document fingerprint</span><span>0x7f3a…91c4</span></div>
-              <div class="r"><span>Issuing organisation</span><span>Verified issuer</span></div>
-              <div class="r"><span>Status</span><span>Unaltered</span></div>
-              <div class="r"><span>Verified via</span><span>QR / lookup</span></div>
-            </div>
-            <p class="dim" style="font-size:12.5px;margin-top:14px">Illustrative interface. The original file does not need to be exposed to be verified.</p>
-          </div>
+        <div class="flow" data-anim="flow-verify" role="img" aria-label="Animated workflow: a document is fingerprinted when issued, then a later copy is confirmed genuine and unaltered">
+          <svg viewBox="0 0 440 210">
+            <g class="fl-appear">
+              <rect class="fl-doc" x="26" y="42" width="80" height="106" rx="8"/>
+              <path class="fl-doc-line" d="M42 68h48M42 84h48M42 100h32M42 116h48M42 132h30"/>
+            </g>
+            <rect class="fl-scan" x="26" y="46" width="80" height="3" rx="1.5" fill="var(--accent)" style="--scan:96px"/>
+            <text class="fl-cap" x="66" y="172" text-anchor="middle">Document issued</text>
+            <path class="fl-line fl-line-draw" d="M106 95 H150" style="--len:44" stroke-dasharray="44"/>
+            <g class="fl-appear" style="animation-delay:.28s">
+              <rect class="fl-node" x="150" y="66" width="132" height="58" rx="9"/>
+              <text class="fl-hash" x="216" y="92" text-anchor="middle">0x7f3a…91c4</text>
+              <text class="fl-tag" x="216" y="110" text-anchor="middle">CRYPTOGRAPHIC FINGERPRINT</text>
+            </g>
+            <text class="fl-cap" x="216" y="172" text-anchor="middle">Recorded privately</text>
+            <path class="fl-line fl-line-draw" d="M282 95 H326" style="--len:44" stroke-dasharray="44"/>
+            <g class="fl-appear" style="animation-delay:.56s">
+              <circle class="fl-badge" cx="364" cy="95" r="30"/>
+              <path class="fl-check" d="M349 95l10 10 19-20" stroke-dasharray="42" style="stroke-dasharray:42"/>
+            </g>
+            <text class="fl-cap fl-cap--on" x="364" y="172" text-anchor="middle">Verified genuine</text>
+          </svg>
         </div>
         <div class="stat-strip reveal" style="margin-top:18px">
           <div class="stat-strip__item"><div class="stat-strip__k">Proves</div><div class="stat-strip__v">Integrity<small>File is unchanged</small></div></div>
@@ -112,19 +139,33 @@
     <div class="wrap two-col">
       <div class="reveal">
         <div class="eyebrow">Kweli Claims</div>
-        <span class="stage stage--pilot" style="margin-bottom:18px">Pilot focus · active development</span>
+        <span class="stage stage--pilot" style="margin-bottom:18px">Pilot focus</span>
         <h2 class="title" style="max-width:18ch">An integrity layer for insurance claims.</h2>
         <p class="prose muted" style="margin-top:16px">Claims decisions rest on documents from many parties. Kweli Claims adds an independent way to verify that those documents are genuine and unaltered — <strong style="color:var(--text)">without replacing the claims-management systems already in use</strong>. It is designed to sit alongside existing workflows as an added layer of assurance.</p>
+        <p class="dim mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:22px">Designed to support</p>
+        <ul class="feature-list" style="margin-top:12px">
+          <li>Repair invoices, quotations and assessors' reports</li>
+          <li>Medical documents and supporting records</li>
+          <li>Claims evidence, attachments and audit trails</li>
+        </ul>
       </div>
       <div class="reveal">
-        <div class="card"><h3 style="margin-bottom:16px">Designed to support</h3>
-          <ul class="feature-list">
-            <li>Repair invoices and quotations</li>
-            <li>Assessors' reports and inspection evidence</li>
-            <li>Medical documents and supporting records</li>
-            <li>Claims evidence and attachments</li>
-            <li>Audit trails across the claims workflow</li>
-          </ul>
+        <div class="flow" data-anim="flow-claims" role="img" aria-label="Animated workflow: claim documents from many parties are checked for integrity">
+          <svg viewBox="0 0 440 220">
+            <g class="fl-appear"><rect class="fl-doc" x="26" y="30" width="64" height="46" rx="6"/><path class="fl-doc-line" d="M38 46h40M38 58h26"/></g>
+            <g class="fl-appear" style="animation-delay:.14s"><rect class="fl-doc" x="26" y="87" width="64" height="46" rx="6"/><path class="fl-doc-line" d="M38 103h40M38 115h26"/></g>
+            <g class="fl-appear" style="animation-delay:.28s"><rect class="fl-doc" x="26" y="144" width="64" height="46" rx="6"/><path class="fl-doc-line" d="M38 160h40M38 172h26"/></g>
+            <text class="fl-cap" x="58" y="210" text-anchor="middle">Claim documents</text>
+            <path class="fl-line fl-line-draw" d="M90 53 C160 66 190 96 250 108" style="--len:180" stroke-dasharray="180"/>
+            <path class="fl-line fl-line-draw" d="M90 110 H250" style="--len:160" stroke-dasharray="160"/>
+            <path class="fl-line fl-line-draw" d="M90 167 C160 154 190 124 250 112" style="--len:180" stroke-dasharray="180"/>
+            <circle class="fl-pulse" cx="300" cy="110" r="46" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-opacity=".5"/>
+            <g class="fl-appear" style="animation-delay:.5s">
+              <circle class="fl-badge" cx="300" cy="110" r="34"/>
+              <path class="fl-check" d="M284 110l11 11 21-22" style="--clen:47"/>
+            </g>
+            <text class="fl-cap fl-cap--on" x="300" y="210" text-anchor="middle">Integrity confirmed</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -138,16 +179,31 @@
         <span class="stage stage--dev" style="margin-bottom:18px">In development</span>
         <h2 class="title" style="max-width:18ch">Trust for supply chains and trade documentation.</h2>
         <p class="prose muted" style="margin-top:16px">Trade moves on paperwork that changes hands repeatedly. Kweli Supply is intended to let each party verify that the documents they receive are the genuine, unaltered records issued upstream — reducing the room for substituted, duplicated or altered files.</p>
+        <p class="dim mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:22px">Intended to cover</p>
+        <ul class="feature-list" style="margin-top:12px">
+          <li>Invoices, delivery notes and certificates</li>
+          <li>Inspection reports and quality-assurance records</li>
+          <li>Warehouse, export and supplier documents</li>
+        </ul>
       </div>
       <div class="reveal">
-        <div class="card"><h3 style="margin-bottom:16px">Intended to cover</h3>
-          <ul class="feature-list">
-            <li>Invoices and delivery notes</li>
-            <li>Certificates and inspection reports</li>
-            <li>Warehouse and export documentation</li>
-            <li>Quality-assurance records</li>
-            <li>Supplier documents across the chain</li>
-          </ul>
+        <div class="flow" data-anim="flow-supply" role="img" aria-label="Animated workflow: a verification token travels a supply chain so each party can confirm the documents they receive">
+          <svg viewBox="0 0 440 190">
+            <path class="fl-line" d="M56 96 H392"/>
+            <path class="fl-line-a fl-line-draw" d="M56 96 H392" style="--len:336" stroke-dasharray="336"/>
+            <g class="fl-node-group">
+              <g class="fl-appear"><circle class="fl-node" cx="56" cy="96" r="20"/><path class="fl-doc-line" d="M49 90h14M49 96h14M49 102h9"/></g>
+              <g class="fl-appear" style="animation-delay:.2s"><circle class="fl-node" cx="168" cy="96" r="20"/><path class="fl-doc-line" d="M161 90h14M161 96h14M161 102h9"/></g>
+              <g class="fl-appear" style="animation-delay:.4s"><circle class="fl-node" cx="280" cy="96" r="20"/><path class="fl-doc-line" d="M273 90h14M273 96h14M273 102h9"/></g>
+              <g class="fl-appear" style="animation-delay:.6s"><circle class="fl-node" cx="392" cy="96" r="20"/><path class="fl-doc-line" d="M385 90h14M385 96h14M385 102h9"/></g>
+            </g>
+            <circle class="fl-token" cx="56" cy="96" r="6" style="--travel:336px"/>
+            <text class="fl-label" x="56" y="140" text-anchor="middle">Supplier</text>
+            <text class="fl-label" x="168" y="140" text-anchor="middle">Freight</text>
+            <text class="fl-label" x="280" y="140" text-anchor="middle">Customs</text>
+            <text class="fl-label" x="392" y="140" text-anchor="middle" fill="var(--accent)">Buyer</text>
+            <text class="fl-cap" x="224" y="170" text-anchor="middle">Each handover verified against the original</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -161,15 +217,28 @@
         <span class="stage stage--future" style="margin-bottom:18px">Future product</span>
         <h2 class="title" style="max-width:18ch">Verification for certificates, licences and credentials.</h2>
         <p class="prose muted" style="margin-top:16px">The same trust layer extends naturally to certificates, licences, professional credentials and institutional documents — letting recipients and third parties verify them directly. It is shown here as part of the direction, not as an immediate commercial focus.</p>
+        <p class="dim mono" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-top:22px">Being explored for</p>
+        <ul class="feature-list" style="margin-top:12px">
+          <li>Academic and professional certificates</li>
+          <li>Licences, permits and accreditation records</li>
+          <li>Institutional and government documents</li>
+        </ul>
       </div>
       <div class="reveal">
-        <div class="card"><h3 style="margin-bottom:16px">Being explored for</h3>
-          <ul class="feature-list">
-            <li>Academic and professional certificates</li>
-            <li>Licences and permits</li>
-            <li>Membership and accreditation records</li>
-            <li>Institutional and government documents</li>
-          </ul>
+        <div class="flow" data-anim="flow-credentials" role="img" aria-label="Animated illustration: an issued credential carries a verifiable seal anyone can check">
+          <svg viewBox="0 0 440 220">
+            <g class="fl-appear">
+              <rect class="fl-doc" x="96" y="30" width="210" height="150" rx="10"/>
+              <path class="fl-doc-line" d="M122 62h160M122 80h160M122 98h104M122 116h160"/>
+              <path class="fl-doc-line" d="M122 150h70" style="stroke:var(--accent)"/>
+            </g>
+            <circle class="fl-pulse" cx="300" cy="150" r="36" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-opacity=".5"/>
+            <g class="fl-appear" style="animation-delay:.45s">
+              <circle class="fl-badge" cx="300" cy="150" r="27"/>
+              <path class="fl-check" d="M287 150l9 9 17-18" style="--clen:38"/>
+            </g>
+            <text class="fl-cap" x="210" y="205" text-anchor="middle">Issued once — verifiable by anyone, anytime</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -189,6 +258,34 @@
           <p><strong>This is being explored and built toward. It is not an operating marketplace today,</strong> and nothing on this site should be read as offering live marketplace services. It represents where the product line could lead if the earlier layers succeed.</p>
         </div>
       </div>
+      <div class="reveal" style="margin-top:40px">
+        <div class="flow" data-anim="flow-marketplace" style="min-height:360px" role="img" aria-label="Conceptual visualisation: a network of verified organisations exchanging verifiable documents and transactions around a shared trust layer">
+          <svg viewBox="0 0 420 340">
+            <g>
+              <path class="fl-line fl-line-draw" d="M210 170 L330 170" style="--len:120" stroke-dasharray="120"/>
+              <path class="fl-line fl-line-draw" d="M210 170 L270 274" style="--len:120" stroke-dasharray="120"/>
+              <path class="fl-line fl-line-draw" d="M210 170 L150 274" style="--len:120" stroke-dasharray="120"/>
+              <path class="fl-line fl-line-draw" d="M210 170 L90 170"  style="--len:120" stroke-dasharray="120"/>
+              <path class="fl-line fl-line-draw" d="M210 170 L150 66"  style="--len:120" stroke-dasharray="120"/>
+              <path class="fl-line fl-line-draw" d="M210 170 L270 66"  style="--len:120" stroke-dasharray="120"/>
+            </g>
+            <g class="fl-orbit" style="transform-box:view-box;transform-origin:210px 170px">
+              <circle cx="210" cy="50" r="5" fill="var(--accent)"/>
+            </g>
+            <g class="fl-appear"><circle class="fl-node" cx="330" cy="170" r="17"/><circle class="fl-pulse" cx="330" cy="170" r="4" fill="var(--accent)"/></g>
+            <g class="fl-appear" style="animation-delay:.12s"><circle class="fl-node" cx="270" cy="274" r="17"/><circle class="fl-pulse" cx="270" cy="274" r="4" fill="var(--accent)"/></g>
+            <g class="fl-appear" style="animation-delay:.24s"><circle class="fl-node" cx="150" cy="274" r="17"/><circle class="fl-pulse" cx="150" cy="274" r="4" fill="var(--accent)"/></g>
+            <g class="fl-appear" style="animation-delay:.36s"><circle class="fl-node" cx="90" cy="170" r="17"/><circle class="fl-pulse" cx="90" cy="170" r="4" fill="var(--accent)"/></g>
+            <g class="fl-appear" style="animation-delay:.48s"><circle class="fl-node" cx="150" cy="66" r="17"/><circle class="fl-pulse" cx="150" cy="66" r="4" fill="var(--accent)"/></g>
+            <g class="fl-appear" style="animation-delay:.6s"><circle class="fl-node" cx="270" cy="66" r="17"/><circle class="fl-pulse" cx="270" cy="66" r="4" fill="var(--accent)"/></g>
+            <circle class="fl-pulse" cx="210" cy="170" r="40" fill="none" stroke="var(--accent-line)" stroke-width="1"/>
+            <circle cx="210" cy="170" r="30" fill="var(--surface-2)" stroke="var(--accent-line)" stroke-width="1"/>
+            <text x="210" y="167" text-anchor="middle" style="fill:var(--text);font-family:var(--sans);font-size:13px;font-weight:700">EAX</text>
+            <text x="210" y="181" text-anchor="middle" class="fl-tag" style="fill:var(--accent)">TRUST LAYER</text>
+            <text class="fl-cap" x="210" y="322" text-anchor="middle">Verified organisations · verifiable documents · trusted transactions</text>
+          </svg>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -199,28 +296,43 @@
         <div class="eyebrow">How it connects</div>
         <h2 class="title">Every product shares one trust layer.</h2>
       </div>
-      <div class="trust-diagram reveal">
-        <div class="trust-diagram__products">
-          <div class="trust-node trust-node--live"><div class="trust-node__name">Kweli Verify</div><div class="trust-node__stage">Available now</div></div>
-          <div class="trust-node"><div class="trust-node__name">Kweli Claims</div><div class="trust-node__stage">Pilot focus</div></div>
-          <div class="trust-node"><div class="trust-node__name">Kweli Supply</div><div class="trust-node__stage">In development</div></div>
-          <div class="trust-node"><div class="trust-node__name">Kweli Credentials</div><div class="trust-node__stage">Future product</div></div>
-          <div class="trust-node"><div class="trust-node__name">EAX Marketplace</div><div class="trust-node__stage">Long-term</div></div>
-        </div>
-        <div class="trust-connectors" aria-hidden="true">
-          <svg viewBox="0 0 1000 34" preserveAspectRatio="none">
-            <g stroke="#5db665" stroke-opacity="0.4" stroke-width="1" fill="none">
-              <path d="M100 0 V14 Q100 26 200 26 H500"/><path d="M300 0 V14 Q300 24 380 26 H500"/>
-              <path d="M500 0 V26"/><path d="M700 0 V14 Q700 24 620 26 H500"/><path d="M900 0 V14 Q900 26 800 26 H500"/>
-            </g><circle cx="500" cy="27" r="3" fill="#5db665"/>
+      <div class="eco reveal" data-anim="ecosystem">
+        <div class="eco__stage">
+          <svg class="eco__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="eco__edge" data-key="verify"      d="M50 50 L50 12"/>
+            <path class="eco__edge" data-key="claims"      d="M50 50 L84 36"/>
+            <path class="eco__edge" data-key="supply"      d="M50 50 L73 82"/>
+            <path class="eco__edge" data-key="credentials" d="M50 50 L27 82"/>
+            <path class="eco__edge" data-key="marketplace" d="M50 50 L16 36"/>
           </svg>
+          <div class="eco__core"><b>Kweli</b><span>Trust layer</span></div>
+          <button type="button" class="eco__node is-live" data-key="verify" style="left:50%;top:12%"
+            data-title="Kweli Verify" data-stage="Available now" data-stageclass="stage stage--live"
+            data-body="Document integrity and authenticity — the foundation every other product is built on.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Verify</span></button>
+          <button type="button" class="eco__node" data-key="claims" style="left:84%;top:36%"
+            data-title="Kweli Claims" data-stage="Pilot focus" data-stageclass="stage stage--pilot"
+            data-body="An independent integrity layer for insurance claims evidence, alongside existing systems.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Claims</span></button>
+          <button type="button" class="eco__node" data-key="supply" style="left:73%;top:82%"
+            data-title="Kweli Supply" data-stage="In development" data-stageclass="stage stage--dev"
+            data-body="Verification for supply-chain and trade documentation as it changes hands.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Supply</span></button>
+          <button type="button" class="eco__node" data-key="credentials" style="left:27%;top:82%"
+            data-title="Kweli Credentials" data-stage="Future product" data-stageclass="stage stage--future"
+            data-body="Verification for certificates, licences and professional credentials.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Credentials</span></button>
+          <button type="button" class="eco__node" data-key="marketplace" style="left:16%;top:36%"
+            data-title="EAX Marketplace" data-stage="Long-term direction" data-stageclass="stage stage--future"
+            data-body="A trusted digital marketplace built on verified organisations, documents and transactions.">
+            <span class="eco__dot"></span><span class="eco__label">EAX Marketplace</span></button>
         </div>
-        <div class="trust-layer">
-          <div class="trust-layer__label">
-            <svg class="dotmark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#11151b"/><path d="M8 16.5l5 5L24 9" fill="none" stroke="#5db665" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><b>Kweli — the shared trust layer</b><span>Cryptographic records, provenance and verification</span></div>
-          </div>
-          <div class="trust-layer__props"><span>Integrity</span><span>Provenance</span><span>Issuer authenticity</span><span>Audit trail</span></div>
+        <div class="eco__detail">
+          <div class="eco__d-kicker">One shared foundation</div>
+          <div class="eco__d-title">Kweli Verify</div>
+          <span class="eco__d-stage stage stage--live">Available now</span>
+          <p class="eco__d-body">Document integrity and authenticity — the foundation every other product is built on.</p>
+          <div class="eco__hint">Hover a product to see where it fits</div>
         </div>
       </div>
     </div>
@@ -263,5 +375,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

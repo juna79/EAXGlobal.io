@@ -21,6 +21,25 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/styles.css" as="style">
 <link rel="stylesheet" href="assets/styles.css">
+<noscript><style>
+.reveal,[data-reveal] > *{opacity:1!important;transform:none!important}
+.trust-field,.scroll-progress{display:none!important}
+.eco__node{opacity:1!important;transform:translate(-50%,-50%)!important}
+.eco__edge{opacity:.28!important;stroke-dashoffset:0!important}
+.ladder__body{opacity:1!important;transform:none!important}
+.ladder__node{border-color:var(--accent)!important;background:var(--accent)!important}
+.vscene{height:auto!important}
+.vscene__pin{position:static!important;height:auto!important;padding:48px 0!important}
+.vs-caption{position:relative!important;opacity:1!important}
+.vs-caption:first-child{display:none!important}
+.vs-chip{display:none!important}
+.vs-sweep{opacity:1!important;transform:none!important}
+.vs-stack-item{opacity:1!important;transform:none!important}
+.tl__progress{transform:scaleY(1)!important}
+.tl__dot{border-color:var(--accent)!important}
+.fl-check{stroke-dashoffset:0!important}
+.type__cursor{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -49,11 +68,13 @@
     </nav>
   </div>
 </header>
+<div class="scroll-progress" aria-hidden="true"></div>
 
 <main class="page">
 
   <!-- ══ HERO ══ -->
   <section class="hero">
+    <div class="trust-field" data-anim="trust-field" aria-hidden="true"></div>
     <div class="hero__grid-bg" aria-hidden="true"></div>
     <div class="hero__glow" aria-hidden="true"></div>
     <div class="wrap hero__inner">
@@ -64,7 +85,7 @@
         documents, claims, supply chains and digital transactions — so decisions can be made on
         evidence that is genuine, original and unchanged.
       </p>
-      <div class="reveal" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:34px">
+      <div class="hero__cta reveal" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:34px">
         <a class="btn btn--primary" href="products.html">See what we're building
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn--outline" href="contact.html">Partner with EAX Global</a>
@@ -121,7 +142,39 @@
     </div>
   </section>
 
-  <!-- ══ WHAT EAX IS BUILDING — trust layer diagram ══ -->
+  <!-- ══ TRUST LADDER — constructed on scroll ══ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="reveal" style="max-width:52ch;margin-bottom:12px">
+        <div class="eyebrow">How trust compounds</div>
+        <h2 class="title">From a single document to the digital economy.</h2>
+        <p class="lede" style="margin-top:16px">Trust is not one feature. It builds in layers — each one resting on the one beneath it.</p>
+      </div>
+      <div class="ladder" data-anim="ladder" style="margin-top:52px">
+        <div class="ladder__line" aria-hidden="true"><svg viewBox="0 0 2 100" preserveAspectRatio="none"><path d="M1 0 V100"/></svg></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">01 — Document</div><div class="ladder__t">A single file</div>
+          <div class="ladder__d">A document is fingerprinted the moment it is issued, creating a record of exactly what it was.</div></div></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">02 — Verification</div><div class="ladder__t">Proof it is genuine</div>
+          <div class="ladder__d">Anyone can check a later copy against that record — confirming it is the original, unaltered file from a known source.</div></div></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">03 — Trusted workflow</div><div class="ladder__t">Verification, built in</div>
+          <div class="ladder__d">Verification becomes part of how claims, lending and trade already work, rather than a separate step.</div></div></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">04 — Trusted organisation</div><div class="ladder__t">Records others rely on</div>
+          <div class="ladder__d">Institutions issue and recognise records that counterparties can verify for themselves.</div></div></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">05 — Trusted network</div><div class="ladder__t">Trust that travels</div>
+          <div class="ladder__d">Verified organisations recognise each other's records, so trust can move between institutions.</div></div></div>
+        <div class="ladder__step"><span class="ladder__node" aria-hidden="true"></span><div class="ladder__body">
+          <div class="ladder__k">06 — Digital economy</div><div class="ladder__t">Verifiable by design</div>
+          <div class="ladder__d">A digital economy where the evidence behind a decision can be trusted before anyone acts on it.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHAT EAX IS BUILDING — interactive ecosystem ══ -->
   <section class="section">
     <div class="wrap">
       <div class="reveal" style="max-width:52ch;margin-bottom:44px">
@@ -134,54 +187,49 @@
         </p>
       </div>
 
-      <div class="trust-diagram reveal">
-        <div class="trust-diagram__products">
-          <div class="trust-node trust-node--live">
-            <div class="trust-node__name">Kweli Verify</div>
-            <div class="trust-node__stage">Available now</div>
-          </div>
-          <div class="trust-node">
-            <div class="trust-node__name">Kweli Claims</div>
-            <div class="trust-node__stage">Pilot focus</div>
-          </div>
-          <div class="trust-node">
-            <div class="trust-node__name">Kweli Supply</div>
-            <div class="trust-node__stage">In development</div>
-          </div>
-          <div class="trust-node">
-            <div class="trust-node__name">Kweli Credentials</div>
-            <div class="trust-node__stage">Future product</div>
-          </div>
-          <div class="trust-node">
-            <div class="trust-node__name">EAX Marketplace</div>
-            <div class="trust-node__stage">Long-term</div>
-          </div>
-        </div>
-
-        <div class="trust-connectors" aria-hidden="true">
-          <svg viewBox="0 0 1000 34" preserveAspectRatio="none">
-            <g stroke="#5db665" stroke-opacity="0.4" stroke-width="1" fill="none">
-              <path d="M100 0 V14 Q100 26 200 26 H500"/>
-              <path d="M300 0 V14 Q300 24 380 26 H500"/>
-              <path d="M500 0 V26"/>
-              <path d="M700 0 V14 Q700 24 620 26 H500"/>
-              <path d="M900 0 V14 Q900 26 800 26 H500"/>
-            </g>
-            <circle cx="500" cy="27" r="3" fill="#5db665"/>
+      <div class="eco reveal" data-anim="ecosystem">
+        <div class="eco__stage">
+          <svg class="eco__svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="eco__edge" data-key="verify"      d="M50 50 L50 12"/>
+            <path class="eco__edge" data-key="claims"      d="M50 50 L84 36"/>
+            <path class="eco__edge" data-key="supply"      d="M50 50 L73 82"/>
+            <path class="eco__edge" data-key="credentials" d="M50 50 L27 82"/>
+            <path class="eco__edge" data-key="marketplace" d="M50 50 L16 36"/>
           </svg>
+          <div class="eco__core"><b>Kweli</b><span>Trust layer</span></div>
+
+          <button type="button" class="eco__node is-live" data-key="verify" style="left:50%;top:12%"
+            data-title="Kweli Verify" data-stage="Available now" data-stageclass="stage stage--live"
+            data-body="Confirms a document is the genuine, unaltered file issued by a known organisation — proving integrity, provenance and issuer authenticity.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Verify</span></button>
+
+          <button type="button" class="eco__node" data-key="claims" style="left:84%;top:36%"
+            data-title="Kweli Claims" data-stage="Pilot focus" data-stageclass="stage stage--pilot"
+            data-body="An independent integrity layer for insurance claims evidence — invoices, assessors' reports and supporting documents — alongside existing systems.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Claims</span></button>
+
+          <button type="button" class="eco__node" data-key="supply" style="left:73%;top:82%"
+            data-title="Kweli Supply" data-stage="In development" data-stageclass="stage stage--dev"
+            data-body="Verification for supply-chain and trade documentation, so each party can confirm the records they receive are genuine and unaltered.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Supply</span></button>
+
+          <button type="button" class="eco__node" data-key="credentials" style="left:27%;top:82%"
+            data-title="Kweli Credentials" data-stage="Future product" data-stageclass="stage stage--future"
+            data-body="Verification for certificates, licences and professional credentials — a natural extension of the same trust layer.">
+            <span class="eco__dot"></span><span class="eco__label">Kweli Credentials</span></button>
+
+          <button type="button" class="eco__node" data-key="marketplace" style="left:16%;top:36%"
+            data-title="EAX Marketplace" data-stage="Long-term direction" data-stageclass="stage stage--future"
+            data-body="A trusted digital marketplace built on verified organisations, documents and transactions. Being explored and built toward — not yet live.">
+            <span class="eco__dot"></span><span class="eco__label">EAX Marketplace</span></button>
         </div>
 
-        <div class="trust-layer">
-          <div class="trust-layer__label">
-            <svg class="dotmark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#11151b"/><path d="M8 16.5l5 5L24 9" fill="none" stroke="#5db665" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div>
-              <b>Kweli — the shared trust layer</b>
-              <span>Cryptographic records, provenance and verification for every product above</span>
-            </div>
-          </div>
-          <div class="trust-layer__props">
-            <span>Integrity</span><span>Provenance</span><span>Issuer authenticity</span><span>Audit trail</span>
-          </div>
+        <div class="eco__detail">
+          <div class="eco__d-kicker">The platform</div>
+          <div class="eco__d-title">Kweli Verify</div>
+          <span class="eco__d-stage stage stage--live">Available now</span>
+          <p class="eco__d-body">Confirms a document is the genuine, unaltered file issued by a known organisation — proving integrity, provenance and issuer authenticity.</p>
+          <div class="eco__hint">Hover a product to see where it fits</div>
         </div>
       </div>
     </div>
@@ -417,5 +465,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/motion.js" defer></script>
 </body>
 </html>

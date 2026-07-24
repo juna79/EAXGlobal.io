@@ -464,3 +464,294 @@ body.nav-open .nav__toggle span::after{top:0;transform:rotate(-45deg)}
   .nav,.footer,.cta-band{display:none}
   body{background:#fff;color:#000}
 }
+
+
+/* ==========================================================================
+   PHASE 2 — EXPERIENCE LAYER
+   Calm, architectural motion. Everything below degrades to a static, complete
+   state under prefers-reduced-motion (handled in JS + the reduce block).
+   ========================================================================== */
+
+/* ---- Page-load entrance + scroll progress ------------------------------- */
+.scroll-progress{position:fixed;top:var(--nav-h);left:0;right:0;height:2px;z-index:99;
+  background:linear-gradient(90deg,var(--accent),var(--accent-bright));
+  transform:scaleX(0);transform-origin:0 50%;
+  opacity:0;transition:opacity .4s ease}
+.nav.is-scrolled ~ .scroll-progress,.nav.is-scrolled + .scroll-progress{opacity:.9}
+.nav{transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
+.nav.is-scrolled{background:rgba(9,11,14,0.86);border-bottom-color:var(--line-2);
+  box-shadow:0 1px 0 rgba(0,0,0,0.4),0 10px 40px -30px rgba(0,0,0,0.9)}
+
+/* Refined reveal — softer, with directional + stagger variants */
+.reveal{opacity:0;transform:translateY(22px);
+  transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+[data-reveal="stagger"] > *{opacity:0;transform:translateY(18px);
+  transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
+[data-reveal="stagger"] > *.in{opacity:1;transform:none}
+
+/* Hero entrance choreography */
+body .hero .reveal{transition-delay:0s}
+body.loaded .hero .eyebrow.reveal{transition-delay:.05s}
+body.loaded .hero h1.reveal{transition-delay:.14s}
+body.loaded .hero .lede.reveal{transition-delay:.26s}
+body.loaded .hero .hero__cta.reveal{transition-delay:.38s}
+
+/* ---- Hero trust field --------------------------------------------------- */
+.hero{position:relative}
+.trust-field{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%),
+    radial-gradient(120% 90% at 78% 30%,#000 40%,transparent 78%);
+  mask-image:linear-gradient(90deg,transparent 0%,#000 42%,#000 100%),
+    radial-gradient(120% 90% at 78% 30%,#000 40%,transparent 78%);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+  opacity:0;animation:fieldIn 1.6s ease .2s forwards}
+@keyframes fieldIn{to{opacity:1}}
+.trust-field canvas{width:100%;height:100%;display:block}
+.hero__inner{position:relative;z-index:2}
+.hero__grid-bg{z-index:1}
+
+/* ---- Interactive product ecosystem ------------------------------------- */
+.eco{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,var(--surface),var(--bg-2));
+  padding:clamp(20px,3vw,34px);overflow:hidden}
+.eco__stage{position:relative;min-height:360px}
+.eco__svg{width:100%;height:100%;position:absolute;inset:0;overflow:visible}
+.eco__edge{stroke:var(--accent);stroke-width:1.2;fill:none;opacity:0;
+  stroke-dasharray:1;stroke-dashoffset:1;transition:opacity .5s ease,stroke-width .3s ease}
+.eco--in .eco__edge{opacity:.28;animation:edgeDraw 1s ease forwards}
+.eco--in .eco__edge:nth-of-type(1){animation-delay:.15s}
+.eco--in .eco__edge:nth-of-type(2){animation-delay:.28s}
+.eco--in .eco__edge:nth-of-type(3){animation-delay:.41s}
+.eco--in .eco__edge:nth-of-type(4){animation-delay:.54s}
+.eco--in .eco__edge:nth-of-type(5){animation-delay:.67s}
+@keyframes edgeDraw{to{stroke-dashoffset:0}}
+.eco__edge.is-active{opacity:.9;stroke-width:1.8}
+.eco__pulse{fill:var(--accent);opacity:0}
+.eco--in .eco__pulse{animation:ecoPulse 3.4s linear infinite}
+@keyframes ecoPulse{0%{opacity:0}8%{opacity:1}92%{opacity:1}100%{opacity:0}}
+
+.eco__node{position:absolute;transform:translate(-50%,-50%) scale(.7);
+  display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;
+  background:none;border:none;padding:0;opacity:0;
+  transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.eco--in .eco__node{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.eco--in .eco__node:nth-child(2){transition-delay:.2s}
+.eco--in .eco__node:nth-child(3){transition-delay:.32s}
+.eco--in .eco__node:nth-child(4){transition-delay:.44s}
+.eco--in .eco__node:nth-child(5){transition-delay:.56s}
+.eco--in .eco__node:nth-child(6){transition-delay:.68s}
+.eco__dot{width:14px;height:14px;border-radius:50%;background:var(--surface-3);
+  border:1px solid var(--line-strong);transition:all .25s ease}
+.eco__node.is-live .eco__dot{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.eco__label{font-size:12.5px;font-weight:600;color:var(--text-2);white-space:nowrap;
+  letter-spacing:-0.01em;transition:color .2s ease}
+.eco__node:hover .eco__label,.eco__node:focus-visible .eco__label,.eco__node.is-active .eco__label{color:var(--text)}
+.eco__node:hover .eco__dot,.eco__node.is-active .eco__dot{border-color:var(--accent);
+  box-shadow:0 0 0 5px var(--accent-soft);transform:scale(1.15)}
+.eco__core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:96px;height:96px;border-radius:20px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;text-align:center;
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));
+  border:1px solid var(--accent-line);box-shadow:0 0 40px -8px var(--accent-soft),inset 0 0 0 1px rgba(255,255,255,.02)}
+.eco__core b{font-size:14px;font-weight:700;color:var(--text)}
+.eco__core span{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eco__core::after{content:"";position:absolute;inset:-6px;border-radius:24px;border:1px solid var(--accent-line);
+  opacity:0;animation:coreRing 3.4s ease-in-out infinite}
+@keyframes coreRing{0%,100%{opacity:0;transform:scale(.9)}50%{opacity:.5;transform:scale(1.05)}}
+.eco__detail{align-self:center}
+.eco__d-kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+.eco__d-title{font-size:22px;font-weight:650;letter-spacing:-.02em;margin-bottom:10px;min-height:1.2em;transition:opacity .3s ease}
+.eco__detail .stage{margin-bottom:14px}
+.eco__d-body{color:var(--text-2);font-size:15px;line-height:1.65;min-height:4.5em}
+.eco__hint{margin-top:16px;font-size:12.5px;color:var(--text-3);display:flex;align-items:center;gap:8px}
+.eco__hint::before{content:"";width:16px;height:1px;background:var(--accent);opacity:.6}
+@media(max-width:820px){
+  .eco{grid-template-columns:1fr;gap:24px}
+  .eco__stage{min-height:300px}
+}
+
+/* ---- Trust ladder (scroll-constructed) ---------------------------------- */
+.ladder{position:relative;max-width:720px;margin:0 auto;padding-left:56px}
+.ladder__line{position:absolute;left:19px;top:14px;bottom:14px;width:2px;overflow:visible}
+.ladder__line svg{width:2px;height:100%;overflow:visible;display:block}
+.ladder__line path{stroke:var(--accent);stroke-width:2;fill:none;filter:drop-shadow(0 0 6px var(--accent-soft))}
+.ladder__step{position:relative;padding:16px 0;min-height:74px}
+.ladder__node{position:absolute;left:-43px;top:20px;width:14px;height:14px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line-strong);transition:all .45s ease;z-index:2}
+.ladder__step.is-on .ladder__node{border-color:var(--accent);background:var(--accent);
+  box-shadow:0 0 0 5px var(--accent-soft)}
+.ladder__body{opacity:.38;transform:translateX(8px);transition:opacity .55s ease,transform .55s ease}
+.ladder__step.is-on .ladder__body{opacity:1;transform:none}
+.ladder__k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.ladder__t{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:4px}
+.ladder__d{font-size:14.5px;color:var(--text-2);max-width:54ch;line-height:1.6}
+@media(max-width:560px){.ladder{padding-left:42px}.ladder__line{left:12px}.ladder__node{left:-37px}}
+
+/* ---- Vision sticky scene ------------------------------------------------ */
+.vscene{position:relative;height:230vh}
+.vscene__pin{position:sticky;position:-webkit-sticky;top:var(--nav-h);
+  height:calc(100vh - var(--nav-h));height:calc(100dvh - var(--nav-h));
+  display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;overflow:hidden}
+.vscene__copy{max-width:38ch}
+.vs-caption{position:absolute;transition:opacity .4s ease}
+.vscene__stage{position:relative;height:70%;min-height:360px}
+.vs-scatter{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:100%;height:100%}
+.vs-chip{position:absolute;left:50%;top:50%;margin:-16px 0 0 -70px;width:140px;
+  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;
+  background:var(--surface-2);border:1px solid var(--line-2);font-size:12.5px;color:var(--text-2);
+  will-change:transform,opacity}
+.vs-chip svg{width:15px;height:15px;stroke:var(--text-3);fill:none;stroke-width:1.6;flex-shrink:0}
+.vs-sweep{position:absolute;left:0;right:0;top:50%;height:2px;transform:scaleX(0);transform-origin:50% 50%;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;
+  box-shadow:0 0 18px 2px var(--accent-soft)}
+.vs-sweep::after{content:"KWELI TRUST LAYER";position:absolute;left:50%;top:8px;transform:translateX(-50%);
+  font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--accent);white-space:nowrap}
+.vs-stack{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:280px;
+  display:flex;flex-direction:column;gap:8px}
+.vs-stack-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;
+  background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--accent-line);
+  font-size:13.5px;color:var(--text);opacity:0;will-change:transform,opacity}
+.vs-stack-item i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;box-shadow:0 0 8px var(--accent)}
+.vs-stack-item:last-child{background:linear-gradient(180deg,var(--accent-soft),transparent);font-weight:600}
+@media(max-width:820px){
+  .vscene{height:auto}
+  .vscene__pin{position:relative;top:0;height:auto;grid-template-columns:1fr;padding:56px 0;gap:28px}
+  .vscene__stage{height:auto;min-height:420px}
+  .vs-caption{position:relative;opacity:1!important}
+}
+
+/* ---- Product flow illustrations ---------------------------------------- */
+.flow{position:relative;border:1px solid var(--line-2);border-radius:var(--radius);
+  background:radial-gradient(120% 100% at 50% 0%,var(--surface-2),var(--bg-2));
+  padding:26px;overflow:hidden;min-height:280px;display:flex;align-items:center;justify-content:center}
+.flow svg{width:100%;max-width:420px;height:auto;overflow:visible}
+.flow .fl-doc,.flow .fl-line,.flow .fl-node,.flow .fl-check,.flow .fl-token,.flow .fl-ring{transition:none}
+.fl-line{stroke:var(--line-strong);stroke-width:1.4;fill:none}
+.fl-line-a{stroke:var(--accent);stroke-width:1.6;fill:none;stroke-dasharray:6 0}
+.fl-doc{fill:var(--surface);stroke:var(--line-strong);stroke-width:1.4}
+.fl-doc-line{stroke:var(--text-3);stroke-width:1.4;stroke-linecap:round}
+.fl-node{fill:var(--surface-2);stroke:var(--line-strong);stroke-width:1.4}
+.fl-label{fill:var(--text-3);font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.fl-cap{fill:var(--text-2);font-family:var(--sans);font-size:12px;font-weight:500}
+.fl-cap--on{fill:var(--accent)}
+.fl-hash{fill:var(--accent);font-family:var(--mono);font-size:12.5px;font-weight:700}
+.fl-tag{fill:var(--text-3);font-family:var(--mono);font-size:8px;letter-spacing:.18em}
+.fl-check{stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:var(--clen,42);stroke-dashoffset:var(--clen,42)}
+.fl-badge{fill:var(--accent-soft);stroke:var(--accent-line);stroke-width:1}
+/* token travelling a path */
+.fl-token{fill:var(--accent);opacity:0}
+/* run states (added when in view) */
+.flow--run .fl-token{animation:tokenSlide 3.2s ease-in-out infinite}
+.flow--run .fl-line-draw{animation:lineDraw 3.2s ease-in-out infinite}
+.flow--run .fl-check{animation:checkDraw 3.2s ease-in-out infinite}
+.flow--run .fl-scan{animation:scan 3.2s ease-in-out infinite}
+.flow--run .fl-pulse{animation:flPulse 2.4s ease-in-out infinite}
+.flow--run .fl-appear{animation:flAppear 3.2s ease-in-out infinite}
+.flow--run .fl-orbit{animation:flOrbit 9s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes checkDraw{0%,22%{stroke-dashoffset:var(--clen,42)}46%,82%{stroke-dashoffset:0}100%{stroke-dashoffset:var(--clen,42)}}
+@keyframes lineDraw{0%,10%{stroke-dashoffset:var(--len,120)}45%,100%{stroke-dashoffset:0}}
+@keyframes tokenSlide{0%{opacity:0;transform:translateX(0)}12%{opacity:1}88%{opacity:1}100%{opacity:0;transform:translateX(var(--travel,180px))}}
+@keyframes scan{0%,100%{transform:translateY(0);opacity:0}18%{opacity:1}52%{transform:translateY(var(--scan,46px));opacity:1}82%{opacity:0}}
+@keyframes flPulse{0%,100%{opacity:.28}50%{opacity:1}}
+@keyframes flAppear{0%,28%{opacity:0;transform:scale(.6)}52%,100%{opacity:1;transform:scale(1)}}
+@keyframes flOrbit{to{transform:rotate(360deg)}}
+.flow .fl-appear{transform-box:fill-box;transform-origin:center}
+.flow--static .fl-check{stroke-dashoffset:0}
+.flow--static .fl-token,.flow--static .fl-scan{opacity:0}
+.flow--static .fl-line-draw{stroke-dashoffset:0}
+.flow--static .fl-appear{opacity:1;transform:none}
+
+/* ---- Timeline (company roadmap) ---------------------------------------- */
+.tl{position:relative}
+.tl__rail{position:absolute;left:21px;top:10px;bottom:10px;width:2px;background:var(--line-2);border-radius:2px}
+.tl__progress{position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent-deep));
+  transform:scaleY(0);transform-origin:50% 0;border-radius:2px;filter:drop-shadow(0 0 6px var(--accent-soft))}
+.tl__step{position:relative;padding:0 0 30px 60px;min-height:64px}
+.tl__step:last-child{padding-bottom:0}
+.tl__dot{position:absolute;left:14px;top:2px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--line-strong);z-index:2;transition:all .4s ease}
+.tl__dot::after{content:"";position:absolute;inset:3px;border-radius:50%;background:transparent;transition:background .4s ease}
+.tl__step.is-on .tl__dot,.tl__dot.is-on{border-color:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.tl__dot.is-on::after{background:var(--accent)}
+.tl__phase{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.tl__h{font-size:18px;font-weight:600;letter-spacing:-.02em;margin-bottom:5px}
+.tl__p{color:var(--text-2);font-size:15px;max-width:56ch}
+
+/* ---- Insights: typing + moving grid ------------------------------------ */
+.coming{position:relative;text-align:center;padding:clamp(40px,8vw,90px) 0;overflow:hidden;
+  border:1px solid var(--line);border-radius:var(--radius-lg);
+  background:radial-gradient(120% 120% at 50% 0%,var(--surface),var(--bg-2))}
+.coming__grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;-webkit-mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);
+  mask-image:radial-gradient(circle at 50% 40%,#000,transparent 70%);animation:gridDrift 20s linear infinite}
+@keyframes gridDrift{to{background-position:48px 48px}}
+.coming__inner{position:relative;z-index:1;max-width:60ch;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:18px}
+.coming__mark{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  background:var(--surface);border:1px solid var(--line-2);color:var(--accent)}
+.coming__mark svg{width:32px;height:32px}
+.type{font-family:var(--mono);font-size:clamp(15px,2vw,19px);color:var(--text);
+  display:inline-flex;align-items:center;min-height:1.5em}
+.type__text{white-space:pre}
+.type__cursor{display:inline-block;width:9px;height:1.1em;margin-left:3px;background:var(--accent);
+  transform:translateY(2px);animation:caret 1s steps(1) infinite}
+.type--static .type__cursor{display:none}
+@keyframes caret{50%{opacity:0}}
+.coming h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em;max-width:20ch}
+.coming p{color:var(--text-2);font-size:16px;max-width:50ch}
+
+/* ---- Contact split refinement ------------------------------------------ */
+.contact-split{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(32px,5vw,72px);align-items:start}
+.contact-hero-line{position:relative;overflow:hidden}
+.contact-hero-line .thread{position:absolute;left:0;right:0;bottom:-40px;height:120px;pointer-events:none;opacity:.5}
+@media(max-width:860px){.contact-split{grid-template-columns:1fr;gap:36px}}
+
+/* ---- Micro-interactions ------------------------------------------------- */
+.btn{will-change:transform}
+.btn--primary:active,.btn--outline:active,.btn--kweli:active{transform:translateY(1px)}
+.card{transition:border-color .25s ease,background .25s ease,transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 18px 44px -28px rgba(0,0,0,.8)}
+.product-row{transition:background .25s ease}
+.product-row:hover{background:linear-gradient(90deg,var(--accent-soft),transparent 60%)}
+.product-row:hover .product-row__mark{border-color:var(--accent-line);box-shadow:0 0 0 4px var(--accent-soft)}
+.product-row__mark{transition:border-color .25s ease,box-shadow .25s ease}
+
+/* ---- Small-screen refinements for the interactive ecosystem ------------- */
+@media(max-width:480px){
+  .eco{padding:16px 12px}
+  .eco__stage{min-height:340px}
+  .eco__label{font-size:10.5px}
+  .eco__core{width:82px;height:82px;border-radius:16px}
+  .eco__core b{font-size:13px}
+  .flow{padding:18px}
+  .tl__p,.ladder__d{font-size:14px}
+}
+@media(max-width:360px){
+  .eco__label{font-size:9.5px}
+  .eco__stage{min-height:320px}
+}
+
+/* ---- Reduced motion: freeze everything into a complete, legible state --- */
+@media(prefers-reduced-motion:reduce){
+  .reveal,[data-reveal] > *{opacity:1!important;transform:none!important;transition:none!important}
+  .trust-field{opacity:.6;animation:none}
+  .scroll-progress{display:none}
+  .eco__edge{opacity:.28!important;stroke-dashoffset:0!important;animation:none!important}
+  .eco__node{opacity:1!important;transform:translate(-50%,-50%)!important;transition:none}
+  .eco__pulse,.eco__core::after{animation:none!important;opacity:0}
+  .ladder__step .ladder__body{opacity:1;transform:none}
+  .ladder__node{border-color:var(--accent);background:var(--accent)}
+  .vscene{height:auto}
+  .vscene__pin{position:relative;top:0;height:auto;min-height:auto;padding:48px 0;grid-template-columns:1fr 1fr}
+  .vs-caption{position:relative;opacity:1!important}
+  .vs-caption:first-child{display:none}
+  .vs-sweep{opacity:1!important;transform:scaleX(1)!important}
+  .flow--run *{animation:none!important}
+  .fl-check{stroke-dashoffset:0!important}
+  .coming__grid,.type__cursor{animation:none}
+  .card:hover{transform:none}
+}
