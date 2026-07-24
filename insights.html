@@ -55,51 +55,20 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="placeholder reveal" style="margin-bottom:28px;max-width:80ch">
-        <span><b>Author note — how to add an article:</b> copy one <code style="font-family:var(--mono)">&lt;article class="card insight-card reveal"&gt;</code> block below, update the date, category tag, title and summary, and point the link at the full post. The entries below are placeholders and safe to replace or delete. Nothing here should be treated as a published announcement until you edit it.</span>
+      <div class="empty-state reveal">
+        <div class="empty-state__mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="10" y="7" width="28" height="34" rx="3"/>
+            <path d="M16 16h16M16 22h16M16 28h10"/>
+            <circle cx="33.5" cy="33.5" r="7" fill="var(--bg-2)"/>
+            <path d="M30.4 33.6l2.2 2.2 4-4.4"/>
+          </svg>
+        </div>
+        <h2 class="title">Industry insights, company updates and founder articles will be published here.</h2>
+        <p>We're currently focused on building the next generation of trust infrastructure. Check back soon.</p>
+        <a class="btn btn--kweli" href="https://x.com/eaxglobal" target="_blank" rel="noopener" style="margin-top:8px">Follow @eaxglobal for updates
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
       </div>
-
-      <!-- Featured / latest -->
-      <article class="card insight-card reveal" style="margin-bottom:18px">
-        <div class="insight-card__meta"><span class="tag">Announcement</span><span>[ Date ]</span></div>
-        <h3 style="font-size:24px;max-width:24ch">[ Featured post title — e.g. Introducing EAX Global ]</h3>
-        <p style="max-width:70ch">[ Two or three sentences summarising the post. Keep the writing clear and direct. This is the most prominent entry — use it for your most important update.]</p>
-        <a class="insight-card__more" href="#">Read the post
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
-
-      <!-- Grid of posts -->
-      <div class="grid grid-3 reveal">
-        <article class="card insight-card">
-          <div class="insight-card__meta"><span class="tag">Founder article</span><span>[ Date ]</span></div>
-          <h3>[ Article title ]</h3>
-          <p>[ One or two sentences summarising the article. ]</p>
-          <a class="insight-card__more" href="#">Read more
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card insight-card">
-          <div class="insight-card__meta"><span class="tag">Product update</span><span>[ Date ]</span></div>
-          <h3>[ Update title ]</h3>
-          <p>[ One or two sentences on what changed or shipped. ]</p>
-          <a class="insight-card__more" href="#">Read more
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="card insight-card">
-          <div class="insight-card__meta"><span class="tag">Industry note</span><span>[ Date ]</span></div>
-          <h3>[ Observation title ]</h3>
-          <p>[ One or two sentences on a trend or observation in trust infrastructure. ]</p>
-          <a class="insight-card__more" href="#">Read more
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-      </div>
-
-      <!-- Empty-state alternative (hidden by default; swap in when no posts exist) -->
-      <!--
-      <div class="reveal" style="text-align:center;padding:64px 20px;border:1px dashed var(--line-2);border-radius:var(--radius);margin-top:8px">
-        <h3 class="sub" style="margin-bottom:8px">No posts yet</h3>
-        <p class="muted" style="max-width:44ch;margin:0 auto">We're getting started. Follow <a class="accent" href="https://x.com/eaxglobal" target="_blank" rel="noopener">@eaxglobal</a> for the first updates.</p>
-      </div>
-      -->
     </div>
   </section>
 

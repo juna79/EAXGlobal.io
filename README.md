@@ -87,16 +87,18 @@ also works with progressive enhancement (`assets/main.js`) so users see an inlin
   honestly. Only *Available now* items are in production; the rest are labelled accordingly.
 - **Motion:** restrained scroll-reveal only, and fully disabled under `prefers-reduced-motion`.
 
-## Content placeholders that need your input
+## Content to add over time
 
-Search the files for `Author note` and `[ ... ]` brackets. Current placeholders:
+The site is production-ready with no visible placeholders. These sections are intentionally
+neutral and can be enriched when the facts are public and confirmed:
 
-1. **Homepage → "Built today":** add real pilot organisations / sectors / verification counts once
-   they can be shared. (`index.html`)
-2. **Products → Kweli Claims:** add named insurance pilots/partners only when public. (`products.html`)
-3. **Company → Leadership:** replace the three placeholder profiles with real names, roles and bios.
-   Do **not** publish invented names. (`company.html`)
-4. **Insights:** replace/expand the placeholder article cards; instructions are inline. (`insights.html`)
+1. **Homepage → "Built today":** real pilot organisations / sectors / verification counts, once they
+   can be shared. (`index.html`)
+2. **Products → Kweli Claims:** named insurance pilots or partners, only when public. (`products.html`)
+3. **Company → Leadership:** currently shows the founder (Arjun Vidyarthi, Founder & CEO); add more
+   team members as they join. (`company.html`)
+4. **Insights:** currently a "check back soon" state. Add real posts by replacing the empty state in
+   `insights.html` with article cards (the `.insight-card` component in `styles.css` is ready to use).
 5. **Open Graph image:** `assets/og-image.png` (1200×630, logo on near-black) is generated and wired
    up. Replace it if you want a more designed share card.
 
