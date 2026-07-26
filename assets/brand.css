@@ -98,14 +98,24 @@ h2.title{font-weight:600;font-size:clamp(1.8rem,3.4vw,2.7rem);letter-spacing:-.0
 .prod__b p{color:var(--muted);font-size:14.5px;max-width:64ch}
 .stage{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;border:1px solid var(--line2);color:var(--muted);white-space:nowrap}
 .stage--live{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
-/* ecosystem: one connected platform */
+/* ecosystem: one living platform that boots up as you arrive */
 .eco{position:relative;padding-left:38px}
 .eco__rail{position:absolute;left:11px;top:34px;bottom:34px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--accent-line),var(--line) 92%)}
+.eco__energy,.eco__pulse{position:absolute;left:50%;top:0;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 3px rgba(99,192,111,.7);opacity:0;pointer-events:none}
 .prod{position:relative}
-html.motion .prod.reveal{transition-delay:calc(var(--i,0)*.07s)}
 .prod__node{position:absolute;left:-33px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--void);border:2px solid var(--line2);transition:border-color .2s,box-shadow .2s,background .2s;z-index:1}
 .prod:hover .prod__node{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
 .eco .prod:first-of-type .prod__node{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+/* signature: products wake one by one as energy travels the trust layer, then stay alive */
+html.motion .eco.reveal{opacity:1;transform:none}
+html.motion .eco .prod{opacity:0;transform:translateY(16px)}
+html.motion .eco.in .prod{animation:prodWake .6s var(--ease) both;animation-delay:calc(.22s + var(--i)*.17s)}
+@keyframes prodWake{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+html.motion .eco.in .eco__energy{animation:railTravel 1.25s var(--ease) .05s 1 both}
+html.motion .eco.in .eco__pulse{animation:railTravel 5.5s linear 2.6s infinite}
+@keyframes railTravel{0%{top:0;opacity:0}8%{opacity:1}92%{opacity:1}100%{top:100%;opacity:0}}
+html.motion .eco.in .prod:first-of-type .prod__node{animation:liveBreathe 3s var(--ease) 1.7s infinite}
+@keyframes liveBreathe{0%,100%{box-shadow:0 0 0 4px var(--accent-soft)}50%{box-shadow:0 0 0 8px rgba(99,192,111,.05)}}
 @media(max-width:560px){.eco{padding-left:28px}.eco__rail{left:7px}.prod__node{left:-27px;width:10px;height:10px}}
 
 /* cards */
@@ -216,62 +226,107 @@ html.motion .hero.lit .ig-dim{opacity:.5}
 
 /* ---- founding team ---- */
 .team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.member{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface),var(--void));padding:26px 24px 22px;transition:border-color .25s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease)}
-.member:hover{border-color:var(--accent-line);transform:translateY(-4px);box-shadow:0 24px 60px -30px rgba(0,0,0,.9)}
-.member__glow{position:absolute;left:-18%;top:-42%;width:210px;height:210px;background:radial-gradient(circle,var(--accent-soft),transparent 66%);opacity:0;transition:opacity .3s;pointer-events:none}
+.member{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface),var(--void));padding:26px 24px 22px;transition:border-color .25s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease)}
+.member:hover{border-color:var(--accent-line);transform:translateY(-5px);box-shadow:0 28px 64px -30px rgba(0,0,0,.92)}
+.member::after{content:"";position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,var(--accent),rgba(99,192,111,0) 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s;pointer-events:none}
+.member:hover::after{opacity:1}
+.member__glow{position:absolute;left:-18%;top:-42%;width:210px;height:210px;background:radial-gradient(circle,var(--accent-soft),transparent 66%);opacity:0;transition:opacity .35s;pointer-events:none}
 .member:hover .member__glow{opacity:1}
 .member__top{position:relative;display:flex;align-items:center;gap:15px;margin-bottom:17px}
-.member__avatar{width:56px;height:56px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 30% 20%,var(--surface2),var(--void));border:1px solid var(--line2);transition:border-color .25s}
+.member__avatar{width:56px;height:56px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 30% 20%,var(--surface2),var(--void));border:1px solid var(--line2);transition:border-color .25s,box-shadow .25s}
 .member__avatar span{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:.04em;color:var(--accent)}
-.member:hover .member__avatar{border-color:var(--accent-line)}
+.member:hover .member__avatar{border-color:var(--accent-line);box-shadow:0 0 0 4px var(--accent-soft)}
 .member__id h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
 .member__role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin-top:5px}
 .member__note{position:relative;color:var(--muted);font-size:14.5px;line-height:1.62;margin-bottom:18px}
 .member__focus{position:relative;display:flex;flex-wrap:wrap;gap:8px}
-.member__focus span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);padding:5px 10px;border-radius:100px;border:1px solid var(--line);background:var(--surface);transition:color .2s,border-color .2s}
-.member:hover .member__focus span{color:var(--accent);border-color:var(--accent-line)}
+.member__focus span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);padding:5px 10px;border-radius:100px;border:1px solid var(--line);background:var(--surface);transition:color .2s,border-color .2s,transform .2s}
+.member:hover .member__focus span{color:var(--accent);border-color:var(--accent-line);transform:translateY(-1px)}
 
-/* ---- timeline progress fill ---- */
+/* ---- timeline: a journey that draws itself ---- */
 .tl__fill{position:absolute;left:8px;top:12px;width:2px;border-radius:2px;background:linear-gradient(var(--accent),var(--accent-line));z-index:1;height:47%}
-html.motion .tl__fill{height:0;transition:height 1.5s var(--ease) .25s}
+html.motion .tl.reveal{opacity:1;transform:none}
+html.motion .tl__fill{height:0;transition:height 1.7s var(--ease) .3s}
 html.motion .tl.in .tl__fill{height:47%}
-.tl__step{transition-delay:calc(var(--i,0)*.08s)}
+html.motion .tl .tl__step{opacity:0;transform:translateY(14px)}
+html.motion .tl.in .tl__step{animation:tlStep .55s var(--ease) both;animation-delay:calc(.35s + var(--i)*.3s)}
+@keyframes tlStep{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+html.motion .tl .tl__dot{transform:scale(.2);opacity:0}
+html.motion .tl.in .tl__dot{animation:tlDot .5s var(--ease) both;animation-delay:calc(.5s + var(--i)*.3s)}
+@keyframes tlDot{0%{transform:scale(.2);opacity:0}60%{transform:scale(1.25);opacity:1}100%{transform:scale(1);opacity:1}}
 
-/* ---- vision: disorder -> trusted infrastructure ---- */
+/* ---- vision: chaos -> trust -> infrastructure -> confidence ---- */
 .vt-stage{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(120% 130% at 50% 122%,rgba(99,192,111,.07),var(--surface) 55%,var(--void))}
 .vt-svg{width:100%;height:auto;display:block;max-width:1040px;margin:0 auto}
 .vt-doc{transform-box:fill-box;transform-origin:center}
 html.motion .vt-stage .vt-doc{opacity:.22;transform:translate(var(--tx),var(--ty)) rotate(var(--r));filter:grayscale(.9) brightness(.72);transition:opacity .9s var(--ease) var(--d),transform 1.15s var(--ease) var(--d),filter 1s var(--ease) var(--d)}
 html.motion .vt-stage.in .vt-doc{opacity:1;transform:none;filter:none}
+.vt-line{opacity:.95}
+html.motion .vt-stage .vt-line{stroke-dasharray:900;stroke-dashoffset:900}
+html.motion .vt-stage.in .vt-line{animation:vtLine 1.1s var(--ease) 1.35s both}
+@keyframes vtLine{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
 .vt-chk{opacity:1}
 html.motion .vt-stage .vt-chk{opacity:0}
-html.motion .vt-stage.in .vt-chk{opacity:1;transition:opacity .55s ease calc(var(--d) + 1.05s)}
-.vt-cap{display:flex;justify-content:space-between;gap:12px;padding:0 clamp(16px,5vw,54px) 20px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
-.vt-cap__a{color:var(--faint)}.vt-cap__b{color:var(--accent)}
+html.motion .vt-stage.in .vt-chk{opacity:1;transition:opacity .55s ease calc(var(--d) + 1.9s)}
+.vt-cap{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:2px clamp(16px,5vw,40px) 22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.vt-cap i{color:var(--accent-line);font-style:normal}
+.vt-cap__b{color:var(--accent)}
 
-/* ---- insights: journey + dispatch ---- */
+/* ---- insights: a company that's alive ---- */
 .dispatch{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:center;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface),var(--void));padding:clamp(26px,4vw,46px)}
 .dispatch__tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:5px 12px;border-radius:100px;margin-bottom:18px}
+html.motion .jcards.reveal{opacity:1;transform:none}
+html.motion .jcards .card{opacity:0;transform:translateY(16px)}
+html.motion .jcards.in .card{animation:jcardIn .55s var(--ease) both}
+html.motion .jcards.in .card:nth-child(1){animation-delay:.08s}
+html.motion .jcards.in .card:nth-child(2){animation-delay:.18s}
+html.motion .jcards.in .card:nth-child(3){animation-delay:.28s}
+html.motion .jcards.in .card:nth-child(4){animation-delay:.38s}
+html.motion .jcards.in .card:nth-child(5){animation-delay:.48s}
+html.motion .jcards.in .card:nth-child(6){animation-delay:.58s}
+@keyframes jcardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .feed{display:flex;flex-direction:column;gap:12px}
-.feed__row{display:flex;align-items:flex-start;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface2)}
-.feed__row:first-child{opacity:.62}.feed__row:nth-child(2){opacity:.4}.feed__row:nth-child(3){opacity:.24}
+.feed__row{--o:.62;display:flex;align-items:flex-start;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);opacity:var(--o)}
+.feed__row:nth-child(2){--o:.4}.feed__row:nth-child(3){--o:.24}
+html.motion .dispatch .feed__row{opacity:0}
+html.motion .dispatch.in .feed__row{animation:feedIn .55s var(--ease) both}
+html.motion .dispatch.in .feed__row:nth-child(1){animation-delay:.35s}
+html.motion .dispatch.in .feed__row:nth-child(2){animation-delay:.6s}
+html.motion .dispatch.in .feed__row:nth-child(3){animation-delay:.85s}
+@keyframes feedIn{from{opacity:0;transform:translateX(12px)}to{opacity:var(--o);transform:none}}
 .feed__dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;box-shadow:0 0 0 4px var(--accent-soft)}
 .feed__row:nth-child(n+2) .feed__dot{background:var(--faint);box-shadow:none}
 .feed__body{flex:1;display:flex;flex-direction:column;gap:9px}
 .feed__ln{height:9px;border-radius:5px;background:var(--line2)}
 .feed__ln--t{width:72%}.feed__ln--s{width:46%;height:7px;background:var(--line)}
-html.motion .feed__row:first-child .feed__dot{animation:feedPulse 2.8s var(--ease) infinite}
+html.motion .dispatch.in .feed__row:first-child .feed__dot{animation:feedPulse 2.8s var(--ease) 1.4s infinite}
 @keyframes feedPulse{0%,100%{box-shadow:0 0 0 3px var(--accent-soft)}50%{box-shadow:0 0 0 7px rgba(99,192,111,.03)}}
 
-/* ---- contact polish ---- */
+/* ---- contact: begin, and the trust layer confirms ---- */
 .field:focus-within label{color:var(--accent)}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);animation:fRipple .5s var(--ease)}
+@keyframes fRipple{0%{box-shadow:0 0 0 0 rgba(99,192,111,.28)}100%{box-shadow:0 0 0 3px var(--accent-soft)}}
+html.motion .form-reveal.reveal{opacity:1;transform:none}
+html.motion .form-reveal .form-card :is(.form-row,.field.full,.form-submit){opacity:0;transform:translateY(16px)}
+html.motion .form-reveal.in .form-card :is(.form-row,.field.full,.form-submit){animation:fAssemble .55s var(--ease) both;animation-delay:calc(.15s + var(--i,0)*.13s)}
+@keyframes fAssemble{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .form-submit{transition:transform .16s var(--ease),background .16s,box-shadow .2s}
 .form-submit:hover{box-shadow:0 14px 32px -14px rgba(99,192,111,.55)}
+.form-success{position:relative}
 .form-success.show{animation:okIn .5s var(--ease) both}
 @keyframes okIn{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+.form-success__mk{position:relative}
+.ok-ring{position:absolute;inset:0;border-radius:50%;border:2px solid var(--accent);opacity:0;pointer-events:none}
 html.motion .form-success.show .form-success__mk{animation:okPop .55s var(--ease) both}
 @keyframes okPop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.14);opacity:1}100%{transform:scale(1)}}
+html.motion .form-success.show .ok-ring{animation:okRing .85s var(--ease) .15s both}
+@keyframes okRing{0%{opacity:.7;transform:scale(.8)}100%{opacity:0;transform:scale(1.9)}}
+.ok-check{stroke-dasharray:30;stroke-dashoffset:0}
+html.motion .form-success.show .ok-check{stroke-dashoffset:30;animation:okDraw .55s var(--ease) .3s forwards}
+@keyframes okDraw{to{stroke-dashoffset:0}}
+.ok-sweep{display:block;width:0;height:2px;margin:2px auto 18px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0}
+html.motion .form-success.show .ok-sweep{animation:okSweep .7s var(--ease) .2s both}
+@keyframes okSweep{0%{width:0;opacity:0}50%{opacity:1}100%{width:min(240px,72%);opacity:.9}}
 
 @media(max-width:900px){.team{grid-template-columns:1fr}.dispatch{grid-template-columns:1fr}}
 @media(max-width:560px){.member__note{font-size:14px}}
