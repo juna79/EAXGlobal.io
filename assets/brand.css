@@ -151,10 +151,18 @@ html.motion .reveal.in{opacity:1;transform:none}
 html.motion .hero__content .reveal{transition-delay:calc(var(--i,0)*.09s + .1s)}
 .hero__scene .ig-art{opacity:1}
 .hero__scene .ig-glow{opacity:1}
-html.motion .hero__scene .ig-art{opacity:.22;filter:brightness(.35);transition:opacity 1s var(--ease) var(--d),filter 1.1s var(--ease) var(--d)}
-html.motion .hero__scene .ig-glow{opacity:0;transition:opacity 1.1s ease var(--d)}
+.hero__scene .ig-layer{transform-box:view-box;transform-origin:0 center}
+.hero__scene .ig-energy,.hero__scene .ig-pulse{transform-box:view-box;opacity:0}
+html.motion .hero__scene .ig-art{opacity:.15;filter:brightness(.3);transition:opacity .9s var(--ease) var(--d),filter 1s var(--ease) var(--d)}
+html.motion .hero__scene .ig-glow{opacity:0;transition:opacity 1s ease var(--d)}
+html.motion .hero__scene .ig-layer{transform:scaleX(0)}
 html.motion .hero.lit .ig-art{opacity:1;filter:brightness(1)}
 html.motion .hero.lit .ig-glow{opacity:1}
+html.motion .hero.lit .ig-layer{animation:heroLayer 2.7s var(--ease) .3s forwards}
+@keyframes heroLayer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+html.motion .hero.lit .ig-energy{animation:heroTravel 2.7s var(--ease) .3s 1 forwards}
+html.motion .hero.lit .ig-pulse{animation:heroTravel 7.5s cubic-bezier(.45,0,.55,1) 4.6s infinite}
+@keyframes heroTravel{0%{opacity:0;transform:translateX(0)}5%{opacity:1}90%{opacity:1;transform:translateX(1592px)}100%{opacity:0;transform:translateX(1592px)}}
 
 /* responsive */
 @media(max-width:900px){
@@ -242,8 +250,18 @@ html.motion .hero.lit .ig-dim{opacity:.5}
 .member__focus{position:relative;display:flex;flex-wrap:wrap;gap:8px}
 .member__focus span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);padding:5px 10px;border-radius:100px;border:1px solid var(--line);background:var(--surface);transition:color .2s,border-color .2s,transform .2s}
 .member:hover .member__focus span{color:var(--accent);border-color:var(--accent-line);transform:translateY(-1px)}
+html.motion .team.reveal{opacity:1;transform:none}
+html.motion .team .member{opacity:0;transform:translateY(22px)}
+html.motion .team.in .member{animation:memberIn .6s var(--ease) both}
+html.motion .team.in .member:nth-child(1){animation-delay:.1s}
+html.motion .team.in .member:nth-child(2){animation-delay:.3s}
+html.motion .team.in .member:nth-child(3){animation-delay:.5s}
+@keyframes memberIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
-/* ---- timeline: a journey that draws itself ---- */
+/* ---- timeline: a journey that is travelled ---- */
+.tl__pulse{position:absolute;left:9px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px 3px rgba(99,192,111,.75);transform:translateX(-50%);opacity:0;z-index:3}
+html.motion .tl.in .tl__pulse{animation:tlPulse 1.7s var(--ease) .3s forwards}
+@keyframes tlPulse{0%{opacity:0;top:12px}8%{opacity:1}90%{opacity:1;top:47%}100%{opacity:0;top:47%}}
 .tl__fill{position:absolute;left:8px;top:12px;width:2px;border-radius:2px;background:linear-gradient(var(--accent),var(--accent-line));z-index:1;height:47%}
 html.motion .tl.reveal{opacity:1;transform:none}
 html.motion .tl__fill{height:0;transition:height 1.7s var(--ease) .3s}
@@ -259,50 +277,69 @@ html.motion .tl.in .tl__dot{animation:tlDot .5s var(--ease) both;animation-delay
 .vt-stage{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(120% 130% at 50% 122%,rgba(99,192,111,.07),var(--surface) 55%,var(--void))}
 .vt-svg{width:100%;height:auto;display:block;max-width:1040px;margin:0 auto}
 .vt-doc{transform-box:fill-box;transform-origin:center}
-html.motion .vt-stage .vt-doc{opacity:.22;transform:translate(var(--tx),var(--ty)) rotate(var(--r));filter:grayscale(.9) brightness(.72);transition:opacity .9s var(--ease) var(--d),transform 1.15s var(--ease) var(--d),filter 1s var(--ease) var(--d)}
+html.motion .vt-stage .vt-doc{opacity:.2;transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(var(--sc));filter:grayscale(.9) brightness(.7);transition:opacity 1s var(--ease) var(--d),transform 1.25s var(--ease) var(--d),filter 1s var(--ease) var(--d)}
 html.motion .vt-stage.in .vt-doc{opacity:1;transform:none;filter:none}
+/* the trust layer emerges beneath, then draws across, connecting everything */
+.vt-halo{opacity:1}
+html.motion .vt-stage .vt-halo{opacity:0;transition:opacity 1.1s ease .6s}
+html.motion .vt-stage.in .vt-halo{opacity:1}
+.vt-layer,.vt-line{transform-box:view-box;transform-origin:0 center}
+html.motion .vt-stage .vt-layer{transform:scaleX(0)}
+html.motion .vt-stage.in .vt-layer{animation:vtLayer 1.3s var(--ease) .85s forwards}
+@keyframes vtLayer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 .vt-line{opacity:.95}
-html.motion .vt-stage .vt-line{stroke-dasharray:900;stroke-dashoffset:900}
-html.motion .vt-stage.in .vt-line{animation:vtLine 1.1s var(--ease) 1.35s both}
-@keyframes vtLine{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
-.vt-chk{opacity:1}
-html.motion .vt-stage .vt-chk{opacity:0}
-html.motion .vt-stage.in .vt-chk{opacity:1;transition:opacity .55s ease calc(var(--d) + 1.9s)}
+html.motion .vt-stage .vt-line{stroke-dasharray:1060;stroke-dashoffset:1060}
+html.motion .vt-stage.in .vt-line{animation:vtLine 1.2s var(--ease) .95s both}
+@keyframes vtLine{from{stroke-dashoffset:1060}to{stroke-dashoffset:0}}
+.vt-chk{opacity:1;transform-box:fill-box;transform-origin:center}
+html.motion .vt-stage .vt-chk{opacity:0;transform:scale(.5)}
+html.motion .vt-stage.in .vt-chk{animation:vtChk .5s var(--ease) var(--cd) both}
+@keyframes vtChk{from{opacity:0;transform:scale(.5)}60%{opacity:1;transform:scale(1.15)}to{opacity:1;transform:scale(1)}}
 .vt-cap{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:2px clamp(16px,5vw,40px) 22px;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .vt-cap i{color:var(--accent-line);font-style:normal}
 .vt-cap__b{color:var(--accent)}
 
-/* ---- insights: a company that's alive ---- */
-.dispatch{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:center;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--surface),var(--void));padding:clamp(26px,4vw,46px)}
-.dispatch__tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);background:var(--accent-soft);padding:5px 12px;border-radius:100px;margin-bottom:18px}
-html.motion .jcards.reveal{opacity:1;transform:none}
-html.motion .jcards .card{opacity:0;transform:translateY(16px)}
-html.motion .jcards.in .card{animation:jcardIn .55s var(--ease) both}
-html.motion .jcards.in .card:nth-child(1){animation-delay:.08s}
-html.motion .jcards.in .card:nth-child(2){animation-delay:.18s}
-html.motion .jcards.in .card:nth-child(3){animation-delay:.28s}
-html.motion .jcards.in .card:nth-child(4){animation-delay:.38s}
-html.motion .jcards.in .card:nth-child(5){animation-delay:.48s}
-html.motion .jcards.in .card:nth-child(6){animation-delay:.58s}
-@keyframes jcardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.feed{display:flex;flex-direction:column;gap:12px}
-.feed__row{--o:.62;display:flex;align-items:flex-start;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface2);opacity:var(--o)}
-.feed__row:nth-child(2){--o:.4}.feed__row:nth-child(3){--o:.24}
-html.motion .dispatch .feed__row{opacity:0}
-html.motion .dispatch.in .feed__row{animation:feedIn .55s var(--ease) both}
-html.motion .dispatch.in .feed__row:nth-child(1){animation-delay:.35s}
-html.motion .dispatch.in .feed__row:nth-child(2){animation-delay:.6s}
-html.motion .dispatch.in .feed__row:nth-child(3){animation-delay:.85s}
-@keyframes feedIn{from{opacity:0;transform:translateX(12px)}to{opacity:var(--o);transform:none}}
-.feed__dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;box-shadow:0 0 0 4px var(--accent-soft)}
-.feed__row:nth-child(n+2) .feed__dot{background:var(--faint);box-shadow:none}
-.feed__body{flex:1;display:flex;flex-direction:column;gap:9px}
-.feed__ln{height:9px;border-radius:5px;background:var(--line2)}
-.feed__ln--t{width:72%}.feed__ln--s{width:46%;height:7px;background:var(--line)}
-html.motion .dispatch.in .feed__row:first-child .feed__dot{animation:feedPulse 2.8s var(--ease) 1.4s infinite}
-@keyframes feedPulse{0%,100%{box-shadow:0 0 0 3px var(--accent-soft)}50%{box-shadow:0 0 0 7px rgba(99,192,111,.03)}}
+/* ---- insights: a living feed ---- */
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;box-shadow:0 0 0 3px var(--accent-soft)}
+html.motion .live-dot{animation:feedPulse 2.6s var(--ease) infinite}
+.ifeed{position:relative;max-width:820px;padding-left:36px}
+.ifeed::before{content:"";position:absolute;left:9px;top:16px;bottom:16px;width:2px;border-radius:2px;background:linear-gradient(180deg,var(--accent-line),var(--line) 82%)}
+.ientry{display:block;position:relative;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--surface),var(--void));padding:20px 22px;margin-bottom:16px;transition:border-color .25s,transform .25s,box-shadow .25s}
+.ientry:last-child{margin-bottom:0}
+.ientry--link:hover{border-color:var(--accent-line);transform:translateX(4px);box-shadow:0 20px 50px -30px rgba(0,0,0,.9)}
+.ientry__dot{position:absolute;left:-31px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--void);border:2px solid var(--line2)}
+.ientry:first-child .ientry__dot{border-color:var(--accent);background:var(--accent)}
+.ientry__hd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+.ientry__k{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.ientry h3{font-size:18px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.ientry p{color:var(--muted);font-size:14.5px;line-height:1.6;max-width:64ch}
+.ientry__badge{flex-shrink:0;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;border:1px solid var(--line2);color:var(--muted)}
+.ientry__badge.is-live{color:var(--accent);border-color:var(--accent-line);background:var(--accent-soft)}
+.ientry__go{position:absolute;right:20px;bottom:16px;color:var(--faint);transition:color .2s,transform .2s}
+.ientry__go svg{width:15px;height:15px}
+.ientry--link:hover .ientry__go{color:var(--accent);transform:translate(2px,-2px)}
+html.motion .ifeed.reveal{opacity:1;transform:none}
+html.motion .ifeed .ientry{opacity:0;transform:translateY(18px)}
+html.motion .ifeed.in .ientry{animation:ientryIn .55s var(--ease) both;animation-delay:calc(.1s + var(--i)*.16s)}
+@keyframes ientryIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+html.motion .ifeed.in .ientry:first-child .ientry__dot{animation:feedPulse 2.8s var(--ease) 1.6s infinite}
+@keyframes feedPulse{0%,100%{box-shadow:0 0 0 3px var(--accent-soft)}50%{box-shadow:0 0 0 7px rgba(99,192,111,.04)}}
 
-/* ---- contact: begin, and the trust layer confirms ---- */
+/* ---- contact: begin — the message becomes a trusted object ---- */
+.form-card{position:relative;overflow:hidden}
+.form-card.is-sending form{opacity:0;transition:opacity .3s;pointer-events:none}
+.form-send{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 42%,var(--surface),var(--void))}
+.form-card.is-sending .form-send{opacity:1;transition:opacity .35s}
+.send-packet{width:56px;height:56px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--surface2);border:1px solid var(--accent-line)}
+.send-packet svg{width:26px;height:26px}
+.form-card.is-sending .send-packet{animation:sendPacket 1.4s var(--ease) .15s both}
+@keyframes sendPacket{0%{opacity:0;transform:translateY(-16px) scale(.6)}22%{opacity:1;transform:translateY(-16px) scale(1)}55%{opacity:1;transform:translateY(2px) scale(1)}100%{opacity:0;transform:translateY(48px) scale(.32)}}
+.send-layer{width:min(280px,72%);height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transform:scaleX(.4)}
+.form-card.is-sending .send-layer{animation:sendLayer 1.4s var(--ease) .5s both}
+@keyframes sendLayer{0%{opacity:0;transform:scaleX(.4)}45%{opacity:.5;transform:scaleX(1)}70%{opacity:1;box-shadow:0 0 18px 2px rgba(99,192,111,.55)}100%{opacity:.7;box-shadow:0 0 0 0 rgba(99,192,111,0)}}
+.send-cap{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);opacity:0}
+.form-card.is-sending .send-cap{animation:sendCap .4s var(--ease) .3s both}
+@keyframes sendCap{to{opacity:1}}
 .field:focus-within label{color:var(--accent)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);animation:fRipple .5s var(--ease)}
 @keyframes fRipple{0%{box-shadow:0 0 0 0 rgba(99,192,111,.28)}100%{box-shadow:0 0 0 3px var(--accent-soft)}}
