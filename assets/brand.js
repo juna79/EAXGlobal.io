@@ -17,5 +17,6 @@
     rev.forEach(function(el){io.observe(el);});
   } else { rev.forEach(function(el){el.classList.add('in');}); }
   var form=document.querySelector('form[data-eax-form]');if(form){form.addEventListener('submit',function(e){e.preventDefault();var d=new URLSearchParams(new FormData(form)).toString();var done=function(){form.style.display='none';var ok=document.getElementById('form-success');if(ok){ok.classList.add('show');}};fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:d}).then(done).catch(done);});}
+  var flows=document.querySelectorAll('[data-flow]');if(motion&&'IntersectionObserver' in window){var fio=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('play',e.isIntersecting);});},{threshold:.25});flows.forEach(function(f){fio.observe(f);});}
   document.querySelectorAll('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear();});
 })();
