@@ -33,9 +33,11 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .nav__in{max-width:var(--maxw);margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;gap:22px}
 .brand{display:inline-flex;align-items:center;gap:11px;flex-shrink:0}
 .brand img{height:30px;width:auto;display:block}
-.nav__links{margin-left:auto;display:flex;align-items:center;gap:3px}
-.nav__links a{padding:8px 13px;border-radius:var(--radius-sm);font-size:14.5px;color:var(--muted);transition:color .15s,background .15s}
-.nav__links a:hover{color:var(--fg);background:var(--surface)}
+.nav__links{position:relative;margin-left:auto;display:flex;align-items:center;gap:3px}
+.nav__links a{position:relative;padding:8px 13px;border-radius:var(--radius-sm);font-size:14.5px;color:var(--muted);transition:color .2s}
+.nav__links a:hover{color:var(--fg)}
+.nav__links a[aria-current="page"]{color:var(--fg);text-shadow:0 0 14px rgba(99,192,111,.4)}
+.nav__ind{position:absolute;bottom:3px;left:0;width:0;height:2px;border-radius:2px;background:var(--accent);box-shadow:0 0 10px 1px rgba(99,192,111,.7);opacity:0;transform:translateX(0);transition:transform .34s var(--ease),width .34s var(--ease),opacity .25s;pointer-events:none;z-index:1}
 .nav__kweli{margin-left:8px;border:1px solid var(--accent-line);color:var(--accent)!important;
   display:inline-flex;align-items:center;gap:7px}
 .nav__kweli:hover{background:var(--accent-soft)!important}
@@ -48,12 +50,12 @@ body.nav-open .nav__toggle span::before{top:0;transform:rotate(45deg)}
 body.nav-open .nav__toggle span::after{top:0;transform:rotate(-45deg)}
 
 /* hero */
-.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);min-height:88vh;display:flex;flex-direction:column}
-.hero__content{position:relative;z-index:2;padding:clamp(116px,15vh,172px) 0 0}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);display:flex;flex-direction:column}
+.hero__content{position:relative;z-index:2;padding:clamp(98px,12vh,138px) 0 0}
 .hero h1{font-weight:600;letter-spacing:-.04em;line-height:1.02;font-size:clamp(2.4rem,5.6vw,4.2rem);max-width:15ch;text-wrap:balance}
 .hero__sub{margin-top:22px;color:var(--muted);font-size:clamp(1.05rem,1.55vw,1.2rem);line-height:1.55;max-width:52ch}
 .hero__cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
-.hero__band{position:relative;z-index:1;margin-top:auto;width:100%}
+.hero__band{position:relative;z-index:1;margin-top:clamp(2px,1vh,14px);width:100%}
 .hero__band .hero__scene{width:100%;height:auto;display:block}
 .hero__grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
@@ -174,6 +176,7 @@ html.motion .hero.lit .ig-pulse{animation:heroTravel 7.5s cubic-bezier(.45,0,.55
     transform:translateY(-10px);opacity:0;pointer-events:none;transition:.2s}
   body.nav-open .nav__links{transform:none;opacity:1;pointer-events:auto}
   .nav__links a{padding:12px 10px;font-size:16px}
+  .nav__ind{display:none}
   .nav__kweli{justify-content:center;margin:8px 0 0}
   .nav__toggle{display:flex}
   .prod{grid-template-columns:auto 1fr;gap:16px}.prod__meta{grid-column:2}
@@ -276,6 +279,10 @@ html.motion .tl.in .tl__dot{animation:tlDot .5s var(--ease) both;animation-delay
 /* ---- vision: chaos -> trust -> infrastructure -> confidence ---- */
 .vt-stage{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(120% 130% at 50% 122%,rgba(99,192,111,.07),var(--surface) 55%,var(--void))}
 .vt-svg{width:100%;height:auto;display:block;max-width:1040px;margin:0 auto}
+/* full-bleed hero variant */
+.vt-hero{border:none;border-radius:0;background:transparent;overflow:hidden}
+.vt-hero .vt-svg{max-width:none;width:100%;margin:0}
+.vt-hero .vt-cap{padding-top:16px;padding-bottom:6px}
 .vt-doc{transform-box:fill-box;transform-origin:center}
 html.motion .vt-stage .vt-doc{opacity:.2;transform:translate(var(--tx),var(--ty)) rotate(var(--r)) scale(var(--sc));filter:grayscale(.9) brightness(.7);transition:opacity 1s var(--ease) var(--d),transform 1.25s var(--ease) var(--d),filter 1s var(--ease) var(--d)}
 html.motion .vt-stage.in .vt-doc{opacity:1;transform:none;filter:none}
