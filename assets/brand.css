@@ -232,25 +232,25 @@ html.motion .hero.lit .ig-dim{opacity:.5}
 .fx-tok,.fx-tok-box,.fx-cred,.fx-mk-pulse,.fx-mk-tx{transform-box:view-box}
 .fx-pop,.fx-snap,.fx-mk-orb{transform-box:fill-box;transform-origin:center}
 /* play */
-html.motion .flow.play .fx-appear{animation:fxAppear var(--D,8s) ease var(--sd,0s) infinite both}
-html.motion .flow.play .fx-pop{animation:fxPop var(--D,8s) ease var(--sd,0s) infinite both}
+html.motion .flow.play .fx-appear{animation:fxAppear .55s ease var(--sd,0s) 1 both}
+html.motion .flow.play .fx-pop{animation:fxPop .6s cubic-bezier(.2,.75,.3,1.25) var(--sd,0s) 1 both}
 html.motion .flow.play .fx-tok,html.motion .flow.play .fx-tok-box,html.motion .flow.play .fx-cred{animation:fxTravel var(--D,8s) cubic-bezier(.4,0,.2,1) var(--sd,.3s) infinite both}
 html.motion .flow.play .fx-route-lit{stroke-dasharray:var(--len,520);stroke-dashoffset:var(--len,520);animation:fxRoute var(--D,8s) cubic-bezier(.4,0,.2,1) .3s infinite both}
 html.motion .flow.play .fx-pulse-ring{animation:fxRing var(--D,8s) ease var(--sd,2s) infinite both}
 html.motion .flow.play .fx-scan-v{animation:fxScan var(--D,8s) ease var(--sd,3.8s) infinite both}
-html.motion .flow.play .fx-snap{animation:fxSnap var(--D,8s) ease var(--sd,3s) infinite both}
+html.motion .flow.play .fx-snap{animation:fxSnap .5s ease var(--sd,3s) 1 both}
 html.motion .flow.play .fx-verify-beam{animation:fxBeam var(--D,8s) ease infinite both}
-html.motion .flow.play .fx-mk-orb{animation:fxAppear var(--D,8s) ease var(--sd,1.6s) infinite both}
+html.motion .flow.play .fx-mk-orb{animation:fxAppear .55s ease var(--sd,1.6s) 1 both}
 html.motion .flow.play .fx-mk-pulse{animation:fxMkPulse var(--D,8s) ease var(--sd,2s) infinite both}
 html.motion .flow.play .fx-mk-tx{animation:fxTx var(--D,8s) ease infinite both}
 html.motion .flow.play .fx-tx2{animation-delay:1.4s}
-@keyframes fxAppear{0%{opacity:0;transform:translateY(6px)}6%{opacity:1;transform:none}90%{opacity:1}97%,100%{opacity:0}}
-@keyframes fxPop{0%,60%{opacity:0;transform:scale(.55)}68%{opacity:1;transform:scale(1.12)}75%,96%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes fxAppear{0%{opacity:0;transform:translateY(6px)}100%{opacity:1;transform:none}}
+@keyframes fxPop{0%{opacity:0;transform:scale(.5)}70%{opacity:1;transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
 @keyframes fxTravel{0%{offset-distance:0%;opacity:0}6%{opacity:1}62%{offset-distance:100%;opacity:1}70%,100%{offset-distance:100%;opacity:0}}
 @keyframes fxRoute{0%{stroke-dashoffset:var(--len,520)}66%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:var(--len,520)}}
 @keyframes fxRing{0%,26%{opacity:0;transform:scale(1)}32%{opacity:.9}52%{opacity:0;transform:scale(1.9)}100%{opacity:0}}
 @keyframes fxScan{0%,42%{opacity:0;transform:translateY(0)}48%{opacity:1}64%{transform:translateY(60px);opacity:1}70%,100%{opacity:0}}
-@keyframes fxSnap{0%,44%{opacity:0;transform:scale(.4)}46%{opacity:1;transform:scale(1.15)}49%,92%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes fxSnap{0%{opacity:0;transform:scale(.4)}55%{opacity:1;transform:scale(1.14)}100%{opacity:1;transform:scale(1)}}
 @keyframes fxBeam{0%,44%{opacity:0}47%{opacity:.85}60%{opacity:.85}70%,100%{opacity:0}}
 @keyframes fxMkPulse{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}55%{opacity:1;transform:translate(var(--tx),var(--ty))}66%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
 @keyframes fxTx{0%,30%{offset-distance:0%;opacity:0}36%{opacity:1}64%{offset-distance:100%;opacity:1}72%,100%{offset-distance:100%;opacity:0}}
