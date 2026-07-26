@@ -202,73 +202,58 @@ html.motion .hero.lit .ig-glow{opacity:1}
 html.motion .hero__scene .ig-dim{opacity:0;transition:opacity 1s var(--ease) var(--d)}
 html.motion .hero.lit .ig-dim{opacity:.5}
 @media(max-width:860px){.contact-split{grid-template-columns:1fr;gap:32px}.form-row{grid-template-columns:1fr}}
-/* PRODUCT-FLOWS v1 */
-.flow{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-height:320px;display:flex;align-items:center;justify-content:center;padding:14px;background:radial-gradient(130% 130% at 50% 118%,rgba(99,192,111,.07),var(--surface) 52%,var(--void))}
-.flow svg{width:100%;height:auto;display:block}
-.fx-h{stroke:var(--accent);stroke-opacity:.45;stroke-width:1.4}
+/* PRODUCT-FLOWS v2 */
+.flow{position:relative;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-height:380px;display:flex;align-items:center;justify-content:center;padding:22px 18px;background:radial-gradient(130% 130% at 50% 116%,rgba(99,192,111,.08),var(--surface) 50%,var(--void))}
+.flow svg{width:100%;min-width:0;max-width:560px;height:auto;display:block;margin:0 auto}
+.flow svg{width:100%;min-width:0;height:auto;display:block}
+.fx-lbl{fill:var(--faint);font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.fx-lbl-on{fill:var(--accent);font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .fx-rec{fill:var(--surface2);stroke:rgba(207,238,214,.42);stroke-width:1.3}
 .fx-node{fill:var(--surface2);stroke:rgba(207,238,214,.3);stroke-width:1.3}
 .fx-node-c{fill:rgba(20,25,32,.9);stroke:rgba(207,238,214,.34);stroke-width:1.3}
-.fx-dl{stroke:rgba(207,238,214,.36);stroke-width:1.4;fill:none;stroke-linecap:round}
-.fx-line{stroke:rgba(207,238,214,.24);stroke-width:1.4;fill:none}
-.fx-track{stroke:var(--line2);stroke-width:1.8;fill:none}
+.fx-dl{stroke:rgba(207,238,214,.4);stroke-width:1.4;fill:none;stroke-linecap:round}
+.fx-fold{stroke:rgba(207,238,214,.3);stroke-width:1.2}
+.fx-line{stroke:rgba(207,238,214,.22);stroke-width:1.4;fill:none}
+.fx-flowline{stroke:rgba(207,238,214,.1);stroke-width:1.2}
+.fx-conn{stroke-width:1.6;fill:none}
 .fx-acc{stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.fx-accf,.fx-token{fill:var(--accent)}
+.fx-hash{fill:var(--accent);font-family:var(--mono);font-size:12.5px;font-weight:600}
 .fx-badge{fill:var(--accent-soft);stroke:var(--accent-line);stroke-width:1}
 .fx-check{stroke:var(--accent);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:var(--cl,24);stroke-dashoffset:0}
-.fx-hash{fill:var(--accent);font-family:var(--mono);font-size:13px;font-weight:600}
-.fx-tag{fill:var(--faint);font-family:var(--mono);font-size:8px;letter-spacing:.16em}
-.fx-lbl{fill:var(--faint);font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
-.fx-lbl-on{fill:var(--accent)}
-.v-scan{opacity:0}
-.cl-t,.su-token,.cr-cred,.mk-t{opacity:0}
-/* motion only when playing */
-html.motion .flow.play .v-scan{animation:vScan 6s ease-in-out infinite}
-html.motion .flow.play .v-hash{animation:vHash 6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
-html.motion .flow.play .v-copy{animation:vCopy 6s ease-in-out infinite}
-html.motion .flow.play .v-chk{animation:vChk 6s ease-in-out infinite}
-@keyframes vScan{0%,4%{transform:translateY(0);opacity:0}9%{opacity:.9}24%{transform:translateY(84px);opacity:.9}30%,100%{opacity:0;transform:translateY(0)}}
-@keyframes vHash{0%,26%{opacity:0;transform:scale(.92)}34%{opacity:1;transform:scale(1.05)}42%,94%{opacity:1;transform:scale(1)}100%{opacity:0}}
-@keyframes vCopy{0%,45%{opacity:0;transform:translateX(72px)}54%{opacity:1}66%,94%{opacity:1;transform:translateX(0)}100%{opacity:0;transform:translateX(72px)}}
-@keyframes vChk{0%,68%{stroke-dashoffset:var(--cl,22)}82%,94%{stroke-dashoffset:0}100%{stroke-dashoffset:var(--cl,22)}}
-/* claims */
-html.motion .flow.play .cl-p1{animation:draw 7s ease infinite}html.motion .flow.play .cl-p2{animation:draw 7s ease .3s infinite}html.motion .flow.play .cl-p3{animation:draw 7s ease .6s infinite}
-.cl-p{stroke-dasharray:260;stroke-dashoffset:0}
-html.motion .flow.play .cl-p{stroke-dashoffset:260}
-html.motion .flow.play .cl-t1{offset-path:path("M82 60 C170 70 200 120 268 130");animation:clT 7s ease infinite}
-html.motion .flow.play .cl-t2{offset-path:path("M82 140 H268");animation:clT 7s ease .55s infinite}
-html.motion .flow.play .cl-t3{offset-path:path("M82 220 C170 210 200 160 268 146");animation:clT 7s ease 1.1s infinite}
-html.motion .flow.play .cl-r1 .fx-check{animation:vChk 7s ease .2s infinite}
-html.motion .flow.play .cl-r2 .fx-check{animation:vChk 7s ease .75s infinite}
-html.motion .flow.play .cl-r3 .fx-check{animation:vChk 7s ease 1.3s infinite}
-@keyframes clT{0%{opacity:0;offset-distance:0%}6%{opacity:1}30%{offset-distance:100%;opacity:1}36%,100%{opacity:0;offset-distance:100%}}
-@keyframes draw{0%{stroke-dashoffset:260}22%,100%{stroke-dashoffset:0}}
-/* supply */
-html.motion .flow.play .su-token{animation:suTok 6s ease-in-out infinite}
-html.motion .flow.play .su-fill{animation:suFill 6s ease-in-out infinite}
-.su-token{transform:translate(70px,150px)}
-html.motion .flow.play .su-c0 .fx-check,html.motion .flow.play .su-c0 .fx-badge{animation:pop 6s ease .3s infinite}
-html.motion .flow.play .su-c1 .fx-check,html.motion .flow.play .su-c1 .fx-badge{animation:pop 6s ease 1.3s infinite}
-html.motion .flow.play .su-c2 .fx-check,html.motion .flow.play .su-c2 .fx-badge{animation:pop 6s ease 2.3s infinite}
-html.motion .flow.play .su-c3 .fx-check,html.motion .flow.play .su-c3 .fx-badge{animation:pop 6s ease 3.3s infinite}
-.su-chk{opacity:1}
-@keyframes suTok{0%{transform:translate(70px,150px);opacity:0}5%{opacity:1}22%{transform:translate(190px,150px)}28%{transform:translate(190px,150px)}45%{transform:translate(310px,150px)}51%{transform:translate(310px,150px)}70%{transform:translate(430px,150px)}90%{opacity:1}100%{transform:translate(430px,150px);opacity:0}}
-@keyframes suFill{0%{stroke-dashoffset:360}70%,100%{stroke-dashoffset:0}}
-@keyframes pop{0%,8%{opacity:0;transform:scale(.5)}14%,100%{opacity:1;transform:scale(1)}}
-html.motion .flow.play .su-chk{transform-box:fill-box;transform-origin:center}
-/* credentials */
-html.motion .flow.play .cr-cred{offset-path:path("M240 92 L100 210 L362 210");offset-rotate:0;animation:crCred 6.5s ease-in-out infinite}
-html.motion .flow.play .cr-e1{animation:draw 6.5s ease infinite}
-html.motion .flow.play .cr-e2{animation:draw 6.5s ease .8s infinite}
-html.motion .flow.play .cr-verify{animation:crVer 6.5s ease infinite}
-.cr-e1,.cr-e2{stroke-dasharray:200;stroke-dashoffset:0}html.motion .flow.play .cr-e1,html.motion .flow.play .cr-e2{stroke-dashoffset:200}
-.cr-verify{opacity:.5}html.motion .flow.play .cr-verify{opacity:0}
-@keyframes crCred{0%{opacity:0;offset-distance:0%}6%{opacity:1}44%{offset-distance:50%}54%{offset-distance:50%}86%{offset-distance:100%;opacity:1}100%{opacity:0;offset-distance:100%}}
-@keyframes crVer{0%,84%{opacity:0}90%,100%{opacity:.7}}
-/* marketplace */
-.mk-t{opacity:0}
-html.motion .flow.play .mk-t{animation:mkT 4.5s ease-in-out infinite}
-html.motion .flow.play .mk-t0{animation-delay:0s}html.motion .flow.play .mk-t1{animation-delay:.7s}html.motion .flow.play .mk-t2{animation-delay:1.4s}html.motion .flow.play .mk-t3{animation-delay:2.1s}html.motion .flow.play .mk-t4{animation-delay:2.8s}html.motion .flow.play .mk-t5{animation-delay:3.5s}
-@keyframes mkT{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}55%{opacity:1;transform:translate(var(--tx),var(--ty))}70%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
-.mk-t{transform-box:fill-box}
-@media(prefers-reduced-motion:reduce){.flow *{animation:none!important}.v-scan,.cl-t,.su-token,.cr-cred,.mk-t{opacity:0!important}.cr-verify{opacity:.6!important}.cl-p,.cr-e1,.cr-e2{stroke-dashoffset:0!important}}
+.fx-layerbar{fill:var(--accent);filter:drop-shadow(0 0 6px rgba(99,192,111,.6))}
+.fx-ai{fill:var(--accent)}
+.fx-route{stroke:var(--line2);stroke-width:1.8;fill:none}
+.fx-route-lit{stroke:var(--accent);stroke-width:2;fill:none;opacity:.85}
+.fx-mk-edge{stroke:rgba(99,192,111,.28);stroke-width:1.2}
+.fx-mk-orb{fill:rgba(20,25,32,.9);stroke:var(--accent-line);stroke-width:1.2}
+.fx-verify-beam{stroke:var(--accent);fill:none;stroke-width:1.4;stroke-dasharray:4 5;opacity:.35}
+/* motion-only elements hidden in the static/final frame */
+.fx-tok,.fx-tok-box,.fx-cred,.fx-mk-pulse,.fx-mk-tx,.fx-scan-v,.fx-pulse-ring{opacity:0}
+.fx-tok,.fx-tok-box,.fx-cred,.fx-mk-pulse,.fx-mk-tx{transform-box:view-box}
+.fx-pop,.fx-snap,.fx-mk-orb{transform-box:fill-box;transform-origin:center}
+/* play */
+html.motion .flow.play .fx-appear{animation:fxAppear var(--D,8s) ease var(--sd,0s) infinite both}
+html.motion .flow.play .fx-pop{animation:fxPop var(--D,8s) ease var(--sd,0s) infinite both}
+html.motion .flow.play .fx-tok,html.motion .flow.play .fx-tok-box,html.motion .flow.play .fx-cred{animation:fxTravel var(--D,8s) cubic-bezier(.4,0,.2,1) var(--sd,.3s) infinite both}
+html.motion .flow.play .fx-route-lit{stroke-dasharray:var(--len,520);stroke-dashoffset:var(--len,520);animation:fxRoute var(--D,8s) cubic-bezier(.4,0,.2,1) .3s infinite both}
+html.motion .flow.play .fx-pulse-ring{animation:fxRing var(--D,8s) ease var(--sd,2s) infinite both}
+html.motion .flow.play .fx-scan-v{animation:fxScan var(--D,8s) ease var(--sd,3.8s) infinite both}
+html.motion .flow.play .fx-snap{animation:fxSnap var(--D,8s) ease var(--sd,3s) infinite both}
+html.motion .flow.play .fx-verify-beam{animation:fxBeam var(--D,8s) ease infinite both}
+html.motion .flow.play .fx-mk-orb{animation:fxAppear var(--D,8s) ease var(--sd,1.6s) infinite both}
+html.motion .flow.play .fx-mk-pulse{animation:fxMkPulse var(--D,8s) ease var(--sd,2s) infinite both}
+html.motion .flow.play .fx-mk-tx{animation:fxTx var(--D,8s) ease infinite both}
+html.motion .flow.play .fx-tx2{animation-delay:1.4s}
+@keyframes fxAppear{0%{opacity:0;transform:translateY(6px)}6%{opacity:1;transform:none}90%{opacity:1}97%,100%{opacity:0}}
+@keyframes fxPop{0%,60%{opacity:0;transform:scale(.55)}68%{opacity:1;transform:scale(1.12)}75%,96%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes fxTravel{0%{offset-distance:0%;opacity:0}6%{opacity:1}62%{offset-distance:100%;opacity:1}70%,100%{offset-distance:100%;opacity:0}}
+@keyframes fxRoute{0%{stroke-dashoffset:var(--len,520)}66%,92%{stroke-dashoffset:0}100%{stroke-dashoffset:var(--len,520)}}
+@keyframes fxRing{0%,26%{opacity:0;transform:scale(1)}32%{opacity:.9}52%{opacity:0;transform:scale(1.9)}100%{opacity:0}}
+@keyframes fxScan{0%,42%{opacity:0;transform:translateY(0)}48%{opacity:1}64%{transform:translateY(60px);opacity:1}70%,100%{opacity:0}}
+@keyframes fxSnap{0%,44%{opacity:0;transform:scale(.4)}46%{opacity:1;transform:scale(1.15)}49%,92%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes fxBeam{0%,44%{opacity:0}47%{opacity:.85}60%{opacity:.85}70%,100%{opacity:0}}
+@keyframes fxMkPulse{0%{opacity:0;transform:translate(0,0)}12%{opacity:1}55%{opacity:1;transform:translate(var(--tx),var(--ty))}66%,100%{opacity:0;transform:translate(var(--tx),var(--ty))}}
+@keyframes fxTx{0%,30%{offset-distance:0%;opacity:0}36%{opacity:1}64%{offset-distance:100%;opacity:1}72%,100%{offset-distance:100%;opacity:0}}
+@media(max-width:900px){.flow{min-height:300px;padding:18px 12px}.flow svg{max-width:460px}}
+@media(max-width:560px){.flow{min-height:250px;padding:14px 8px}}
+@media(prefers-reduced-motion:reduce){.flow *{animation:none!important}.fx-tok,.fx-tok-box,.fx-cred,.fx-mk-pulse,.fx-mk-tx,.fx-scan-v,.fx-pulse-ring{opacity:0!important}}
