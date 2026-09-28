@@ -5,12 +5,10 @@ Kweli product site lives separately at [kweli.solutions](https://kweli.solutions
 
 ## Design
 
-Built around one brand image — *the Museum*: six kinds of digital record (document, certificate,
-contract, AI output, financial record, shipment) resting on one horizon of light, each made
-trustworthy by the same layer. **One infrastructure, infinite trusted applications.**
+The homepage now leads with a specific issuer-to-recipient example and the company’s relationship to Kweli. The original horizon artwork remains as a restrained accent.
 
 - Deep void, cool-white type, a single green accent used only as the *trust property*.
-- **One restrained motion per page** — the records igniting across the layer, once.
+- **Restrained motion** — decorative artwork animates, while the hero message remains visible immediately.
 - **Static-first:** the layout is complete and premium before any JavaScript runs, and fully
   degrades under `prefers-reduced-motion` and with JS disabled.
 
